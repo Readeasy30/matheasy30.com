@@ -71,12 +71,15 @@ function loadQuestion() {
   questionTitle.textContent = `Math Check ${currentQuestion + 1} of ${questions.length}`;
   questionText.textContent = item.question;
   answerInput.value = "";
-  answerInput.focus();
+  answerInput.style.display = "block";
+  checkBtn.style.display = "inline-block";
+  nextBtn.style.display = "inline-block";
 
   coachMessage.textContent = "Take your time. You only need to try.";
   confidenceMessage.textContent = "Mistakes are not bad. Mistakes help us learn.";
 
   updateProgress();
+  answerInput.focus();
 }
 
 function checkAnswer() {
@@ -85,6 +88,12 @@ function checkAnswer() {
   const item = questions[currentQuestion];
   const userAnswer = answerInput.value.trim().toLowerCase();
   const correctAnswer = item.answer.toLowerCase();
+
+  if (userAnswer === "") {
+    coachMessage.textContent = "Type your answer first. Then we will check it together.";
+    confidenceMessage.textContent = "No rush. One small step at a time.";
+    return;
+  }
 
   if (userAnswer === correctAnswer) {
     score++;
@@ -101,6 +110,12 @@ function checkAnswer() {
 }
 
 function nextQuestion() {
+  if (!answered) {
+    coachMessage.textContent = "Try checking your answer first.";
+    confidenceMessage.textContent = "Checking helps us learn what to practice next.";
+    return;
+  }
+
   if (currentQuestion < questions.length - 1) {
     currentQuestion++;
     loadQuestion();
@@ -111,6 +126,7 @@ function nextQuestion() {
 
 function showResults() {
   const percent = Math.round((score / questions.length) * 100);
+
   let level = "A";
 
   if (score >= 7) {
@@ -121,22 +137,85 @@ function showResults() {
     level = "B";
   }
 
+  localStorage.setItem("mathEasy30Level", level);
+  localStorage.setItem("mathEasy30Score", score);
+  localStorage.setItem("mathEasy30Percent", percent);
+
   questionTitle.textContent = "Math Check Complete";
-  questionText.textContent = `Score: ${score} out of ${questions.length}. Starting level: Level ${level}.`;
+
+  questionText.innerHTML = `
+    Score: ${score} out of ${questions.length}.<br><br>
+    Starting Level: <strong>Level ${level}</strong>
+  `;
 
   answerInput.style.display = "none";
   checkBtn.style.display = "none";
   nextBtn.style.display = "none";
 
-  coachMessage.textContent = "Great job finishing the math check.";
-  confidenceMessage.textContent =
-    "Now MathEasy30 can start with the right kind of lessons.";
-
-  localStorage.setItem("mathEasy30Level", level);
-  localStorage.setItem("mathEasy30Score", score);
-  localStorage.setItem("mathEasy30Percent", percent);
+  coachMessage.textContent = "Great job finishing your math check.";
+  confidenceMessage.textContent = "MathEasy30 will now start at the right level for you.";
 
   updateProgress(true);
+  showLevelPath(level);
+}
+
+function showLevelPath(level) {
+  const oldPath = document.getElementById("levelPathBox");
+
+  if (oldPath) {
+    oldPath.remove();
+  }
+
+  const lessonBox = document.createElement("div");
+  lessonBox.className = "confidence-box";
+  lessonBox.id = "levelPathBox";
+
+  let lessonMessage = "";
+
+  if (level === "A") {
+    lessonMessage = `
+      <h3>Level A Path</h3>
+      <p>We will practice:</p>
+      <ul>
+        <li>Counting</li>
+        <li>Number recognition</li>
+        <li>Simple addition</li>
+      </ul>
+    `;
+  } else if (level === "B") {
+    lessonMessage = `
+      <h3>Level B Path</h3>
+      <p>We will practice:</p>
+      <ul>
+        <li>Subtraction</li>
+        <li>Number comparison</li>
+        <li>Patterns</li>
+      </ul>
+    `;
+  } else if (level === "C") {
+    lessonMessage = `
+      <h3>Level C Path</h3>
+      <p>We will practice:</p>
+      <ul>
+        <li>Addition fluency</li>
+        <li>Multiplication basics</li>
+        <li>Simple word problems</li>
+      </ul>
+    `;
+  } else {
+    lessonMessage = `
+      <h3>Level D Path</h3>
+      <p>We will practice:</p>
+      <ul>
+        <li>Division</li>
+        <li>Multi-step thinking</li>
+        <li>Early fractions</li>
+      </ul>
+    `;
+  }
+
+  lessonBox.innerHTML = lessonMessage;
+  document.querySelector(".app-wrap").appendChild(lessonBox);
 }
 
 function updateProgress(done = false) {
