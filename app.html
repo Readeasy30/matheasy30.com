@@ -1,57 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MathEasy30 App | Gentle Math Check</title>
-  <meta name="description" content="Start the MathEasy30 gentle math check and find the right starting level for daily practice." />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="app-wrap">
-    <header class="lesson-header">
-      <a href="index.html" class="back-btn">← Back to Home</a>
-      <p class="eyebrow">Gentle placement check</p>
-      <h1>MathEasy30</h1>
-      <p class="lesson-subtitle">Slow down. Think carefully. One step at a time.</p>
-    </header>
+  <section
+    class="confidence-box"
+    aria-live="polite"
+  >
 
-    <section class="progress-section" aria-label="Lesson progress">
-      <div class="progress-top">
-        <span>Math Check Progress</span>
-        <span id="progressText">0%</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-    </section>
+    <h3>
+      Confidence Builder
+    </h3>
 
-    <section class="coach-box" aria-live="polite">
-      <h2>🫧 Bubbles Says</h2>
-      <p id="coachMessage">We will start with easy math first.</p>
-    </section>
+    <p id="confidenceMessage">
+      Every small step helps your brain grow stronger.
+    </p>
 
-    <main class="question-card">
-      <p class="mini-label" id="skillLabel">Skill check</p>
-      <h2 id="questionTitle">Math Check</h2>
-      <p id="questionText">Loading question...</p>
+  </section>
 
-      <label class="sr-only" for="answerInput">Type your answer</label>
-      <input type="text" id="answerInput" placeholder="Type your answer" autocomplete="off" inputmode="numeric" />
+</div>
 
-      <div class="button-row">
-        <button id="checkBtn" class="btn primary" type="button">Check Answer</button>
-        <button id="hintBtn" class="btn secondary" type="button">Need a Hint?</button>
-        <button id="nextBtn" class="btn secondary" type="button">Next</button>
-      </div>
-    </main>
+<script src="app.js"></script>
 
-    <section class="confidence-box" aria-live="polite">
-      <h3>Confidence Builder</h3>
-      <p id="confidenceMessage">Every small step helps your brain grow stronger.</p>
-    </section>
-  </div>
-
-  <script src="app.js"></script>
 </body>
 </html>
