@@ -2,121 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>MathEasy30 App</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathEasy30 App | Gentle Math Check</title>
+  <meta name="description" content="Start the MathEasy30 gentle math check and find the right starting level for daily practice." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
+  <div class="app-wrap">
+    <header class="lesson-header">
+      <a href="index.html" class="back-btn">← Back to Home</a>
+      <p class="eyebrow">Gentle placement check</p>
+      <h1>MathEasy30</h1>
+      <p class="lesson-subtitle">Slow down. Think carefully. One step at a time.</p>
+    </header>
 
-<div class="app-wrap">
+    <section class="progress-section" aria-label="Lesson progress">
+      <div class="progress-top">
+        <span>Math Check Progress</span>
+        <span id="progressText">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </section>
 
-  <header class="lesson-header">
+    <section class="coach-box" aria-live="polite">
+      <h2>🫧 Bubbles Says</h2>
+      <p id="coachMessage">We will start with easy math first.</p>
+    </section>
 
-    <a href="index.html" class="back-btn">
-      ← Back to Home
-    </a>
+    <main class="question-card">
+      <p class="mini-label" id="skillLabel">Skill check</p>
+      <h2 id="questionTitle">Math Check</h2>
+      <p id="questionText">Loading question...</p>
 
-    <h1>MathEasy30</h1>
+      <label class="sr-only" for="answerInput">Type your answer</label>
+      <input type="text" id="answerInput" placeholder="Type your answer" autocomplete="off" inputmode="numeric" />
 
-    <p class="lesson-subtitle">
-      Slow down. Think carefully. One step at a time.
-    </p>
+      <div class="button-row">
+        <button id="checkBtn" class="btn primary" type="button">Check Answer</button>
+        <button id="hintBtn" class="btn secondary" type="button">Need a Hint?</button>
+        <button id="nextBtn" class="btn secondary" type="button">Next</button>
+      </div>
+    </main>
 
-  </header>
+    <section class="confidence-box" aria-live="polite">
+      <h3>Confidence Builder</h3>
+      <p id="confidenceMessage">Every small step helps your brain grow stronger.</p>
+    </section>
+  </div>
 
-  <section class="progress-section">
-
-    <div class="progress-top">
-      <span>Lesson Progress</span>
-      <span id="progressText">0%</span>
-    </div>
-
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-
-  </section>
-
-  <section class="coach-box">
-
-    <h2>🫧 Coach Says</h2>
-
-    <p id="coachMessage">
-      We will start with easy math first.
-    </p>
-
-  </section>
-
-  <section class="question-card">
-
-    <h2 id="questionTitle">
-      Math Check
-    </h2>
-
-    <p id="questionText">
-      Loading question...
-    </p>
-
-    <input
-      type="text"
-      id="answerInput"
-      placeholder="Type your answer"
-      autocomplete="off"
-    />
-
-    <div class="button-row">
-
-      <button id="checkBtn">
-        Check Answer
-      </button>
-
-      <button id="nextBtn">
-        Next
-      </button>
-
-    </div>
-
-  </section>
-
-  <section class="confidence-box">
-
-    <h3>Confidence Builder</h3>
-
-    <p id="confidenceMessage">
-      Every small step helps your brain grow stronger.
-    </p>
-
-  </section>
-
-</div>
-
-<script src="app.js"></script>
-
+  <script src="app.js"></script>
 </body>
 </html>
-Why this matters
-
-This locks in:
-
-stable lesson architecture
-progress system
-coach system
-placement structure
-confidence engine
-mobile UX
-
-WITHOUT overcomplicating things.
-
-Next after this:
-
-full app.js
-real placement questions
-adaptive scoring
-level placement
-encouragement logic
-localStorage save system
-
-This is now the correct progression path.
