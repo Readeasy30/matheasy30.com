@@ -1,4 +1,4 @@
-const questions = [
+const placementQuestions = [
   {
     level: "A",
     skill: "Counting",
@@ -57,9 +57,64 @@ const questions = [
   }
 ];
 
+const dailyLessons = {
+  A: [
+    {
+      day: 1,
+      title: "Day 1: Count Forward",
+      coach: "Today we count slowly and notice what number comes next.",
+      questions: [
+        { skill: "Counting", question: "What number comes after 1?", answer: "2", hint: "Count 1, then 2." },
+        { skill: "Counting", question: "What number comes after 4?", answer: "5", hint: "Count 1, 2, 3, 4, 5." },
+        { skill: "Counting", question: "What number comes before 6?", answer: "5", hint: "Count up to 6. The number right before it is 5." }
+      ]
+    }
+  ],
+  B: [
+    {
+      day: 1,
+      title: "Day 1: Take Away",
+      coach: "Today we practice taking away small numbers.",
+      questions: [
+        { skill: "Subtraction", question: "What is 4 - 1?", answer: "3", hint: "Start with 4. Take away 1." },
+        { skill: "Subtraction", question: "What is 6 - 2?", answer: "4", hint: "Start with 6. Count back 2." },
+        { skill: "Compare", question: "Which is smaller: 3 or 8?", answer: "3", hint: "The smaller number is less." }
+      ]
+    }
+  ],
+  C: [
+    {
+      day: 1,
+      title: "Day 1: Add and Group",
+      coach: "Today we strengthen addition and start thinking in groups.",
+      questions: [
+        { skill: "Addition", question: "What is 5 + 2?", answer: "7", hint: "Start at 5 and count 2 more." },
+        { skill: "Addition", question: "What is 4 + 4?", answer: "8", hint: "Double 4 is 8." },
+        { skill: "Groups", question: "2 groups of 4 is how many?", answer: "8", hint: "4 + 4 = 8." }
+      ]
+    }
+  ],
+  D: [
+    {
+      day: 1,
+      title: "Day 1: Share and Think",
+      coach: "Today we practice sharing numbers into equal groups.",
+      questions: [
+        { skill: "Division", question: "What is 8 ÷ 2?", answer: "4", hint: "Split 8 into 2 equal groups." },
+        { skill: "Multiplication", question: "What is 3 × 4?", answer: "12", hint: "Count 4, 8, 12." },
+        { skill: "Word problem", question: "Sam has 12 blocks. He makes 3 equal groups. How many blocks are in each group?", answer: "4", hint: "12 ÷ 3 = 4." }
+      ]
+    }
+  ]
+};
+
+let mode = "placement";
 let currentQuestion = 0;
 let score = 0;
 let answered = false;
+let learnerLevel = localStorage.getItem("mathEasy30Level") || "A";
+let activeLesson = null;
+let activeQuestions = placementQuestions;
 
 const questionTitle = document.getElementById("questionTitle");
 const questionText = document.getElementById("questionText");
@@ -74,12 +129,11 @@ const progressFill = document.getElementById("progressFill");
 const skillLabel = document.getElementById("skillLabel");
 
 function loadQuestion() {
-  const item = questions[currentQuestion];
-
+  const item = activeQuestions[currentQuestion];
   answered = false;
 
-  skillLabel.textContent = `Level ${item.level} • ${item.skill}`;
-  questionTitle.textContent = `Math Check ${currentQuestion + 1} of ${questions.length}`;
+  skillLabel.textContent = mode === "placement" ? `Level ${item.level} • ${item.skill}` : `Level ${learnerLevel} • ${item.skill}`;
+  questionTitle.textContent = mode === "placement" ? `Math Check ${currentQuestion + 1} of ${activeQuestions.length}` : `${activeLesson.title} — Question ${currentQuestion + 1}`;
   questionText.textContent = item.question;
   answerInput.value = "";
   answerInput.style.display = "block";
@@ -87,7 +141,7 @@ function loadQuestion() {
   hintBtn.style.display = "inline-block";
   nextBtn.style.display = "inline-block";
 
-  coachMessage.textContent = "Take your time. You only need to try.";
+  coachMessage.textContent = mode === "placement" ? "Take your time. You only need to try." : activeLesson.coach;
   confidenceMessage.textContent = "Mistakes are not bad. Mistakes help us learn.";
 
   updateProgress();
@@ -95,7 +149,7 @@ function loadQuestion() {
 }
 
 function showHint() {
-  const item = questions[currentQuestion];
+  const item = activeQuestions[currentQuestion];
   coachMessage.textContent = `Hint: ${item.hint}`;
   confidenceMessage.textContent = "Hints are not cheating. Hints help your brain find the path.";
 }
@@ -103,7 +157,7 @@ function showHint() {
 function checkAnswer() {
   if (answered) return;
 
-  const item = questions[currentQuestion];
+  const item = activeQuestions[currentQuestion];
   const userAnswer = answerInput.value.trim().toLowerCase();
   const correctAnswer = item.answer.toLowerCase();
 
@@ -134,114 +188,114 @@ function nextQuestion() {
     return;
   }
 
-  if (currentQuestion < questions.length - 1) {
+  if (currentQuestion < activeQuestions.length - 1) {
     currentQuestion++;
     loadQuestion();
+    return;
+  }
+
+  if (mode === "placement") {
+    showPlacementResults();
   } else {
-    showResults();
+    showLessonResults();
   }
 }
 
-function showResults() {
-  const percent = Math.round((score / questions.length) * 100);
-  let level = "A";
+function showPlacementResults() {
+  const percent = Math.round((score / activeQuestions.length) * 100);
+  learnerLevel = "A";
 
-  if (score >= 7) {
-    level = "D";
-  } else if (score >= 5) {
-    level = "C";
-  } else if (score >= 3) {
-    level = "B";
-  }
+  if (score >= 7) learnerLevel = "D";
+  else if (score >= 5) learnerLevel = "C";
+  else if (score >= 3) learnerLevel = "B";
 
-  localStorage.setItem("mathEasy30Level", level);
+  localStorage.setItem("mathEasy30Level", learnerLevel);
   localStorage.setItem("mathEasy30Score", score);
   localStorage.setItem("mathEasy30Percent", percent);
 
   skillLabel.textContent = "Placement complete";
   questionTitle.textContent = "Math Check Complete";
-  questionText.innerHTML = `
-    <strong>Score:</strong> ${score} out of ${questions.length}.<br><br>
-    <strong>Starting Level:</strong> Level ${level}
-  `;
+  questionText.innerHTML = `<strong>Score:</strong> ${score} out of ${activeQuestions.length}.<br><br><strong>Starting Level:</strong> Level ${learnerLevel}`;
 
-  answerInput.style.display = "none";
-  checkBtn.style.display = "none";
-  hintBtn.style.display = "none";
-  nextBtn.style.display = "none";
-
+  hidePracticeControls();
   coachMessage.textContent = "Great job finishing your math check.";
   confidenceMessage.textContent = "MathEasy30 will now start at the right level for you.";
 
   updateProgress(true);
-  showLevelPath(level);
+  showLevelPath(learnerLevel);
 }
 
 function showLevelPath(level) {
-  const oldPath = document.getElementById("levelPathBox");
+  removeLevelPath();
 
-  if (oldPath) {
-    oldPath.remove();
-  }
+  const paths = {
+    A: ["Counting", "Number recognition", "Simple addition"],
+    B: ["Subtraction", "Number comparison", "Patterns"],
+    C: ["Addition fluency", "Multiplication basics", "Simple word problems"],
+    D: ["Division", "Multi-step thinking", "Early fractions"]
+  };
 
   const lessonBox = document.createElement("section");
   lessonBox.className = "confidence-box level-path-box";
   lessonBox.id = "levelPathBox";
-
-  const paths = {
-    A: {
-      title: "Level A Path",
-      intro: "We will build number confidence from the ground up.",
-      skills: ["Counting", "Number recognition", "Simple addition"]
-    },
-    B: {
-      title: "Level B Path",
-      intro: "We will strengthen basic operations and number sense.",
-      skills: ["Subtraction", "Number comparison", "Patterns"]
-    },
-    C: {
-      title: "Level C Path",
-      intro: "We will grow fluency and start stronger problem solving.",
-      skills: ["Addition fluency", "Multiplication basics", "Simple word problems"]
-    },
-    D: {
-      title: "Level D Path",
-      intro: "We will practice deeper thinking with early middle-school skills.",
-      skills: ["Division", "Multi-step thinking", "Early fractions"]
-    }
-  };
-
-  const path = paths[level];
-
   lessonBox.innerHTML = `
-    <h3>${path.title}</h3>
-    <p>${path.intro}</p>
-    <ul>
-      ${path.skills.map(skill => `<li>${skill}</li>`).join("")}
-    </ul>
-    <button class="btn primary full" type="button" onclick="startDailyPractice()">
-      Start Day 1 Practice
-    </button>
+    <h3>Level ${level} Path</h3>
+    <p>We will start with the right kind of practice.</p>
+    <ul>${paths[level].map(skill => `<li>${skill}</li>`).join("")}</ul>
+    <button class="btn primary full" type="button" onclick="startDailyPractice()">Start Day 1 Practice</button>
   `;
 
   document.querySelector(".app-wrap").appendChild(lessonBox);
 }
 
 function startDailyPractice() {
-  coachMessage.textContent = "Day 1 practice is next. We will build this lesson path one step at a time.";
-  confidenceMessage.textContent = "You finished the first important step: finding the right starting point.";
+  removeLevelPath();
+  mode = "lesson";
+  currentQuestion = 0;
+  score = 0;
+  answered = false;
+  activeLesson = dailyLessons[learnerLevel][0];
+  activeQuestions = activeLesson.questions;
+  localStorage.setItem("mathEasy30CurrentMode", "lesson");
+  loadQuestion();
+}
+
+function showLessonResults() {
+  const percent = Math.round((score / activeQuestions.length) * 100);
+  skillLabel.textContent = "Day 1 complete";
+  questionTitle.textContent = "Day 1 Practice Complete";
+  questionText.innerHTML = `<strong>Score:</strong> ${score} out of ${activeQuestions.length}.<br><br>You finished today’s practice.`;
+
+  hidePracticeControls();
+  coachMessage.textContent = "Excellent work. You practiced slowly and carefully.";
+  confidenceMessage.textContent = "Come back for the next lesson and keep building math strength.";
+  localStorage.setItem("mathEasy30Day1Complete", "true");
+  localStorage.setItem("mathEasy30Day1Percent", percent);
+  updateProgress(true);
+}
+
+function hidePracticeControls() {
+  answerInput.style.display = "none";
+  checkBtn.style.display = "none";
+  hintBtn.style.display = "none";
+  nextBtn.style.display = "none";
+}
+
+function removeLevelPath() {
+  const oldPath = document.getElementById("levelPathBox");
+  if (oldPath) oldPath.remove();
 }
 
 function updateProgress(done = false) {
-  const percent = done ? 100 : Math.round((currentQuestion / questions.length) * 100);
-
+  const percent = done ? 100 : Math.round((currentQuestion / activeQuestions.length) * 100);
   progressText.textContent = `${percent}%`;
   progressFill.style.width = `${percent}%`;
 }
 
 function saveProgress() {
   localStorage.setItem("mathEasy30CurrentQuestion", currentQuestion);
-  localStorage.setItem("mathEasy30Score", score);
+  localStorage.setItem("mathEasy30CurrentScore", score);
+  localStorage.setItem("mathEasy30CurrentMode", mode);
 }
 
 checkBtn.addEventListener("click", checkAnswer);
@@ -249,9 +303,7 @@ hintBtn.addEventListener("click", showHint);
 nextBtn.addEventListener("click", nextQuestion);
 
 answerInput.addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    checkAnswer();
-  }
+  if (event.key === "Enter") checkAnswer();
 });
 
 loadQuestion();
