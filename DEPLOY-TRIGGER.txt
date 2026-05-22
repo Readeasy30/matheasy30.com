@@ -1,0 +1,3 @@
+MathEasy30 deploy trigger
+
+This file exists to trigger Cloudflare Pages deployments when needed.
