@@ -1,16 +1,12 @@
 # MathEasy30
 
-MathEasy30 is a simple math-practice website for children, parents, tutors, and struggling learners.
+MathEasy30 is a simple math practice website.
 
 ## Mission
 
-Help learners build math confidence with short, calm, step-by-step lessons.
+Build calm daily math practice with short lessons and simple steps.
 
-## Core Rule
-
-Keep this site simple and easy to manage.
-
-Use:
+## Tech stack
 
 - HTML
 - CSS
@@ -18,54 +14,51 @@ Use:
 - GitHub Pages
 - Cloudflare
 
-Do not use React, Vite, Next.js, TypeScript, or build tools unless the owner clearly chooses a full rebuild later.
+Do not use React, Vite, Next.js, TypeScript, or build tools.
 
-## Planned Structure
+## Update rule
 
-- `index.html` = marketing homepage
-- `app.html` = math lesson/practice app
-- `app.js` = lesson engine and math logic
-- `css/style.css` = main styling
-- `AGENT-INSTRUCTIONS.md` = rules for AI helpers
+Safe file updates should be made and committed directly.
 
-## Learning Path
+Pause only for blocked writes, major deletion, framework changes, private keys, payment setup, tracking setup, or live monetization.
 
-MathEasy30 should grow in levels:
+## Files
+
+- `index.html` = homepage
+- `app.html` = app page
+- `app.js` = app logic
+- `css/style.css` = main stylesheet
+- `about.html` = about page
+- `parent-guide.html` = guide page
+- `pricing.html` = pricing page
+- `AGENT-INSTRUCTIONS.md` = helper rules
+- `FILE-MANAGEMENT.md` = file map
+
+## Site checks
+
+- title
+- description
+- main heading
+- footer links
+- mobile layout
+- buttons
+- app controls
+- fast loading
+
+## Learning path
 
 1. Number sense
-2. Addition and subtraction
-3. Place value
-4. Word problems
-5. Multiplication and division
-6. Fractions
-7. Decimals and percentages
-8. Measurement and practical math
-9. Geometry basics
+2. Addition
+3. Subtraction
+4. Place value
+5. Word problems
+6. Multiplication
+7. Division
+8. Fractions
+9. Decimals
 10. Middle-school readiness
 
-## Audience
+## Planning
 
-- children learning math
-- parents helping at home
-- tutors
-- older learners who need a calmer path
-- learners who need simple explanations and practice
-
-## Future Monetization
-
-Possible future income paths:
-
-- printable worksheets
-- parent/tutor guides
-- premium practice packs
-- display ads after useful content exists
-- reviewed partner links
-- email list growth
-
-## Related Planning Repo
-
-Shared planning, marketing, SEO, content calendars, and monetization strategy belong in:
-
-- `marketing-system`
-
-Website code stays here in `matheasy30.com`.
+Shared business planning belongs in `marketing-system`.
+Website code stays here.
