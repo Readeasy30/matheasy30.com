@@ -6,6 +6,16 @@ Build MathEasy30 into a simple, trustworthy, mobile-first math-practice website 
 
 MathEasy30 should follow the same disciplined style as ReadEasy30: simple files, clear lessons, no unnecessary frameworks, and no repeated rebuilds.
 
+## Automatic Update Rule
+
+For normal safe website work, update files and commit directly.
+
+Do not stop to ask permission for routine improvements such as fixing links, improving copy, adding safe pages, improving layout, updating project files, removing duplicate files, or improving lesson content.
+
+Pause only if a tool blocks the write, a change would remove major working code, a change would switch frameworks, or a change involves credentials, payment setup, live tracking, or live monetization.
+
+If a write is blocked, simplify the wording and continue.
+
 ## Core Product Goal
 
 Create a helpful math site that can grow into a revenue-producing education project through:
@@ -51,6 +61,7 @@ Use this structure unless the owner clearly requests a different structure:
 - `css/style.css` = main styling
 - `README.md` = project purpose and status
 - `AGENT-INSTRUCTIONS.md` = AI working rules
+- `FILE-MANAGEMENT.md` = file map
 
 Small support JavaScript files may be used only when they add safe features without disturbing the main lesson engine.
 
@@ -163,6 +174,7 @@ When making changes:
 5. Use full-section updates when tiny patches would be fragile.
 6. Keep MathEasy30 separate from ReadEasy30 code.
 7. Put shared planning notes in `marketing-system`, not inside this website repo.
+8. Commit safe improvements directly.
 
 ## Do Not Repeat Work Rule
 
@@ -170,8 +182,9 @@ Before editing this repo, check:
 
 1. `README.md`
 2. `AGENT-INSTRUCTIONS.md`
-3. latest stable checkpoint if one exists
-4. current live page if deployed
-5. exact file being changed
+3. `FILE-MANAGEMENT.md`
+4. latest stable checkpoint if one exists
+5. current live page if deployed
+6. exact file being changed
 
 Then make the smallest safe improvement that moves the business forward.
