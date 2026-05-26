@@ -16,6 +16,53 @@ Pause only if a tool blocks the write, a change would remove major working code,
 
 If a write is blocked, simplify the wording and continue.
 
+## Keep Building Rule
+
+Keep working in useful chunks. Do not stop after one small edit if safe next steps are clear.
+
+Default build order:
+
+1. Fix broken files or links.
+2. Protect the simple file structure.
+3. Improve the app experience.
+4. Improve lesson content.
+5. Improve support pages.
+6. Improve project instructions.
+7. Add planning notes for future work.
+
+After several safe commits, report changed files, improvements made, blocked items, and next steps.
+
+## Time Management Rule
+
+Do not spend the session on repeated planning. Make safe edits first.
+
+Avoid:
+
+- repeating the same plan
+- recreating files that already exist
+- switching frameworks
+- redesigning from scratch
+- asking for approval on normal safe updates
+
+Use full-section updates when tiny patches would be fragile.
+
+## UX Rule
+
+The app should be calm, simple, readable, and mobile-first.
+
+UX order for the app page:
+
+1. Back to Home link
+2. Page title
+3. Day picker
+4. Progress bar
+5. Bubbles message
+6. Question card
+7. Answer box
+8. Check, Hint, Clear, Next buttons
+9. Confidence message
+10. Parent/helper tip
+
 ## Core Product Goal
 
 Create a helpful math site that can grow into a revenue-producing education project through:
@@ -62,6 +109,8 @@ Use this structure unless the owner clearly requests a different structure:
 - `README.md` = project purpose and status
 - `AGENT-INSTRUCTIONS.md` = AI working rules
 - `FILE-MANAGEMENT.md` = file map
+- `UX-INSTRUCTIONS.md` = UX rules
+- `TIME-MANAGEMENT.md` = time and work rhythm rules
 
 Small support JavaScript files may be used only when they add safe features without disturbing the main lesson engine.
 
@@ -183,8 +232,10 @@ Before editing this repo, check:
 1. `README.md`
 2. `AGENT-INSTRUCTIONS.md`
 3. `FILE-MANAGEMENT.md`
-4. latest stable checkpoint if one exists
-5. current live page if deployed
-6. exact file being changed
+4. `UX-INSTRUCTIONS.md`
+5. `TIME-MANAGEMENT.md`
+6. latest stable checkpoint if one exists
+7. current live page if deployed
+8. exact file being changed
 
 Then make the smallest safe improvement that moves the business forward.
