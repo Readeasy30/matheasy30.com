@@ -3,22 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MathEasy30 App | Gentle Math Check</title>
-  <meta name="description" content="Start the MathEasy30 gentle math check and find the right starting level for daily practice." />
-  <link rel="stylesheet" href="style.css" />
+  <title>MathEasy30 App | 30 Days of Calm Math Practice</title>
+  <meta name="description" content="Use the MathEasy30 lesson app for a gentle math check, 30 days of daily practice, simple hints, and calm coaching." />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="app-wrap">
     <header class="lesson-header">
-      <a href="index.html" class="back-btn">Back to Home</a>
-      <p class="eyebrow">Gentle placement check</p>
+      <a href="index.html" class="back-btn">← Back to Home</a>
+      <p class="eyebrow">Gentle math practice</p>
       <h1>MathEasy30</h1>
       <p class="lesson-subtitle">Slow down. Think carefully. One step at a time.</p>
     </header>
 
+    <section class="practice-controls" aria-label="Practice controls">
+      <div>
+        <label for="daySelect">Jump to Day</label>
+        <select id="daySelect" aria-label="Choose a practice day"></select>
+      </div>
+      <div class="practice-actions">
+        <button id="placementBtn" class="btn secondary" type="button">Math Check</button>
+        <button id="resetBtn" class="btn secondary" type="button">Reset Progress</button>
+      </div>
+    </section>
+
     <section class="progress-section" aria-label="Lesson progress">
       <div class="progress-top">
-        <span>Math Check Progress</span>
+        <span id="progressLabel">Math Check Progress</span>
         <span id="progressText">0%</span>
       </div>
       <div class="progress-bar">
@@ -27,7 +38,7 @@
     </section>
 
     <section class="coach-box" aria-live="polite">
-      <h2>Bubbles Says</h2>
+      <h2>🫧 Bubbles Says</h2>
       <p id="coachMessage">We will start with easy math first.</p>
     </section>
 
@@ -37,18 +48,24 @@
       <p id="questionText">Loading question...</p>
 
       <label class="sr-only" for="answerInput">Type your answer</label>
-      <input type="text" id="answerInput" placeholder="Type your answer" autocomplete="off" inputmode="numeric" />
+      <input type="text" id="answerInput" placeholder="Type your answer" autocomplete="off" inputmode="text" />
 
       <div class="button-row">
         <button id="checkBtn" class="btn primary" type="button">Check Answer</button>
         <button id="hintBtn" class="btn secondary" type="button">Need a Hint?</button>
-        <button id="nextBtn" class="btn secondary" type="button">Next</button>
+        <button id="clearBtn" class="btn secondary" type="button">Clear</button>
+        <button id="nextBtn" class="btn secondary" type="button">Next →</button>
       </div>
     </main>
 
     <section class="confidence-box" aria-live="polite">
       <h3>Confidence Builder</h3>
       <p id="confidenceMessage">Every small step helps your brain grow stronger.</p>
+    </section>
+
+    <section class="parent-tip-box">
+      <h3>Parent / Helper Tip</h3>
+      <p id="parentTip">If the learner struggles, read the question out loud and use objects, fingers, or drawings. Keep the tone calm.</p>
     </section>
   </div>
 
