@@ -1,8 +1,12 @@
 # AGENTS.md
 
-## MathEasy30 production rules
+## File work rule
 
-Keep building through normal safe website tasks.
+AI and Codex handle file work directly.
+
+Do not ask Gerry to create files.
+Do not ask Gerry to paste files.
+Do not ask Gerry to update files.
 
 Use direct file updates for normal website work.
 
@@ -40,7 +44,7 @@ Commit useful changes with clear messages.
 
 ## Stop points
 
-Stop for blocked writes, major code deletion, framework changes, private keys, payment setup, live tracking, live ads, or unclear repository state.
+Stop only for blocked writes, major code deletion, framework changes, private keys, payment setup, live tracking, live ads, or unclear repository state.
 
 ## Tech rule
 
