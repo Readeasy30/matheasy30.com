@@ -48,25 +48,48 @@ body {
   color: #fff;
 }
 
-.top-nav {
+.top-nav,
+.app-link-row {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.top-nav {
   margin-bottom: 34px;
 }
 
-.top-nav a {
-  color: #fff;
+.app-link-row {
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.top-nav a,
+.app-link-row a {
   text-decoration: none;
   font-weight: 800;
   padding: 8px 12px;
   border-radius: 999px;
+}
+
+.top-nav a {
+  color: #fff;
   background: rgba(255, 255, 255, 0.14);
+}
+
+.app-link-row a {
+  color: var(--primary);
+  background: #eaf0ff;
 }
 
 .top-nav a:hover,
 .top-nav a:focus-visible {
   background: rgba(255, 255, 255, 0.24);
+}
+
+.app-link-row a:hover,
+.app-link-row a:focus-visible {
+  background: #dfe8ff;
 }
 
 .hero-grid,
@@ -311,6 +334,7 @@ footer {
   color: var(--muted);
   background: #fff;
   border-top: 1px solid var(--border);
+  margin-top: 28px;
 }
 
 footer a {
@@ -484,13 +508,15 @@ select:focus,
 
   .button-row,
   .hero-actions,
-  .practice-actions {
+  .practice-actions,
+  .app-link-row {
     flex-direction: column;
     align-items: stretch;
   }
 
   .btn,
-  button {
+  button,
+  .app-link-row a {
     width: 100%;
   }
 }
