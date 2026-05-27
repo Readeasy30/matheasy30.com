@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MathEasy30 | Calm Daily Math Practice for Kids</title>
-  <meta name="description" content="MathEasy30 helps learners build math confidence with a gentle math check, short daily practice, simple hints, and calm coaching." />
+  <meta name="description" content="MathEasy30 helps learners build math confidence with a gentle math check, short daily practice, simple hints, Bubbles coaching, and calm one-step math support." />
   <link rel="canonical" href="https://matheasy30.com/" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -29,7 +29,7 @@
       <p class="hero-text">Start with a gentle math check. Then practice one small skill at a time with simple hints, friendly coaching, and no pressure.</p>
       <div class="hero-actions">
         <a class="btn primary" href="app.html">Start Math Check</a>
-        <a class="btn secondary" href="#how-it-works">How It Works</a>
+        <a class="btn secondary" href="#bubbles-math">Meet Bubbles</a>
       </div>
     </div>
     <div class="hero-card">
@@ -42,6 +42,37 @@
   </div>
 </header>
 <main>
+  <section class="section bubbles-section" id="bubbles-math">
+    <div class="wrap bubbles-math-grid">
+      <div class="bubbles-mascot-card">
+        <img id="bubblesMathImage" class="bubbles-mascot" src="images/bubbles.svg" alt="Bubbles, the calm MathEasy30 coach" />
+        <button class="btn primary full" type="button" onclick="introduceMathBubbles()">🔊 Let Bubbles Talk</button>
+        <p id="bubblesMathVoiceStatus" class="bubbles-voice-status">Bubbles uses the best available voice on this device. Victoria is preferred when available.</p>
+      </div>
+
+      <div class="bubbles-chat-card">
+        <p class="eyebrow">Meet Bubbles</p>
+        <h2>Your calm math coach</h2>
+        <p>Bubbles helps learners slow down, try one step, use hints, and keep going without shame.</p>
+        <p id="bubblesMathAnswer" class="bubbles-answer">Ask Bubbles a simple MathEasy30 question.</p>
+
+        <div class="bubbles-quick-buttons" aria-label="Quick Bubbles math questions">
+          <button type="button" data-bubbles-math="Where should I start?">Where do I start?</button>
+          <button type="button" data-bubbles-math="What if math feels hard?">Math feels hard</button>
+          <button type="button" data-bubbles-math="How long should I practice?">Practice time</button>
+          <button type="button" data-bubbles-math="How do math facts work?">Math facts</button>
+        </div>
+
+        <div class="bubbles-question-row">
+          <label class="sr-only" for="bubblesMathInput">Ask Bubbles a math practice question</label>
+          <input id="bubblesMathInput" type="text" placeholder="Ask Bubbles about math practice" />
+          <button class="btn secondary" type="button" onclick="askMathBubbles()">Ask</button>
+        </div>
+        <small>Bubbles gives simple practice guidance. It is not a live tutor or emergency support.</small>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="how-it-works">
     <div class="wrap">
       <h2>Math feels easier when it slows down.</h2>
@@ -102,5 +133,6 @@
   <p>MathEasy30 — calm math practice, one step at a time.</p>
   <p><a href="about.html">About</a> | <a href="parent-guide.html">Parent Guide</a> | <a href="math-facts-practice.html">Math Facts</a> | <a href="pricing.html">Pricing</a> | <a href="app.html">Math App</a> | <a href="contact.html">Contact</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
 </footer>
+<script src="bubbles-math.js?v=20260526-bubbles1"></script>
 </body>
 </html>
