@@ -45,23 +45,27 @@ function scoreMathBubblesVoice(voice) {
   else if (lang.startsWith("en")) score += 25;
   else score -= 75;
 
-  if (name.includes("victoria")) score += 130;
-  if (name.includes("samantha")) score += 62;
-  if (name.includes("karen")) score += 58;
-  if (name.includes("zira")) score += 55;
-  if (name.includes("susan")) score += 50;
-  if (name.includes("aria")) score += 48;
-  if (name.includes("jenny")) score += 48;
-  if (name.includes("google us english")) score += 45;
-  if (name.includes("natural")) score += 35;
+  // Teaching voice preference: calm, clear, pleasant female voices.
+  // Jenny is the preferred Bubbles/teaching voice when the browser exposes it.
+  if (name.includes("jenny")) score += 140;
+  if (name.includes("aria")) score += 105;
+  if (name.includes("samantha")) score += 85;
+  if (name.includes("victoria")) score += 78;
+  if (name.includes("karen")) score += 72;
+  if (name.includes("zira")) score += 68;
+  if (name.includes("susan")) score += 58;
+  if (name.includes("google us english")) score += 50;
+
+  if (name.includes("natural")) score += 40;
+  if (name.includes("online")) score += 30;
   if (name.includes("neural")) score += 35;
   if (name.includes("female")) score += 30;
   if (name.includes("woman")) score += 25;
 
-  if (name.includes("david")) score -= 40;
-  if (name.includes("mark")) score -= 35;
-  if (name.includes("guy")) score -= 30;
-  if (name.includes("male")) score -= 30;
+  if (name.includes("david")) score -= 50;
+  if (name.includes("mark")) score -= 40;
+  if (name.includes("guy")) score -= 35;
+  if (name.includes("male")) score -= 35;
 
   return score;
 }
@@ -86,8 +90,8 @@ function speakMathBubbles(text) {
     const speech = new SpeechSynthesisUtterance(text);
     const voice = getMathBubblesVoice();
 
-    speech.rate = 0.78;
-    speech.pitch = 1.08;
+    speech.rate = 0.76;
+    speech.pitch = 1.06;
     speech.volume = 1;
     speech.lang = voice && voice.lang ? voice.lang : "en-US";
     if (voice) speech.voice = voice;
