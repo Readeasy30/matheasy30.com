@@ -33,6 +33,16 @@ Do not use React, Vite, Next.js, TypeScript, or build tools.
 - `robots.txt` = crawler instructions
 - `sitemap.xml` = production page sitemap
 
+## Shared education growth
+
+MathEasy30 is part of the shared Wholelychit education growth system with ReadEasy30.
+
+Shared campaign and marketing planning belongs in `Wholelychit/marketing-system`.
+
+Use `EDUCATION-GROWTH-PLAN.md` and the `CAMPAIGNS/` folder in `marketing-system` before starting new shared campaign work.
+
+Website code stays in this repo.
+
 ## Project control files
 
 - `AGENTS.md` = direct file-work rules
