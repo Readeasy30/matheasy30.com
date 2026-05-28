@@ -8,6 +8,16 @@ MathEasy30 is in a safe production build stage.
 
 The repo uses a simple static website stack: HTML, CSS, JavaScript, GitHub Pages, and Cloudflare.
 
+## Codex-first workflow
+
+Codex is now the primary workflow for routine MathEasy30 repo editing.
+
+The ChatGPT GitHub connector should be used only for small reads, checks, reviews, or emergency single-file edits when Codex is unavailable.
+
+Current workflow file:
+
+- `CODEX-WORKFLOW.md`
+
 ## Shared Education Growth Alignment
 
 MathEasy30 is now connected to the shared Wholelychit education growth system with ReadEasy30.
@@ -48,6 +58,7 @@ Website code stays in this repo.
 - Added this status file and a locked checkpoint file.
 - Updated README to point to the shared education growth plan in `marketing-system`.
 - Recorded MathEasy30 as part of the ReadEasy30 + MathEasy30 campaign system.
+- Added `CODEX-WORKFLOW.md` for Codex-first repo editing.
 
 ## Production rules still active
 
