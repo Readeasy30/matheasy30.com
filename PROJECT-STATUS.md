@@ -8,6 +8,8 @@ MathEasy30 is in a safe production build stage.
 
 The repo uses a simple static website stack: HTML, CSS, JavaScript, GitHub Pages, and Cloudflare.
 
+MathEasy30 is a free, calm, no-shame math practice site for adults, students, ESL learners, special education learners, older learners, parents, tutors, and anyone who wants simple practice toward about an 8th-grade level.
+
 ## Codex-first workflow
 
 Codex is now the primary workflow for routine MathEasy30 repo editing.
@@ -17,6 +19,7 @@ The ChatGPT GitHub connector should be used only for small reads, checks, review
 Current workflow file:
 
 - `CODEX-WORKFLOW.md`
+- `CODEX-UNIVERSAL-REPO-AUDIT.txt`
 
 ## Shared Education Growth Alignment
 
@@ -29,8 +32,20 @@ Current shared planning files:
 - `EDUCATION-GROWTH-PLAN.md`
 - `CAMPAIGNS/README.md`
 - `CAMPAIGNS/readeasy30-matheasy30-confidence-campaign.md`
+- `READEASY30-MATHEASY30-LAUNCH-PLAN.md`
 
 Website code stays in this repo.
+
+Repo-specific planning files now include:
+
+- `READEASY30-MATHEASY30-BUILD-BRIEF.md`
+- `MATHEASY30-LEVEL-MAP.md`
+
+## Locked mission
+
+ReadEasy30 and MathEasy30 are free, calm, beginner-friendly practice websites that help adults, students, ESL learners, and learners who need extra support build skills toward about an 8th-grade level.
+
+MathEasy30 should not feel babyish. It should feel simple, respectful, and useful for adults and children.
 
 ## What is working
 
@@ -59,6 +74,8 @@ Website code stays in this repo.
 - Updated README to point to the shared education growth plan in `marketing-system`.
 - Recorded MathEasy30 as part of the ReadEasy30 + MathEasy30 campaign system.
 - Added `CODEX-WORKFLOW.md` for Codex-first repo editing.
+- Added `READEASY30-MATHEASY30-BUILD-BRIEF.md` to lock the shared no-shame education mission.
+- Added `MATHEASY30-LEVEL-MAP.md` to define Level A through Level H toward about an 8th-grade level.
 
 ## Production rules still active
 
@@ -67,6 +84,8 @@ Website code stays in this repo.
 - Do not add payment setup yet.
 - Do not add live ads yet.
 - Do not add tracking yet.
+- Do not add accounts yet.
+- Do not add public AI yet.
 - Do not delete major working code.
 - Commit useful safe changes directly.
 
@@ -76,12 +95,14 @@ Website code stays in this repo.
 - Payment setup is deferred until products and pricing are reviewed.
 - Analytics/tracking is deferred until privacy text and tool choice are ready.
 - Larger app feature changes should be reviewed carefully so the lesson flow stays stable.
+- Public AI is deferred until it clearly improves learning, safety, trust, or revenue.
 
 ## Next safe queue
 
 1. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
-2. Add one more SEO content page, such as `addition-practice.html` or `word-problem-practice.html`.
-3. Add skip link/accessibility improvement to all pages.
-4. Review `app.js` for safe lesson wording and answer handling.
-5. Add printable worksheet planning page without payments or downloads requiring accounts.
-6. Add simple FAQ content to support SEO and parent trust.
+2. Use `MATHEASY30-LEVEL-MAP.md` as the guide for building Level A through Level H.
+3. Add one more SEO content page, such as `addition-practice.html` or `word-problem-practice.html`.
+4. Add skip link/accessibility improvement to all pages.
+5. Review `app.js` for safe lesson wording and answer handling.
+6. Add printable worksheet planning page without payments or downloads requiring accounts.
+7. Add simple FAQ content to support SEO and parent trust.
