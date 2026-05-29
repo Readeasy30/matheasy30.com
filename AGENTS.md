@@ -1,86 +1,67 @@
 # AGENTS.md
 
-## Non-negotiable work rule
+## Work mode
 
-AI and Codex handle file work directly.
+Operate as a no-local-Git website production assistant.
 
-Do not ask Gerry to create files.
-Do not ask Gerry to paste files.
-Do not ask Gerry to update files.
-Do not ask Gerry to approve routine safe files.
-Do not stop after one useful change just to ask for a thumbs up.
-Do not wait for permission between safe repairs, safe new files, safe documentation updates, safe UX improvements, or safe content improvements.
+Use ChatGPT 5.5, Codex, GitHub, and Cloudflare Pages. Do not require local Git, terminal Git, VS Code, or manual file editing.
 
-When repository write access is available, create, update, replace, repair, and commit safe files automatically.
+## Main rule
 
-## Continuous work rule
+Codex should handle repository file work directly. Use Codex/GitHub access or the ChatGPT GitHub connector to create, update, replace, and commit safe files in this repository.
 
-Keep working through the safe queue until one of these happens:
+Do not ask Gerry to paste, create, replace, or manually update repo files. Work in useful batches. Report only after several useful commits or a real blocker.
 
-1. A real blocker prevents the next file write.
-2. A requested change would require private keys, payment setup, live ads, tracking scripts, framework replacement, or deletion of major working code.
-3. The task is complete enough that the next step would be a new strategic direction, not normal continuation.
+## Safe work allowed
 
-Do not pause for approval after completing a normal safe step.
-Do not ask "should I continue?" during the safe queue.
-Do not make Gerry babysit routine commits.
+- README updates
+- AGENTS.md updates
+- CODEX-WORKFLOW.md updates
+- CODEX-CURRENT-TASK.md updates
+- PROJECT-STATUS.md updates
+- CHANGELOG.md updates
+- HTML/CSS/JS fixes
+- navigation/footer fixes
+- sitemap.xml
+- robots.txt
+- titles/meta/canonical URLs
+- accessibility/mobile improvements
+- safe content pages
+- documentation cleanup
+- simple math app behavior improvements
+- lesson text improvements
+- worksheet planning docs
+- manual test checklists
 
-## Communication rule
+## Do not add without direct approval
 
-Keep progress messages short and rare.
+- private keys
+- API keys
+- live ads
+- live tracking
+- payment setup
+- affiliate links
+- ordering integrations
+- public AI tools
+- upload systems
+- user accounts
+- framework rebuilds
+- major code deletion
 
-Do not report every tiny file change while working.
-Do not repeat what was just completed unless the user asks or the task is finished.
-Do not announce obvious next steps before doing them.
+## Cloudflare rule
 
-At the end, give a short result summary with only:
+Cloudflare only connects to GitHub and publishes.
 
-- what changed
-- commit hashes if useful
-- blockers if any
-- next safe queue if needed
+Recommended setup:
 
-## Normal safe tasks
+- Production branch: main
+- Build command: blank
+- Output directory: .
+- No manual Cloudflare file uploads
 
-These tasks are pre-approved when they follow the current stack and project direction:
+## Repository notes
 
-- create website files
-- update HTML files
-- update CSS files
-- update JavaScript files
-- update Markdown files
-- fix links
-- fix file paths
-- improve page text
-- improve navigation
-- improve footer
-- improve accessibility
-- improve mobile layout
-- update README files
-- update instruction files
-- update status/checkpoint files
-- improve simple app behavior
-- improve lesson text
-- improve math app behavior
-- add worksheet planning
-- add manual test checklists
-
-## Faster build order
-
-1. Improve homepage message.
-2. Improve navigation.
-3. Improve mobile layout.
-4. Fix broken links.
-5. Improve the math app.
-6. Improve support pages.
-7. Add topic pages.
-8. Add worksheet planning later.
-9. Report after several useful commits or when blocked.
-
-## Stop points
-
-Stop only for blocked writes, major code deletion, framework changes, private keys, payment setup, live tracking, live ads, unclear repository state, or a change that could break production in a way that cannot be safely repaired in the same work session.
-
-## Tech rule
-
-Keep MathEasy30 on HTML, CSS, and JavaScript unless the owner clearly requests a rebuild.
+- Repo: Wholelychit/matheasy30.com
+- Purpose: teach math for children
+- Keep the site simple, fast, mobile-friendly, and beginner-friendly.
+- Preserve the current HTML/CSS/JS stack unless Gerry directly approves a rebuild.
