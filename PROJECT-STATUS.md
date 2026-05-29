@@ -55,6 +55,8 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 - Progress behavior using browser storage
 - About page
 - Parent guide
+- Addition practice content page
+- Word problem practice content page
 - Math facts practice content page
 - Pricing page
 - Contact page
@@ -66,7 +68,8 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 ## Recent improvements
 
 - Added a new math facts practice content page.
-- Linked the new content page from homepage, app page, support pages, footer, and sitemap.
+- Added and expanded `word-problem-practice.html` with calm step-by-step word problem guidance.
+- Linked the math facts content page from homepage, app page, support pages, footer, and sitemap.
 - Added canonical URLs to public pages touched in this pass.
 - Improved homepage title and meta description.
 - Updated README and file map.
@@ -96,13 +99,14 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 - Analytics/tracking is deferred until privacy text and tool choice are ready.
 - Larger app feature changes should be reviewed carefully so the lesson flow stays stable.
 - Public AI is deferred until it clearly improves learning, safety, trust, or revenue.
+- The ChatGPT GitHub connector blocked the sitemap update for adding `word-problem-practice.html`; Codex/local repo should add that sitemap entry next.
 
 ## Next safe queue
 
-1. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
-2. Use `MATHEASY30-LEVEL-MAP.md` as the guide for building Level A through Level H.
-3. Add one more SEO content page, such as `addition-practice.html` or `word-problem-practice.html`.
-4. Add skip link/accessibility improvement to all pages.
-5. Review `app.js` for safe lesson wording and answer handling.
-6. Add printable worksheet planning page without payments or downloads requiring accounts.
-7. Add simple FAQ content to support SEO and parent trust.
+1. Add `word-problem-practice.html` to `sitemap.xml` through Codex/local repo because the connector blocked that specific write.
+2. Link `word-problem-practice.html` from the homepage and relevant support/footer navigation.
+3. Add skip link/accessibility improvement to all pages.
+4. Review `app.js` for safe lesson wording and answer handling.
+5. Add printable worksheet planning page without payments or downloads requiring accounts.
+6. Add simple FAQ content to support SEO and parent trust.
+7. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
