@@ -1,6 +1,6 @@
 # MathEasy30 Project Status
 
-Last updated: 2026-05-29
+Last updated: 2026-05-31
 
 ## Repository
 
@@ -8,9 +8,9 @@ Last updated: 2026-05-29
 
 ## Current status
 
-MathEasy30 is in a safe production build stage.
+MathEasy30 is in a safe production build stage and is being prepared as the calm math sister site to ReadEasy30 for Monday launch support.
 
-The repo uses a simple static website stack: HTML, CSS, JavaScript, GitHub Pages/GitHub repository publishing, and Cloudflare Pages when connected.
+The repo uses a simple static website stack: HTML, CSS, JavaScript, GitHub repository publishing, and Cloudflare Pages when connected.
 
 MathEasy30 is a free, calm, no-shame math practice site for adults, students, ESL learners, special education learners, older learners, parents, tutors, and anyone who wants simple practice toward about an 8th-grade level.
 
@@ -63,6 +63,7 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 - Addition practice content page
 - Word problem practice content page
 - Math facts practice content page
+- Printable math worksheet hub
 - Pricing page
 - Contact page
 - Privacy page
@@ -72,6 +73,9 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 
 ## Recent improvements
 
+- Added `printable-math-worksheets.html` as a calm worksheet hub for counting, addition, subtraction, word problems, math facts, and fractions practice ideas.
+- Linked `printable-math-worksheets.html` from the MathEasy30 homepage top navigation, hero CTA area, homepage content section, and footer.
+- Confirmed `sitemap.xml` includes `addition-practice.html`, `word-problem-practice.html`, `math-facts-practice.html`, `printable-math-worksheets.html`, and `reading-practice-too.html`.
 - Standardized `AGENTS.md` with the no-local-Git workflow.
 - Standardized `CODEX-WORKFLOW.md` with the ChatGPT 5.5 + Codex + GitHub + Cloudflare workflow.
 - Added `CODEX-CURRENT-TASK.md` for the current safe work queue.
@@ -111,14 +115,14 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 ## Next safe queue
 
 1. Confirm or create `CHANGELOG.md`.
-2. Review `sitemap.xml` and confirm `word-problem-practice.html` is included.
-3. Link `word-problem-practice.html` from the homepage and relevant support/footer navigation if missing.
-4. Add skip link/accessibility improvement to all pages.
-5. Review `app.js` for safe lesson wording and answer handling.
-6. Add printable worksheet planning page without payments or downloads requiring accounts.
-7. Add simple FAQ content to support SEO and parent trust.
-8. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
+2. Browser-test `printable-math-worksheets.html` after Cloudflare deploys.
+3. Review `app.js` for safe lesson wording and answer handling.
+4. Add one simple printable worksheet page if more content is needed before promotion.
+5. Add simple FAQ content to support SEO and parent trust.
+6. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
+7. Do not add live ads, tracking, payment setup, accounts, API keys, or public AI without direct approval.
 
 ## Blockers
 
-None recorded in this update.
+- Manual browser QA is still required after deployment.
+- No code blocker recorded in this update.
