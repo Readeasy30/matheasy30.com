@@ -36,6 +36,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://matheasy30.com/faq.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://matheasy30.com/reading-practice-too.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
