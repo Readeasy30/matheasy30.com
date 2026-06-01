@@ -16,9 +16,29 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://matheasy30.com/addition-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/word-problem-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://matheasy30.com/math-facts-practice.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/printable-math-worksheets.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/reading-practice-too.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://matheasy30.com/parent-guide.html</loc>
