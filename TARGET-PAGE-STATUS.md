@@ -7,7 +7,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | Page | File | Status |
 |---|---|---|
 | Home page | `index.html` | Complete with public 240-day links |
-| Current math app | `app.html` | Complete and working with safe 240-day bridge script loaded and Bubbles preset question buttons |
+| Current math app | `app.html` | Complete and working with full live 240-day integration and Bubbles preset question buttons |
 | 240-day math path | `240-day-math-path.html` | Complete |
 | Days 1-240 public curriculum | `days-1-240-curriculum.html` | Complete |
 | Internal 240-day lesson test page | `lesson-test-240.html` | Complete, noindex |
@@ -45,6 +45,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | `lesson-loader-240.js` | Complete: combines staged Levels B-H |
 | `lesson-test-240.js` | Complete: verifies staged lesson loader |
 | `app-240.js` | Complete: preview app script |
+| `math-live-240-integration.js` | Complete: expands live app to Days 1-240 |
 | `bubbles-question-buttons.js` | Complete: local preset question buttons and voice readback |
 | `math-240-path-helper.js` | Complete |
 | `math-next-path.js` | Complete |
@@ -56,18 +57,17 @@ Use this file to track which public target pages and curriculum build pages are 
 
 | Target | Status | Notes |
 |---|---|---|
-| Full live app Days 31-240 replacement | Pending | Do only after staged test/preview pages are checked |
 | Sister voice clip support | Pending | Add later if permission and audio files are provided |
 
 ## Current build rule
 
-Do not replace the working app engine until the 240-day interactive lesson data has been tested in a separate preview path.
+The working app engine is preserved. The live app now loads staged Level B-H data through a safe integration layer instead of deleting the original 30-day code.
 
 ## Current 240-day lesson status
 
-- Days 31-240 interactive lesson data is complete and staged.
-- Levels B-H are loaded through `lesson-loader-240.js`.
-- `lesson-test-240.html` is available for internal verification.
-- `app-240.html` is available as a noindex preview app.
-- The public homepage now links to the 240-day path and Days 1-240 curriculum.
-- The current live app engine has a safe 240-day bridge script and local Bubbles preset question buttons but remains protected from full replacement.
+- Days 31-240 interactive lesson data is complete and live-integrated.
+- Levels B-H are loaded into the live app through `math-live-240-integration.js`.
+- `app.html` now presents the path as a full 240-day math app.
+- `lesson-test-240.html` and `app-240.html` remain available as noindex testing/preview pages.
+- The public homepage links to the 240-day path and Days 1-240 curriculum.
+- The current live app engine has full 240-day integration and local Bubbles preset question buttons.
