@@ -11,6 +11,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | 240-day math path | `240-day-math-path.html` | Complete |
 | Days 1-240 public curriculum | `days-1-240-curriculum.html` | Complete |
 | Internal 240-day lesson test page | `lesson-test-240.html` | Complete, noindex |
+| 240-day preview app | `app-240.html` | Complete, noindex |
 | Addition practice | `addition-practice.html` | Complete |
 | Math facts practice | `math-facts-practice.html` | Complete |
 | Printable math worksheets | `printable-math-worksheets.html` | Complete |
@@ -43,6 +44,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | `level-h-lessons.js` | Complete: Days 211-240 |
 | `lesson-loader-240.js` | Complete: combines staged Levels B-H |
 | `lesson-test-240.js` | Complete: verifies staged lesson loader |
+| `app-240.js` | Complete: preview app script |
 | `math-240-path-helper.js` | Complete |
 | `math-next-path.js` | Complete |
 | `math-voice-picker.js` | Complete |
@@ -52,9 +54,8 @@ Use this file to track which public target pages and curriculum build pages are 
 
 | Target | Status | Notes |
 |---|---|---|
-| Homepage 240-day link refresh | Pending | Use smaller Codex patch later if direct update is blocked |
-| Separate `app-240.html` preview app | Pending | Build after ReadEasy30 preview approach is settled |
-| Live app Days 31-240 wiring | Pending | Do only after staged test page is checked |
+| Homepage 240-day link refresh | Pending | Use a small patch only |
+| Live app Days 31-240 wiring | Pending | Do only after staged test/preview pages are checked |
 | Ask Bubbles preset question buttons | Pending | Add after curriculum wiring is stable |
 | Sister voice clip support | Pending | Add later if permission and audio files are provided |
 
@@ -67,4 +68,5 @@ Do not replace the working app engine until the 240-day interactive lesson data 
 - Days 31-240 interactive lesson data is complete and staged.
 - Levels B-H are loaded through `lesson-loader-240.js`.
 - `lesson-test-240.html` is available for internal verification.
+- `app-240.html` is available as a noindex preview app.
 - The current live app engine remains protected.
