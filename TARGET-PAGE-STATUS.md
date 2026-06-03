@@ -6,7 +6,7 @@ Use this file to track which public target pages and curriculum build pages are 
 
 | Page | File | Status |
 |---|---|---|
-| Home page | `index.html` | Complete, but needs small 240-day link refresh later |
+| Home page | `index.html` | Complete with public 240-day links |
 | Current math app | `app.html` | Complete and working with 240-day helper loaded |
 | 240-day math path | `240-day-math-path.html` | Complete |
 | Days 1-240 public curriculum | `days-1-240-curriculum.html` | Complete |
@@ -54,7 +54,6 @@ Use this file to track which public target pages and curriculum build pages are 
 
 | Target | Status | Notes |
 |---|---|---|
-| Homepage 240-day link refresh | Pending | Use a small patch only |
 | Live app Days 31-240 wiring | Pending | Do only after staged test/preview pages are checked |
 | Ask Bubbles preset question buttons | Pending | Add after curriculum wiring is stable |
 | Sister voice clip support | Pending | Add later if permission and audio files are provided |
@@ -69,4 +68,5 @@ Do not replace the working app engine until the 240-day interactive lesson data 
 - Levels B-H are loaded through `lesson-loader-240.js`.
 - `lesson-test-240.html` is available for internal verification.
 - `app-240.html` is available as a noindex preview app.
+- The public homepage now links to the 240-day path and Days 1-240 curriculum.
 - The current live app engine remains protected.
