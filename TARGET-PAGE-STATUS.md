@@ -7,7 +7,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | Page | File | Status |
 |---|---|---|
 | Home page | `index.html` | Complete with public 240-day links |
-| Current math app | `app.html` | Complete and working with safe 240-day bridge script loaded |
+| Current math app | `app.html` | Complete and working with safe 240-day bridge script loaded and Bubbles preset question buttons |
 | 240-day math path | `240-day-math-path.html` | Complete |
 | Days 1-240 public curriculum | `days-1-240-curriculum.html` | Complete |
 | Internal 240-day lesson test page | `lesson-test-240.html` | Complete, noindex |
@@ -45,6 +45,7 @@ Use this file to track which public target pages and curriculum build pages are 
 | `lesson-loader-240.js` | Complete: combines staged Levels B-H |
 | `lesson-test-240.js` | Complete: verifies staged lesson loader |
 | `app-240.js` | Complete: preview app script |
+| `bubbles-question-buttons.js` | Complete: local preset question buttons and voice readback |
 | `math-240-path-helper.js` | Complete |
 | `math-next-path.js` | Complete |
 | `math-live-240-bridge.js` | Complete: safe live-app bridge layer |
@@ -56,7 +57,6 @@ Use this file to track which public target pages and curriculum build pages are 
 | Target | Status | Notes |
 |---|---|---|
 | Full live app Days 31-240 replacement | Pending | Do only after staged test/preview pages are checked |
-| Ask Bubbles preset question buttons | Pending | Add next as a safe helper layer |
 | Sister voice clip support | Pending | Add later if permission and audio files are provided |
 
 ## Current build rule
@@ -70,4 +70,4 @@ Do not replace the working app engine until the 240-day interactive lesson data 
 - `lesson-test-240.html` is available for internal verification.
 - `app-240.html` is available as a noindex preview app.
 - The public homepage now links to the 240-day path and Days 1-240 curriculum.
-- The current live app engine has a safe 240-day bridge script but remains protected from full replacement.
+- The current live app engine has a safe 240-day bridge script and local Bubbles preset question buttons but remains protected from full replacement.
