@@ -1,2 +1,2 @@
-/app /app.html 301
-/app/ /app.html 301
+# Cloudflare Pages redirects intentionally empty.
+# /app is served by /app/index.html as a real page.
