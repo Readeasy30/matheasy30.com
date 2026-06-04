@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MathEasy30 App | 240 Days of Calm Math Practice</title>
-  <meta name="description" content="Use the MathEasy30 lesson app for 30 minutes a day with a gentle math check, daily practice, simple hints, Bubbles voice support, and a full 240-day calm math readiness path." />
+  <title>MathEasy30 App | Calm Daily Math Practice</title>
+  <meta name="description" content="Use the MathEasy30 lesson app for calm daily math practice with a gentle math check, daily lessons, simple hints, and Bubbles support." />
   <link rel="canonical" href="https://matheasy30.com/app.html" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -17,6 +17,8 @@
         <a href="math-facts-practice.html">Math Facts</a>
         <a href="240-day-math-path.html">240-Day Path</a>
         <a href="days-1-240-curriculum.html">Days 1-240</a>
+        <a href="printable-math-worksheets.html">Worksheets</a>
+        <a href="fractions-practice-worksheet.html">Fractions</a>
         <a href="parent-guide.html">Parent Guide</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
@@ -24,7 +26,7 @@
       </nav>
       <p class="eyebrow">30 minutes a day • Gentle math practice</p>
       <h1>MathEasy30</h1>
-      <p class="lesson-subtitle">Slow down. Think carefully. Practice one step at a time. MathEasy30 now runs as a full 240-day readiness path.</p>
+      <p class="lesson-subtitle">Slow down. Think carefully. Practice one step at a time.</p>
     </header>
 
     <section class="practice-controls" aria-label="Practice controls">
@@ -85,39 +87,45 @@
     </section>
 
     <section class="confidence-box">
-      <h3>Need extra addition help?</h3>
-      <p>Use the addition practice guide for counting on, doubles, make-10 facts, and easy helper tips.</p>
-      <a class="btn secondary full" href="addition-practice.html">Open Addition Practice</a>
+      <h3>Need extra practice?</h3>
+      <p>Use the worksheet hub for calm printable practice after a lesson.</p>
+      <a class="btn secondary full" href="printable-math-worksheets.html">Open Math Worksheets</a>
+      <a class="btn secondary full" href="fractions-practice-worksheet.html">Open Fractions Worksheet</a>
     </section>
 
     <section class="confidence-box">
-      <h3>240-Day Path Is Live</h3>
-      <p>MathEasy30 now runs as a full 240-day path. Day 31 starts the next level and the path continues toward 8th-grade readiness.</p>
+      <h3>240-Day Path</h3>
+      <p>The 240-day overview is still available as a planning page. This app page is running in emergency-stable mode so learners can practice now.</p>
       <a class="btn secondary full" href="240-day-math-path.html">See the 240-Day Math Path</a>
       <a class="btn secondary full" href="days-1-240-curriculum.html">View All 240 Days</a>
     </section>
 
     <footer>
       <p>MathEasy30 — calm 30-minutes-a-day math practice, one step at a time.</p>
-      <p><a href="index.html">Home</a> | <a href="240-day-math-path.html">240-Day Path</a> | <a href="days-1-240-curriculum.html">Days 1-240</a> | <a href="addition-practice.html">Addition Practice</a> | <a href="math-facts-practice.html">Math Facts</a> | <a href="parent-guide.html">Parent Guide</a> | <a href="contact.html">Contact</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a> | <a href="https://readeasy30.com/">ReadEasy30</a></p>
+      <p><a href="index.html">Home</a> | <a href="240-day-math-path.html">240-Day Path</a> | <a href="days-1-240-curriculum.html">Days 1-240</a> | <a href="addition-practice.html">Addition Practice</a> | <a href="math-facts-practice.html">Math Facts</a> | <a href="printable-math-worksheets.html">Worksheets</a> | <a href="parent-guide.html">Parent Guide</a> | <a href="contact.html">Contact</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a> | <a href="https://readeasy30.com/">ReadEasy30</a></p>
     </footer>
   </div>
 
-  <script src="app.js"></script>
-  <script src="level-b-lessons.js?v=20260603-b-live1"></script>
-  <script src="level-c-lessons.js?v=20260603-c-live1"></script>
-  <script src="level-d-lessons.js?v=20260603-d-live1"></script>
-  <script src="level-e-lessons.js?v=20260603-e-live1"></script>
-  <script src="level-f-lessons.js?v=20260603-f-live1"></script>
-  <script src="level-g-lessons.js?v=20260603-g-live1"></script>
-  <script src="level-h-lessons.js?v=20260603-h-live1"></script>
-  <script src="math-live-240-integration.js?v=20260603-live240m1"></script>
-  <script src="curriculum-240.js?v=20260603-m1"></script>
-  <script src="math-240-path-helper.js?v=20260603-mpath1"></script>
-  <script src="math-voice.js?v=20260603-humanvoice1"></script>
-  <script src="math-voice-picker.js?v=20260603-picker1"></script>
-  <script src="math-next-path.js?v=20260603-nextpath1"></script>
-  <script src="math-live-240-bridge.js?v=20260603-livebridge1"></script>
-  <script src="bubbles-question-buttons.js?v=20260603-bubblesq1"></script>
+  <script src="app.js?v=20260604-stable1"></script>
+  <script>
+    function mathEasy30Speak(text) {
+      if (!text || !window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.85;
+      utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function readMathProblem() {
+      const question = document.getElementById("questionText");
+      mathEasy30Speak(question ? question.textContent : "");
+    }
+
+    function readMathHint() {
+      const coach = document.getElementById("coachMessage");
+      mathEasy30Speak(coach ? coach.textContent : "");
+    }
+  </script>
 </body>
 </html>
