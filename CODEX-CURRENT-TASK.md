@@ -1,44 +1,42 @@
 # CODEX-CURRENT-TASK.md
 
-Last updated: 2026-06-03
+Last updated: 2026-06-04
 
 ## Repository
 
 `Wholelychit/matheasy30.com`
 
-## Current task: Safe repository review
+## Current task: Continue locked production build
 
-Find bugs, SEO problems, broken links, accessibility issues, bad mobile layout, performance problems, and practical improvement ideas.
+Continue from the locked production checkpoint. Do not restart, redesign, or replace working files.
+
+## Completed today
+
+- Added `fractions-practice-worksheet.html`.
+- Linked the fractions worksheet from `printable-math-worksheets.html`.
+- Added the fractions worksheet to `sitemap.xml`.
+- Recorded the update in `CHANGELOG.md`.
+
+## Current safe queue
+
+1. Browser-test `https://matheasy30.com/` after Cloudflare deploys.
+2. Browser-test `https://matheasy30.com/printable-math-worksheets.html`.
+3. Browser-test `https://matheasy30.com/fractions-practice-worksheet.html`.
+4. Confirm the worksheet hub links to the fractions page.
+5. Confirm sitemap includes the fractions page.
+6. Review `app.js` for safe lesson wording and answer handling.
+7. Add one more simple printable worksheet page only if it supports the 240-day path and does not duplicate existing work.
+8. Keep MathEasy30 aligned with ReadEasy30 and `Wholelychit/marketing-system`.
 
 ## Rules
 
 - Do not redesign the site.
-- Do not convert to React, Vite, Next.js, TypeScript, Tailwind, or any build tools.
-- Keep the current plain HTML/CSS/JS structure where this repo uses plain HTML/CSS/JS.
+- Do not convert to React, Vite, Next.js, TypeScript, Tailwind, or build tools.
+- Keep plain HTML/CSS/JS.
 - Do not delete major working code.
-- Do not add API keys, tracking scripts, ads, payment systems, affiliate links, or user accounts.
-- Do not make risky production changes.
+- Do not add API keys, tracking scripts, live ads, payment systems, affiliate links, user accounts, upload systems, or public AI.
 - Fix small safe issues directly when possible.
-- For larger or risky issues, list them clearly before changing anything.
-- Work in safe batches and do not stop after one small fix.
-- If this repo contains non-website, backend, template, or planning files, review only what applies and do not force a framework or structure change.
-
-## Check these areas
-
-1. HTML errors and missing tags
-2. Broken links and bad navigation
-3. SEO title tags, meta descriptions, canonical links, headings, and alt text
-4. Mobile layout problems
-5. Accessibility problems
-6. CSS conflicts or layout bugs
-7. JavaScript errors
-8. Page speed and image size issues
-9. Missing `robots.txt` or `sitemap.xml`
-10. Missing privacy, disclaimer, contact, or footer links if needed
-
-## Deliverables
-
-Report: summary reviewed, bugs found, SEO problems, broken links, mobile/layout problems, accessibility issues, performance problems, safe fixes completed, suggested next improvements, and commit messages used.
+- Work in useful batches and commit clear changes.
 
 ## Stop points
 
