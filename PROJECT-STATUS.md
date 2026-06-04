@@ -1,6 +1,6 @@
 # MathEasy30 Project Status
 
-Last updated: 2026-05-31
+Last updated: 2026-06-04
 
 ## Repository
 
@@ -8,7 +8,7 @@ Last updated: 2026-05-31
 
 ## Current status
 
-MathEasy30 is in a safe production build stage and is being prepared as the calm math sister site to ReadEasy30 for Monday launch support.
+MathEasy30 is in locked production build continuation. The project was not restarted. The work continued from the existing safe production checkpoint and current repo files.
 
 The repo uses a simple static website stack: HTML, CSS, JavaScript, GitHub repository publishing, and Cloudflare Pages when connected.
 
@@ -30,7 +30,7 @@ Current workflow files:
 - `CODEX-WORKFLOW.md`
 - `CODEX-CURRENT-TASK.md`
 - `PROJECT-STATUS.md`
-- `CHANGELOG.md` required
+- `CHANGELOG.md`
 - `CODEX-UNIVERSAL-REPO-AUDIT.txt`
 
 ## Shared education growth alignment
@@ -57,6 +57,7 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 - Homepage with clear value message
 - Math lesson app page
 - 30-day starter lesson logic in `app.js`
+- 240-day math path support pages
 - Progress behavior using browser storage
 - About page
 - Parent guide
@@ -64,7 +65,9 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 - Word problem practice content page
 - Math facts practice content page
 - Printable math worksheet hub
-- Pricing page
+- Fractions practice worksheet
+- FAQ page
+- Pricing/free access page
 - Contact page
 - Privacy page
 - Terms page
@@ -73,9 +76,14 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 
 ## Recent improvements
 
+- Added `fractions-practice-worksheet.html` as a free printable fractions worksheet with equal parts, halves, fourths, fraction choices, explanation practice, and helper answer key.
+- Linked the fractions worksheet from `printable-math-worksheets.html` in the hero actions, worksheet library, fractions starter section, helpful pages, and footer.
+- Added the fractions worksheet to `sitemap.xml`.
+- Updated `CHANGELOG.md` for the 2026-06-04 production step.
+- Updated `CODEX-CURRENT-TASK.md` to continue the locked production build instead of yesterday's review task.
 - Added `printable-math-worksheets.html` as a calm worksheet hub for counting, addition, subtraction, word problems, math facts, and fractions practice ideas.
 - Linked `printable-math-worksheets.html` from the MathEasy30 homepage top navigation, hero CTA area, homepage content section, and footer.
-- Confirmed `sitemap.xml` includes `addition-practice.html`, `word-problem-practice.html`, `math-facts-practice.html`, `printable-math-worksheets.html`, and `reading-practice-too.html`.
+- Confirmed `sitemap.xml` includes `addition-practice.html`, `word-problem-practice.html`, `math-facts-practice.html`, `printable-math-worksheets.html`, `fractions-practice-worksheet.html`, and `reading-practice-too.html`.
 - Standardized `AGENTS.md` with the no-local-Git workflow.
 - Standardized `CODEX-WORKFLOW.md` with the ChatGPT 5.5 + Codex + GitHub + Cloudflare workflow.
 - Added `CODEX-CURRENT-TASK.md` for the current safe work queue.
@@ -114,13 +122,15 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 
 ## Next safe queue
 
-1. Confirm or create `CHANGELOG.md`.
-2. Browser-test `printable-math-worksheets.html` after Cloudflare deploys.
-3. Review `app.js` for safe lesson wording and answer handling.
-4. Add one simple printable worksheet page if more content is needed before promotion.
-5. Add simple FAQ content to support SEO and parent trust.
-6. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
-7. Do not add live ads, tracking, payment setup, accounts, API keys, or public AI without direct approval.
+1. Browser-test `https://matheasy30.com/` after Cloudflare deploys.
+2. Browser-test `https://matheasy30.com/printable-math-worksheets.html`.
+3. Browser-test `https://matheasy30.com/fractions-practice-worksheet.html`.
+4. Confirm worksheet hub links to the fractions worksheet.
+5. Confirm sitemap includes the fractions worksheet.
+6. Review `app.js` for safe lesson wording and answer handling.
+7. Add one more simple printable worksheet page only if it supports the 240-day path and does not duplicate existing work.
+8. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
+9. Do not add live ads, tracking, payment setup, accounts, API keys, affiliate links, upload systems, or public AI without direct approval.
 
 ## Blockers
 
