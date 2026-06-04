@@ -57,6 +57,7 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 - Homepage with clear value message
 - Math lesson app page
 - 30-day starter lesson logic in `app.js`
+- Safe answer helper in `math-answer-helper.js`
 - 240-day math path support pages
 - Progress behavior using browser storage
 - About page
@@ -76,6 +77,10 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 
 ## Recent improvements
 
+- Added `math-answer-helper.js` to improve beginner answer acceptance without replacing the locked lesson engine.
+- Updated `app.html` to load `math-answer-helper.js` after `app.js`.
+- Improved answer acceptance for number words and simple fraction wording such as `half`, `one half`, `1/2`, `fourth`, `one fourth`, and `1/4`.
+- Improved progress bar behavior so checked answers are reflected more clearly.
 - Added `fractions-practice-worksheet.html` as a free printable fractions worksheet with equal parts, halves, fourths, fraction choices, explanation practice, and helper answer key.
 - Linked the fractions worksheet from `printable-math-worksheets.html` in the hero actions, worksheet library, fractions starter section, helpful pages, and footer.
 - Added the fractions worksheet to `sitemap.xml`.
@@ -123,14 +128,16 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 ## Next safe queue
 
 1. Browser-test `https://matheasy30.com/` after Cloudflare deploys.
-2. Browser-test `https://matheasy30.com/printable-math-worksheets.html`.
-3. Browser-test `https://matheasy30.com/fractions-practice-worksheet.html`.
-4. Confirm worksheet hub links to the fractions worksheet.
-5. Confirm sitemap includes the fractions worksheet.
-6. Review `app.js` for safe lesson wording and answer handling.
-7. Add one more simple printable worksheet page only if it supports the 240-day path and does not duplicate existing work.
-8. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
-9. Do not add live ads, tracking, payment setup, accounts, API keys, affiliate links, upload systems, or public AI without direct approval.
+2. Browser-test `https://matheasy30.com/app.html` after Cloudflare deploys.
+3. Browser-test `https://matheasy30.com/printable-math-worksheets.html`.
+4. Browser-test `https://matheasy30.com/fractions-practice-worksheet.html`.
+5. Confirm the app accepts number words and simple fraction answers.
+6. Confirm the app progress bar updates after checked answers.
+7. Confirm worksheet hub links to the fractions worksheet.
+8. Confirm sitemap includes the fractions worksheet.
+9. Add one more simple printable worksheet page only if it supports the 240-day path and does not duplicate existing work.
+10. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
+11. Do not add live ads, tracking, payment setup, accounts, API keys, affiliate links, upload systems, or public AI without direct approval.
 
 ## Blockers
 
