@@ -6,19 +6,23 @@
 
 - Added `fractions-practice-worksheet.html` as a free printable fractions practice page.
 - Added calm worksheet sections for equal parts, halves, fourths, simple fraction choices, explanation practice, and helper answer key.
-- Added `math-answer-helper.js` to make beginner answers more forgiving without replacing the lesson engine.
+- Added root `_redirects` rules so `/app` and `/app/` redirect permanently to `/app.html`.
 
 ### Changed
 
 - Updated `printable-math-worksheets.html` to link the new fractions worksheet from the hero, worksheet library, fractions starter section, helpful pages, and footer.
 - Updated `sitemap.xml` to include `https://matheasy30.com/fractions-practice-worksheet.html`.
-- Updated `app.html` to load the safe answer helper after `app.js`.
-- Improved answer acceptance for number words and simple fraction wording such as `half`, `one half`, `1/2`, `fourth`, `one fourth`, and `1/4`.
-- Improved the app progress bar so it reflects checked answers more clearly.
+- Emergency-stabilized `app.html` so the working app page stays separate from the old `/app/` path.
+
+### Removed
+
+- Removed conflicting `app/index.html`, which had caused Cloudflare to serve a broken app version at `/app` and could reintroduce the redirect/app conflict on future GitHub deployments.
+- Removed the temporary `math-answer-helper.js` script load from `app.html` after it was suspected of contributing to app instability. The helper file may remain unused, but it is not loaded by the production app page.
 
 ### Notes
 
 - Continued from the locked production checkpoint.
+- Made the Cloudflare direct-upload app fix permanent in GitHub `main`.
 - No framework conversion, live ads, tracking, payments, affiliate links, accounts, API keys, upload systems, public AI tools, or major code deletion were added.
 
 ## 2026-05-29
