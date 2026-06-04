@@ -1,5 +1,22 @@
 # CHANGELOG.md
 
+## 2026-06-04
+
+### Added
+
+- Added `fractions-practice-worksheet.html` as a free printable fractions practice page.
+- Added calm worksheet sections for equal parts, halves, fourths, simple fraction choices, explanation practice, and helper answer key.
+
+### Changed
+
+- Updated `printable-math-worksheets.html` to link the new fractions worksheet from the hero, worksheet library, fractions starter section, helpful pages, and footer.
+- Updated `sitemap.xml` to include `https://matheasy30.com/fractions-practice-worksheet.html`.
+
+### Notes
+
+- Continued from the locked production checkpoint.
+- No framework conversion, live ads, tracking, payments, affiliate links, accounts, API keys, upload systems, public AI tools, or major code deletion were added.
+
 ## 2026-05-29
 
 ### Added
