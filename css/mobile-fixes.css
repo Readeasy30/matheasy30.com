@@ -1,0 +1,209 @@
+/* Mobile and card alignment fixes — safe CSS only */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.wrap,
+.app-wrap {
+  width: min(1120px, calc(100% - 32px));
+}
+
+.hero-grid,
+.two-column,
+.steps,
+.bubbles-math-grid {
+  align-items: stretch;
+}
+
+.hero-card,
+.card,
+.coach-box,
+.question-card,
+.confidence-box,
+.progress-section,
+.practice-controls,
+.parent-tip-box,
+.highlight-card,
+.bubbles-mascot-card,
+.bubbles-chat-card {
+  width: 100%;
+  min-width: 0;
+}
+
+.steps .card,
+.two-column .card,
+.hero-card,
+.highlight-card {
+  height: 100%;
+}
+
+.card,
+.hero-card,
+.highlight-card,
+.bubbles-chat-card,
+.bubbles-mascot-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card .btn,
+.highlight-card .btn,
+.confidence-box .btn {
+  margin-top: auto;
+}
+
+.card .btn + .btn,
+.highlight-card .btn + .btn,
+.confidence-box .btn + .btn {
+  margin-top: 10px;
+}
+
+.hero-actions,
+.button-row,
+.practice-actions,
+.app-link-row,
+.top-nav {
+  align-items: stretch;
+}
+
+.btn,
+button,
+.app-link-row a,
+.top-nav a {
+  text-align: center;
+  line-height: 1.25;
+  min-width: 0;
+  white-space: normal;
+}
+
+footer p {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .wrap,
+  .app-wrap {
+    width: min(100% - 24px, 840px);
+  }
+
+  .hero {
+    padding: 34px 0;
+  }
+
+  .hero h1,
+  .lesson-header h1 {
+    font-size: clamp(2.1rem, 12vw, 3.4rem);
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .top-nav,
+  .app-link-row,
+  .hero-actions,
+  .button-row,
+  .practice-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .top-nav a,
+  .app-link-row a,
+  .btn,
+  button {
+    width: 100%;
+  }
+
+  .practice-controls,
+  .progress-section,
+  .coach-box,
+  .question-card,
+  .confidence-box,
+  .parent-tip-box,
+  .card,
+  .hero-card,
+  .bubbles-mascot-card,
+  .bubbles-chat-card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .progress-top {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  footer p:last-child {
+    display: grid;
+    gap: 8px;
+  }
+
+  footer p:last-child a {
+    display: block;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 420px) {
+  body {
+    font-size: 16px;
+  }
+
+  .wrap,
+  .app-wrap {
+    width: min(100% - 18px, 840px);
+  }
+
+  .hero {
+    padding: 26px 0;
+  }
+
+  .section {
+    padding: 32px 0;
+  }
+
+  .practice-controls,
+  .progress-section,
+  .coach-box,
+  .question-card,
+  .confidence-box,
+  .parent-tip-box,
+  .card,
+  .hero-card,
+  .bubbles-mascot-card,
+  .bubbles-chat-card {
+    padding: 16px;
+  }
+
+  select,
+  #answerInput,
+  #bubblesMathInput {
+    font-size: 16px;
+  }
+}
