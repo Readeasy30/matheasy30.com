@@ -1,0 +1,73 @@
+# Security-first ignores
+
+# Secrets and environment files
+.env
+.env.*
+*.env
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.jks
+*.keystore
+secrets.*
+secret.*
+credentials.*
+*-secret.*
+*-secrets.*
+
+# Tokens and local auth
+.github-token
+.token
+token.txt
+tokens.txt
+pat.txt
+GITHUB_PERSONAL_ACCESS_TOKEN*
+
+# MCP / local agent config
+mcp.json
+.mcp.json
+**/mcp.json
+**/.mcp.json
+.mcp/
+.cursor/mcp.json
+.vscode/mcp.json
+.vscode/settings.json
+claude_desktop_config.json
+
+# Local config and cache
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+.cache/
+.tmp/
+tmp/
+
+# Dependencies / build output
+node_modules/
+dist/
+build/
+.vite/
+.next/
+out/
+coverage/
+
+# Python/cache
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local editor/project files
+.idea/
+*.code-workspace
+
+# Private exports or downloaded bundles
+private/
+_private/
+exports/private/
