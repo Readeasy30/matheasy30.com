@@ -10,6 +10,12 @@ Last updated: 2026-06-04
 
 MathEasy30 is in locked production build continuation. The project was not restarted. The work continued from the existing safe production checkpoint and current repo files.
 
+The MathEasy30 app routing problem is now fixed permanently in GitHub `main`:
+
+- `app/index.html` was removed because it conflicted with the working root `app.html` page.
+- Root `_redirects` was added so `/app` and `/app/` redirect to `/app.html` with 301 redirects.
+- The direct Cloudflare upload fix is now mirrored in GitHub so future GitHub deployments should not reintroduce the broken `/app` path.
+
 The repo uses a simple static website stack: HTML, CSS, JavaScript, GitHub repository publishing, and Cloudflare Pages when connected.
 
 MathEasy30 is a free, calm, no-shame math practice site for adults, students, ESL learners, special education learners, older learners, parents, tutors, and anyone who wants simple practice toward about an 8th-grade level.
@@ -55,9 +61,9 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 ## What is working
 
 - Homepage with clear value message
-- Math lesson app page
+- Math lesson app page at `app.html`
+- Clean `/app` and `/app/` redirects to `app.html`
 - 30-day starter lesson logic in `app.js`
-- Safe answer helper in `math-answer-helper.js`
 - 240-day math path support pages
 - Progress behavior using browser storage
 - About page
@@ -77,14 +83,15 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 
 ## Recent improvements
 
-- Added `math-answer-helper.js` to improve beginner answer acceptance without replacing the locked lesson engine.
-- Updated `app.html` to load `math-answer-helper.js` after `app.js`.
-- Improved answer acceptance for number words and simple fraction wording such as `half`, `one half`, `1/2`, `fourth`, `one fourth`, and `1/4`.
-- Improved progress bar behavior so checked answers are reflected more clearly.
+- Removed conflicting `app/index.html`, which caused Cloudflare to serve a different broken app version at `/app`.
+- Added root `_redirects` with permanent redirect rules: `/app /app.html 301` and `/app/ /app.html 301`.
+- Recorded the permanent app routing fix in `CHANGELOG.md`.
+- Emergency-stabilized `app.html` after app-route troubleshooting.
+- Removed the `math-answer-helper.js` script load from `app.html`; the helper file is not loaded by production and should not be re-added without browser testing.
 - Added `fractions-practice-worksheet.html` as a free printable fractions worksheet with equal parts, halves, fourths, fraction choices, explanation practice, and helper answer key.
 - Linked the fractions worksheet from `printable-math-worksheets.html` in the hero actions, worksheet library, fractions starter section, helpful pages, and footer.
 - Added the fractions worksheet to `sitemap.xml`.
-- Updated `CHANGELOG.md` for the 2026-06-04 production step.
+- Updated `CHANGELOG.md` for the 2026-06-04 production steps.
 - Updated `CODEX-CURRENT-TASK.md` to continue the locked production build instead of yesterday's review task.
 - Added `printable-math-worksheets.html` as a calm worksheet hub for counting, addition, subtraction, word problems, math facts, and fractions practice ideas.
 - Linked `printable-math-worksheets.html` from the MathEasy30 homepage top navigation, hero CTA area, homepage content section, and footer.
@@ -127,17 +134,17 @@ MathEasy30 should not feel babyish. It should feel simple, respectful, and usefu
 
 ## Next safe queue
 
-1. Browser-test `https://matheasy30.com/` after Cloudflare deploys.
-2. Browser-test `https://matheasy30.com/app.html` after Cloudflare deploys.
-3. Browser-test `https://matheasy30.com/printable-math-worksheets.html`.
-4. Browser-test `https://matheasy30.com/fractions-practice-worksheet.html`.
-5. Confirm the app accepts number words and simple fraction answers.
-6. Confirm the app progress bar updates after checked answers.
+1. Confirm Cloudflare production deploys the latest GitHub `main` commit after the permanent app routing fix.
+2. Browser-test `https://matheasy30.com/app` and confirm it redirects cleanly to `https://matheasy30.com/app.html`.
+3. Browser-test `https://matheasy30.com/app.html`.
+4. Browser-test `https://matheasy30.com/`.
+5. Browser-test `https://matheasy30.com/printable-math-worksheets.html`.
+6. Browser-test `https://matheasy30.com/fractions-practice-worksheet.html`.
 7. Confirm worksheet hub links to the fractions worksheet.
 8. Confirm sitemap includes the fractions worksheet.
 9. Add one more simple printable worksheet page only if it supports the 240-day path and does not duplicate existing work.
 10. Keep MathEasy30 aligned with the shared education growth plan in `marketing-system`.
-11. Do not add live ads, tracking, payment setup, accounts, API keys, affiliate links, upload systems, or public AI without direct approval.
+11. Do not add live ads, tracking, payment setup, accounts, API keys, affiliate links, upload systems, public AI, or app script helpers without direct approval and browser testing.
 
 ## Blockers
 
