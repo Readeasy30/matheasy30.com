@@ -6,11 +6,15 @@
 
 - Added `fractions-practice-worksheet.html` as a free printable fractions practice page.
 - Added calm worksheet sections for equal parts, halves, fourths, simple fraction choices, explanation practice, and helper answer key.
+- Added `math-answer-helper.js` to make beginner answers more forgiving without replacing the lesson engine.
 
 ### Changed
 
 - Updated `printable-math-worksheets.html` to link the new fractions worksheet from the hero, worksheet library, fractions starter section, helpful pages, and footer.
 - Updated `sitemap.xml` to include `https://matheasy30.com/fractions-practice-worksheet.html`.
+- Updated `app.html` to load the safe answer helper after `app.js`.
+- Improved answer acceptance for number words and simple fraction wording such as `half`, `one half`, `1/2`, `fourth`, `one fourth`, and `1/4`.
+- Improved the app progress bar so it reflects checked answers more clearly.
 
 ### Notes
 
