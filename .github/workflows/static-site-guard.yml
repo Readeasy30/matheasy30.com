@@ -1,0 +1,58 @@
+name: Static Site Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Block known MathEasy30 routing regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Checking MathEasy30 app routing guardrails..."
+
+          if [ -f "app/index.html" ]; then
+            echo "ERROR: app/index.html must not exist. It conflicts with app.html and broke /app routing before."
+            exit 1
+          fi
+
+          if [ ! -f "app.html" ]; then
+            echo "ERROR: app.html is missing. This is the working MathEasy30 app page."
+            exit 1
+          fi
+
+          if [ ! -f "app.js" ]; then
+            echo "ERROR: app.js is missing. This is the working MathEasy30 app logic."
+            exit 1
+          fi
+
+          if [ ! -f "_redirects" ]; then
+            echo "ERROR: _redirects is missing. It must redirect /app and /app/ to /app.html."
+            exit 1
+          fi
+
+          if ! grep -Fxq "/app /app.html 301" _redirects; then
+            echo "ERROR: _redirects must contain: /app /app.html 301"
+            exit 1
+          fi
+
+          if ! grep -Fxq "/app/ /app.html 301" _redirects; then
+            echo "ERROR: _redirects must contain: /app/ /app.html 301"
+            exit 1
+          fi
+
+          if grep -q "math-answer-helper.js" app.html; then
+            echo "ERROR: app.html must not load math-answer-helper.js without browser testing and direct approval."
+            exit 1
+          fi
+
+          echo "Static site guard passed."
