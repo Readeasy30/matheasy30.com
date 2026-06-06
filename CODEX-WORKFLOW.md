@@ -1,68 +1,67 @@
 # CODEX-WORKFLOW.md
 
-Last updated: 2026-05-29
+Last updated: 2026-06-06
+
+Repository: `Wholelychit/matheasy30.com`
 
 ## Purpose
 
-Codex is the main workflow for routine MathEasy30 repository editing.
+Codex and AI helpers should protect the clean Day One MathEasy30 state.
 
 MathEasy30 must stay simple, stable, mobile-first, beginner-friendly, and easy to maintain.
 
 ## Current stack
 
-MathEasy30 uses:
+Use only:
 
 - HTML
 - CSS
 - JavaScript
-- GitHub Pages / GitHub repository publishing
-- Cloudflare Pages when connected
-- browser `localStorage` for simple progress tracking when present
+- GitHub
+- Cloudflare
+- browser `localStorage` for simple device progress
 
-Do not convert this project to React, Vite, Next.js, TypeScript, or any build tool unless Gerry clearly requests a full rebuild later.
+Do not convert this project to React, Vite, Next.js, TypeScript, a build system, or a server app.
 
-## Operating workflow
+## Current locked public funnel
 
-Use ChatGPT 5.5 and Codex as the production workflow.
+The homepage should guide visitors in this order:
 
-No local Git. No terminal Git. No VS Code requirement. No manual file creation, replacement, or paste updates.
+1. Start Math Practice
+2. Print Worksheets
+3. Word Problems
+4. Parent / Tutor Guide
+5. Reading + Math Plan
 
-Workflow:
+Do not bring back a giant top navigation menu.
 
-1. ChatGPT 5.5 manages the plan.
-2. Codex performs repository work.
-3. GitHub stores files and commits.
-4. Cloudflare Pages publishes from GitHub when connected.
+Do not bring back confusing pricing language.
 
-## Main rule
+## Current free access lock
 
-Codex should handle repository file work directly.
+MathEasy30 is currently free.
 
-Do not ask Gerry to paste, create, replace, or manually update repo files.
+`pricing.html` is only a legacy Free Access page so old links do not break.
 
-Work in useful batches. Report only after several commits or a real blocker.
+Do not add `pricing.html` back to the sitemap unless Gerry changes the product direction.
 
-## Use Codex for
+Do not add paid/pricing language to the main funnel.
 
-- multi-file updates
-- repo audits
-- HTML/CSS/JS fixes
-- README/status/workflow files
-- sitemap.xml and robots.txt
-- SEO metadata
-- navigation/footer cleanup
-- safe content pages
-- project queue continuation
+## Write-path rule
 
-## Use ChatGPT GitHub connector for
+Use safe repository edits only when a reliable write path is available.
 
-- small direct file updates
-- repo checks
-- status verification
-- emergency fixes
-- when Codex is awkward or blocked
+Do not use ChatGPT GitHub connector writes unless Gerry explicitly authorizes one specific write action in the current chat.
 
-Internal write-action labels like `create_file` or `update_file` mean the AI is requesting permission to create or update a file. They are not instructions for Gerry to manually create files.
+Preferred write paths:
+
+1. Codex with a working non-connector write path
+2. GitHub website editor
+3. github.dev
+4. GitHub Desktop
+5. local Git after it is correctly installed
+
+Read-only connector checks are allowed.
 
 ## Required read order
 
@@ -70,61 +69,60 @@ Before editing, read these files when they exist:
 
 1. `README.md`
 2. `AGENTS.md`
-3. `CODEX-WORKFLOW.md`
-4. `CODEX-CURRENT-TASK.md`
-5. `PROJECT-STATUS.md`
-6. `CHANGELOG.md`
-7. `AGENT-INSTRUCTIONS.md`
-8. `LOCKED-CHECKPOINT.md`
-9. `FILE-MANAGEMENT.md`
+3. `AGENT-INSTRUCTIONS.md`
+4. `PROJECT-STATUS.md`
+5. `LOCKED-CHECKPOINT.md`
+6. `CODEX-WORKFLOW.md`
+7. current file being changed
+8. relevant sitemap/robots files
 
 ## Safe work allowed
 
-Codex may directly handle:
-
-- README updates
-- AGENTS.md updates
-- CODEX-WORKFLOW.md updates
-- CODEX-CURRENT-TASK.md updates
-- PROJECT-STATUS.md updates
-- CHANGELOG.md updates
-- Markdown documentation updates
-- homepage copy improvements
-- support page improvements
-- footer and navigation fixes
-- SEO metadata checks
-- sitemap and robots.txt updates
-- accessibility notes and test checklists
-- simple CSS improvements
-- small JavaScript repairs that preserve current behavior
-- math lesson wording improvements that keep the same app structure
-- printable worksheet planning pages that do not require payments or accounts
-- safe content pages
+- full-file public page replacements when stale or cluttered
+- mobile layout improvements
+- accessibility improvements
+- SEO metadata improvements
+- sitemap and robots checks
+- worksheet/support page improvements
+- parent/tutor guide improvements
+- safe app bug fixes after live QA confirms the bug
+- README/status/checkpoint updates
+- QA checklist updates
 
 ## Do not change without direct approval
 
-Do not do these without direct approval:
-
 - framework conversion
 - React, Vite, Next.js, TypeScript, or build-tool migration
-- major deletion of working app code
-- payment setup
 - live ads
 - live tracking scripts
+- payment setup
+- affiliate links
 - accounts or logins
 - private keys or API tokens
-- affiliate links
 - public AI tools
-- upload systems
-- ordering integrations
-- replacing the lesson engine
-- breaking current localStorage progress behavior
+- uploads
+- scraping
+- social automation
+- removing the parent/tutor path
+- reintroducing stale pricing as a main visitor path
 
-## MathEasy30 product rules
+## Replacement rule
 
-Keep lessons calm, short, clear, and confidence-building.
+If a public file is stale, cluttered, or inconsistent, replace the whole file cleanly.
 
-Use simple steps. Avoid shame language. Help learners practice one skill at a time.
+Do not stack tiny repairs on top of broken repairs.
+
+Do not create duplicate parallel systems.
+
+Do not make hidden production changes without updating the relevant status/checkpoint docs.
+
+## Product rules
+
+Keep Bubbles calm, helpful, and controlled.
+
+Bubbles should encourage the learner to slow down, use hints, make math visible with drawings or objects, try one small step, and keep practicing without shame.
+
+Bubbles should not become an open-ended chatbot until safety and content controls are ready.
 
 ## Cloudflare Pages
 
@@ -132,26 +130,22 @@ Cloudflare only connects to GitHub and publishes.
 
 Recommended setup:
 
-- Production branch: main
+- Production branch: `main`
 - Build command: blank
-- Output directory: .
+- Output directory: `.`
 - No manual Cloudflare file uploads
 
 ## Current safe queue
 
-1. Keep MathEasy30 aligned with the shared education growth plan in `Wholelychit/marketing-system`.
-2. Add one more SEO content page, such as `addition-practice.html` or `word-problem-practice.html`.
-3. Add skip link/accessibility improvement to all pages.
-4. Review `app.js` for safe lesson wording and answer handling.
-5. Add printable worksheet planning page without payments or downloads requiring accounts.
-6. Add simple FAQ content to support SEO and parent trust.
-
-## If blocked
-
-Record the blocker in `PROJECT-STATUS.md` if possible.
-
-Move to the next safe task or next repository. Do not ask Gerry to do manual file work.
+1. Run live phone and desktop QA.
+2. Fix only verified live-page issues.
+3. Keep the five-step homepage funnel.
+4. Keep free-access wording consistent.
+5. Improve worksheet/support pages only after the app passes QA.
+6. Keep MathEasy30 aligned with ReadEasy30 through `Wholelychit/marketing-system` planning only.
 
 ## Reporting rule
 
-Commit useful safe changes. Report after several useful commits or when a real blocker appears.
+After useful commits, report changed files and commit SHAs.
+
+If blocked, clearly state the blocker and stop changing files.
