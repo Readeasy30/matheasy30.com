@@ -8,42 +8,37 @@
   <url>
     <loc>https://matheasy30.com/app.html</loc>
     <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/parent-guide.html</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://matheasy30.com/240-day-math-path.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://matheasy30.com/days-1-240-curriculum.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://matheasy30.com/calm-math-practice.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://matheasy30.com/addition-practice.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://matheasy30.com/word-problem-practice.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://matheasy30.com/math-facts-practice.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://matheasy30.com/printable-math-worksheets.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/word-problem-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/free-reading-and-math-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/math-facts-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/addition-practice.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://matheasy30.com/fractions-practice-worksheet.html</loc>
@@ -51,27 +46,32 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://matheasy30.com/faq.html</loc>
+    <loc>https://matheasy30.com/240-day-math-path.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/days-1-240-curriculum.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/calm-math-practice.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://matheasy30.com/faq.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
   </url>
   <url>
     <loc>https://matheasy30.com/reading-practice-too.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://matheasy30.com/parent-guide.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.65</priority>
   </url>
   <url>
     <loc>https://matheasy30.com/about.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://matheasy30.com/pricing.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
