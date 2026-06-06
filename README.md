@@ -1,73 +1,94 @@
 # MathEasy30
 
-MathEasy30 is a simple, mobile-first math practice website for learners who need calm, short, confidence-building lessons.
+MathEasy30 is a 100% free, calm math-practice website for learners who need steady support. It serves learners, adult learners, ESL learners, parents, tutors, homeschool helpers, and community programs.
 
-## Mission
+The public message is simple:
 
-Build calm daily math practice with short lessons, simple steps, helpful hints, and parent/helper support.
+```text
+Start small. Try one step. Practice a little each day.
+```
 
-## Current production stack
+## Day One production standard
+
+This repo must stay simple, mobile-friendly, and easy to maintain.
+
+Use plain files only:
 
 - HTML
 - CSS
 - JavaScript
-- GitHub Pages
+- GitHub
 - Cloudflare
-- Browser `localStorage` for simple progress tracking
+- Browser `localStorage` for simple device progress
 
-Do not use React, Vite, Next.js, TypeScript, or build tools.
+Do not convert this project to React, Vite, Next.js, TypeScript, a build system, or a server app.
 
-## Current website files
+## Current public funnel
 
-- `index.html` = marketing homepage
-- `app.html` = lesson app page
-- `app.js` = lesson logic and progress behavior
-- `css/style.css` = main stylesheet
-- `about.html` = about page
-- `parent-guide.html` = parent/helper guide
-- `math-facts-practice.html` = SEO content page for math facts practice
-- `pricing.html` = current/free and future pricing explanation
-- `contact.html` = contact page
-- `privacy.html` = privacy policy
-- `terms.html` = terms of use
-- `robots.txt` = crawler instructions
-- `sitemap.xml` = production page sitemap
+The homepage should guide visitors in this order:
 
-## Shared education growth
+1. Start Math Practice
+2. Print Worksheets
+3. Word Problems
+4. Parent / Tutor Guide
+5. Reading + Math Plan
 
-MathEasy30 is part of the shared Wholelychit education growth system with ReadEasy30.
+Do not bring back a giant top navigation menu.
 
-Shared campaign and marketing planning belongs in `Wholelychit/marketing-system`.
+Keep the homepage focused on:
 
-Use `EDUCATION-GROWTH-PLAN.md` and the `CAMPAIGNS/` folder in `marketing-system` before starting new shared campaign work.
+- 100% free math practice
+- short daily questions
+- hints and calm coaching
+- printable worksheets
+- word problem practice
+- parent/tutor help
+- MathEasy30 + ReadEasy30 connection
 
-Website code stays in this repo.
+## Current core files
 
-## Project control files
+- `index.html` — clean SEO homepage funnel
+- `app.html` — clean math app page
+- `app.js` — math app logic and progress behavior
+- `parent-guide.html` — mobile-friendly parent/tutor guide
+- `printable-math-worksheets.html` — worksheet hub
+- `word-problem-practice.html` — word problem practice page
+- `math-facts-practice.html` — math facts practice page
+- `free-reading-and-math-practice.html` — shared education campaign landing page
+- `pricing.html` — legacy URL now replaced with Free Access page
+- `sitemap.xml` — crawl priority map
+- `robots.txt` — crawler instructions
+- `css/style.css` — main styling
+- `css/mobile-fixes.css` — mobile support styles
 
-- `AGENTS.md` = direct file-work rules
-- `AGENT-INSTRUCTIONS.md` = full AI agent working rules
-- `FILE-MANAGEMENT.md` = file map
-- `LOCKED-CHECKPOINT.md` = latest safe checkpoint
-- `PROJECT-STATUS.md` = current status and next queue
-- `SEO-CHECKLIST.md` = search checklist
-- `LAUNCH-CHECKLIST.md` = launch checklist
-- `CONTENT-PLAN.md` = content plan
+## Free access rule
 
-## Site checks
+MathEasy30 is currently positioned as 100% free.
 
-- Unique page title
-- Meta description
-- Canonical URL
-- One clear H1
-- Footer links
-- Internal navigation
-- Mobile layout
-- Large readable buttons
-- Basic accessibility labels
-- Fast loading
+Do not add confusing pricing language to public navigation.
+
+Do not put `pricing.html` back into the sitemap unless the product direction changes.
+
+The old `pricing.html` URL should remain as a clean Free Access page so old links do not break.
+
+## Current working features
+
+The app and public pages should support:
+
+- calm daily math practice
+- short questions
+- math check / starting help
+- hints
+- Bubbles coaching
+- printable worksheets
+- word problem practice
+- parent/tutor guide
+- Reading + Math cross-link
+- mobile-friendly buttons
 
 ## Learning path
+
+MathEasy30 should grow through these learning areas:
 
 1. Number sense
 2. Addition
@@ -80,14 +101,111 @@ Website code stays in this repo.
 9. Decimals
 10. Middle-school readiness
 
-## Safe update rule
+## SEO standard
 
-Safe file updates should be made and committed directly.
+Every important public page should have:
 
-Pause only for blocked writes, major deletion, framework changes, private keys, payment setup, tracking setup, live ads, or live monetization.
+- one clear `<title>`
+- one useful meta description
+- canonical URL
+- mobile viewport
+- one clear H1
+- readable 7th-9th grade language
+- strong internal links
+- visible parent/tutor path
+- no fake urgency
+- no confusing paid/pricing language
+- no cluttered top navigation
 
-## Planning rule
+Primary SEO pages:
 
-Shared business planning belongs in `marketing-system`.
+- `/`
+- `/app.html`
+- `/parent-guide.html`
+- `/printable-math-worksheets.html`
+- `/word-problem-practice.html`
+- `/free-reading-and-math-practice.html`
+- `/math-facts-practice.html`
+- `/addition-practice.html`
+- `/fractions-practice-worksheet.html`
 
-Website code stays here.
+## Mobile and tutor standard
+
+The tutor/helper path must be easy to tap on a phone.
+
+Top pages should link to:
+
+```text
+parent-guide.html
+```
+
+The app and homepage should use the label:
+
+```text
+Parent / Tutor Guide
+```
+
+## Bubbles coach rule
+
+Bubbles should stay calm and controlled.
+
+Bubbles should encourage learners to:
+
+- slow down
+- try one small step
+- use hints
+- make math visible with drawings or objects
+- keep practicing without shame
+
+Bubbles should not act like an open-ended chatbot until safety and content controls are ready.
+
+## Safety and product lock
+
+Do not add:
+
+- live ads
+- tracking scripts
+- payments
+- affiliate links
+- accounts
+- uploads
+- private keys
+- scraping
+- social automation
+- public AI tools
+- framework migrations
+
+Future ads or premium resources can be considered only after the free core works well and trust is protected.
+
+## Shared education growth
+
+MathEasy30 is paired with ReadEasy30.
+
+Shared marketing and campaign planning belongs in:
+
+```text
+Wholelychit/marketing-system
+```
+
+Website code stays in this repo.
+
+## QA checklist before public promotion
+
+Test on phone and desktop:
+
+1. Homepage loads and has the five-part funnel.
+2. `app.html` opens.
+3. Math question appears.
+4. Hint button works.
+5. Read Problem works where supported.
+6. Worksheets open.
+7. Word Problems opens.
+8. Parent / Tutor Guide opens.
+9. Reading + Math Plan opens.
+10. Sitemap opens at `/sitemap.xml`.
+
+## Working rule
+
+Replace broken files cleanly. Do not stack small repairs on top of broken repairs.
+
+When changing a public page, prefer one complete-file replacement with a clear commit message.
