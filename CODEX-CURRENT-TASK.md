@@ -1,43 +1,64 @@
 # CODEX-CURRENT-TASK.md
 
-Last updated: 2026-06-04
+Last updated: 2026-06-06
 
-## Repository
+Repository: `Wholelychit/matheasy30.com`
 
-`Wholelychit/matheasy30.com`
+## Current task
 
-## Current task: Continue locked production build
+Continue from the Day One clean production state.
 
-Continue from the locked production checkpoint. Do not restart, redesign, or replace working files.
+Do not restart the site.
 
-## Completed today
+Do not reopen old emergency app-routing work unless live QA proves a current problem.
 
-- Added `fractions-practice-worksheet.html`.
-- Linked the fractions worksheet from `printable-math-worksheets.html`.
-- Added the fractions worksheet to `sitemap.xml`.
-- Recorded the update in `CHANGELOG.md`.
+Do not bring back stale pricing language, giant navigation, connector-write confusion, or old repair loops.
+
+## Current public funnel
+
+The homepage should guide visitors in this order:
+
+1. Start Math Practice
+2. Print Worksheets
+3. Word Problems
+4. Parent / Tutor Guide
+5. Reading + Math Plan
+
+## Completed Day One cleanup
+
+- Replaced homepage with clean SEO funnel.
+- Replaced app page with clean public app page.
+- Replaced parent/tutor guide with mobile-friendly guide.
+- Replaced pricing page with Free Access legacy page.
+- Replaced sitemap with clean crawl priority map.
+- Verified robots file is clean.
+- Replaced README, AGENTS, AGENT-INSTRUCTIONS, PROJECT-STATUS, LOCKED-CHECKPOINT, CODEX-WORKFLOW, and CHANGELOG.
 
 ## Current safe queue
 
-1. Browser-test `https://matheasy30.com/` after Cloudflare deploys.
-2. Browser-test `https://matheasy30.com/printable-math-worksheets.html`.
-3. Browser-test `https://matheasy30.com/fractions-practice-worksheet.html`.
-4. Confirm the worksheet hub links to the fractions page.
-5. Confirm sitemap includes the fractions page.
-6. Review `app.js` for safe lesson wording and answer handling.
-7. Add one more simple printable worksheet page only if it supports the 240-day path and does not duplicate existing work.
-8. Keep MathEasy30 aligned with ReadEasy30 and `Wholelychit/marketing-system`.
+1. Live phone-test `https://matheasy30.com/`.
+2. Live phone-test `https://matheasy30.com/app.html`.
+3. Live phone-test `https://matheasy30.com/parent-guide.html`.
+4. Live phone-test `https://matheasy30.com/printable-math-worksheets.html`.
+5. Live phone-test `https://matheasy30.com/word-problem-practice.html`.
+6. Confirm top buttons are easy to tap.
+7. Confirm Parent / Tutor Guide is visible without hunting.
+8. Confirm app question appears.
+9. Confirm Hint works.
+10. Confirm Read Problem works where supported.
+11. Confirm sitemap opens at `https://matheasy30.com/sitemap.xml`.
+12. Fix only verified live-page issues.
 
 ## Rules
 
-- Do not redesign the site.
-- Do not convert to React, Vite, Next.js, TypeScript, Tailwind, or build tools.
 - Keep plain HTML/CSS/JS.
-- Do not delete major working code.
-- Do not add API keys, tracking scripts, live ads, payment systems, affiliate links, user accounts, upload systems, or public AI.
-- Fix small safe issues directly when possible.
-- Work in useful batches and commit clear changes.
+- Use complete-file replacement when a public page is stale or broken.
+- Do not stack tiny repairs on broken repairs.
+- Do not re-add `pricing.html` to the sitemap unless Gerry changes the product direction.
+- Do not add React, Vite, Next.js, TypeScript, Tailwind, or build tools.
+- Do not add API keys, tracking scripts, live ads, payment systems, affiliate links, user accounts, upload systems, scraping, social automation, public AI, or credentials.
+- Do not use ChatGPT GitHub connector writes unless Gerry explicitly authorizes one specific write action in the current chat.
 
 ## Stop points
 
-Stop before private keys, API keys, live tracking, live ads, payment setup, user accounts, upload systems, affiliate links, framework migration, major code deletion, or anything that risks breaking production.
+Stop before private keys, API keys, live tracking, live ads, payment setup, user accounts, upload systems, affiliate links, framework migration, major code deletion, public AI, or anything that risks breaking production.
