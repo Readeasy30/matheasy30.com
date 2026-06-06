@@ -2,90 +2,36 @@
 
 ## Mission
 
-Build MathEasy30 into a simple, trustworthy, mobile-first math-practice website that helps children, parents, tutors, and struggling learners build confidence one lesson at a time.
+Build MathEasy30 into a simple, trustworthy, mobile-first math-practice website that helps learners build confidence one calm step at a time.
 
-MathEasy30 should follow the same disciplined style as ReadEasy30: simple files, clear lessons, no unnecessary frameworks, and no repeated rebuilds.
+The site should serve learners, adult learners, ESL learners, parents, tutors, homeschool helpers, and community programs.
 
-## Automatic Update Rule
+## Current product message
 
-For normal safe website work, update files and commit directly.
+MathEasy30 is:
 
-Do not stop to ask permission for routine improvements such as fixing links, improving copy, adding safe pages, improving layout, updating project files, removing duplicate files, or improving lesson content.
+```text
+100% free calm math practice.
+```
 
-Pause only if a tool blocks the write, a change would remove major working code, a change would switch frameworks, or a change involves credentials, payment setup, live tracking, or live monetization.
-
-If a write is blocked, simplify the wording and continue.
-
-## Keep Building Rule
-
-Keep working in useful chunks. Do not stop after one small edit if safe next steps are clear.
-
-Default build order:
-
-1. Fix broken files or links.
-2. Protect the simple file structure.
-3. Improve the app experience.
-4. Improve lesson content.
-5. Improve support pages.
-6. Improve project instructions.
-7. Add planning notes for future work.
-
-After several safe commits, report changed files, improvements made, blocked items, and next steps.
-
-## Time Management Rule
-
-Do not spend the session on repeated planning. Make safe edits first.
-
-Avoid:
-
-- repeating the same plan
-- recreating files that already exist
-- switching frameworks
-- redesigning from scratch
-- asking for approval on normal safe updates
-
-Use full-section updates when tiny patches would be fragile.
-
-## UX Rule
-
-The app should be calm, simple, readable, and mobile-first.
-
-UX order for the app page:
-
-1. Back to Home link
-2. Page title
-3. Day picker
-4. Progress bar
-5. Bubbles message
-6. Question card
-7. Answer box
-8. Check, Hint, Clear, Next buttons
-9. Confidence message
-10. Parent/helper tip
-
-## Core Product Goal
-
-Create a helpful math site that can grow into a revenue-producing education project through:
-
-- SEO traffic
-- printable worksheets
-- parent and tutor resources
-- future email list growth
-- future premium practice packs
-- future display advertising only when trust is protected
+Public wording should be honest, simple, and supportive.
 
 Do not promise instant math success.
 
-## Technical Rules
+Do not use shame language.
+
+Do not make the site sound broken or temporary.
+
+## Technical rules
 
 Use only:
 
 - HTML
 - CSS
 - JavaScript
-- GitHub Pages
+- GitHub
 - Cloudflare
-- localStorage for simple progress tracking until a database is truly needed
+- browser `localStorage` for simple device progress
 
 Do not use:
 
@@ -95,86 +41,148 @@ Do not use:
 - Next.js
 - build tools
 - unnecessary frameworks
+- server requirements
 
-Keep the site fast, simple, mobile-first, and easy for the owner to manage.
+Keep the site fast, simple, mobile-first, and easy for Gerry to manage.
 
-## Locked Architecture
+## Write-path rule
 
-Use this structure unless the owner clearly requests a different structure:
+Use safe repository edits only when a reliable write path is available.
 
-- `index.html` = marketing homepage
-- `app.html` = math lesson/practice app page
-- `app.js` = lesson engine and math logic
-- `css/style.css` = main styling
-- `README.md` = project purpose and status
-- `AGENT-INSTRUCTIONS.md` = AI working rules
-- `FILE-MANAGEMENT.md` = file map
-- `UX-INSTRUCTIONS.md` = UX rules
-- `TIME-MANAGEMENT.md` = time and work rhythm rules
+Do not use ChatGPT GitHub connector writes unless Gerry explicitly authorizes one specific write action in the current chat.
 
-Small support JavaScript files may be used only when they add safe features without disturbing the main lesson engine.
+Preferred write paths:
 
-## Content Rules
+1. Codex with a working non-connector write path
+2. GitHub website editor
+3. github.dev
+4. GitHub Desktop
+5. local Git after it is correctly installed
 
-Every lesson and page should be:
+Read-only connector checks are allowed.
 
-- clear
-- beginner-friendly
-- confidence-building
-- readable at the correct learner level
-- useful for school and real life
-- written in plain language
-- supportive without babying older learners
+## Current public funnel
+
+The homepage should guide visitors in this order:
+
+1. Start Math Practice
+2. Print Worksheets
+3. Word Problems
+4. Parent / Tutor Guide
+5. Reading + Math Plan
+
+Do not bring back a giant top navigation menu.
+
+## Core files
+
+- `index.html` — clean SEO homepage funnel
+- `app.html` — math app page
+- `app.js` — math app logic and progress behavior
+- `parent-guide.html` — mobile-friendly parent/tutor guide
+- `printable-math-worksheets.html` — worksheet hub
+- `word-problem-practice.html` — word problem practice page
+- `math-facts-practice.html` — math facts practice page
+- `free-reading-and-math-practice.html` — shared education campaign landing page
+- `pricing.html` — legacy URL now replaced with Free Access page
+- `sitemap.xml` — crawl priority map
+- `robots.txt` — crawler instructions
+- `README.md` — project standard
+- `AGENTS.md` — direct working rules
+
+## Free access rule
+
+MathEasy30 is currently free.
+
+Do not add confusing pricing language to the homepage, top navigation, footer, sitemap, or parent/tutor path.
+
+`pricing.html` remains only so old links do not break. It should act as a Free Access page.
+
+Do not put `pricing.html` back into the sitemap unless Gerry changes the product direction.
+
+## UX rules
+
+The app and public pages should be:
+
+- calm
+- simple
+- readable
+- mobile-first
+- easy to tap
+- low pressure
+- useful for helpers
 
 Avoid:
 
-- shame language
-- confusing instructions
+- cluttered navigation
+- tiny text
+- game noise that hurts learning
 - fake urgency
-- overpromising
-- complicated education jargon
 - long walls of text
+- confusing education jargon
+- public labels that make the site sound broken
 
-## Math Learning Direction
+## Parent / Tutor rule
 
-MathEasy30 should grow step by step.
+The Parent / Tutor Guide must be visible and easy to tap on phones.
 
-Suggested path:
+Important pages should link to:
 
-- Level A: number sense, counting, comparing, basic addition and subtraction
-- Level B: addition/subtraction fluency, place value, simple word problems
-- Level C: multiplication, division, fractions basics, measurement
-- Level D: decimals, percentages, multi-step word problems, practical math
-- Level E and beyond: careful progress toward middle-school skills, including ratios, expressions, geometry basics, and data reading
+```text
+parent-guide.html
+```
 
-## Coach Direction
+Use the label:
 
-Use a calm helper voice similar to Bubbles from ReadEasy30.
+```text
+Parent / Tutor Guide
+```
 
-The math coach should:
+## Math learning direction
+
+MathEasy30 should grow step by step:
+
+1. Number sense
+2. Addition
+3. Subtraction
+4. Place value
+5. Word problems
+6. Multiplication
+7. Division
+8. Fractions
+9. Decimals
+10. Middle-school readiness
+
+## Bubbles coach rules
+
+Bubbles should act like a calm math coach.
+
+Bubbles should:
 
 - encourage slow thinking
 - show one step at a time
 - remind learners that mistakes are part of learning
 - ask learners to check their work
+- encourage hints and drawings
 - avoid acting like an open-ended chatbot until safety and content controls are ready
 
-## SEO Rules
+## SEO rules
 
-Every public page should include:
+Every important public page should include:
 
 - unique title
 - meta description
+- canonical URL
 - one clear H1
 - readable headings
 - internal links
 - footer navigation
 - plain language
+- mobile viewport
 
 Build future topical clusters around:
 
 - daily math practice
-- math help for kids
+- math help for learners
 - math facts practice
 - printable math worksheets
 - parent math help
@@ -182,60 +190,75 @@ Build future topical clusters around:
 - word problem practice
 - practical math skills
 
-## Design Rules
+Maintain:
 
-Use a clean learning style:
+- `robots.txt`
+- `sitemap.xml`
+- clean canonical URLs
+- no stale pricing links in the main funnel
 
-- soft colors
-- strong contrast
-- large readable text
-- large buttons
-- simple cards
-- generous spacing
-- mobile-first layout
-
-Avoid clutter, harsh colors, tiny text, distracting animation, and game noise that hurts learning.
-
-## Monetization Rules
+## Monetization rules
 
 Prepare the site for monetization later, but do not hurt trust.
 
-Allowed future monetization:
+Do not add without direct approval:
 
-- worksheet downloads
-- premium printable packs
-- parent/tutor guides
-- reviewed partner links
+- live ads
+- live tracking
+- payment setup
+- affiliate links
+- account systems
+- upload systems
+- scraping
+- public AI tools
+- social automation
+
+Possible future monetization only after the free core is stable:
+
+- printable packs
+- premium worksheets
 - sponsor placements clearly labeled
-- email capture sections
-- display ad containers only after the site has enough useful content
+- reviewed partner links
+- display ads only when they do not hurt trust
 
-Do not add live affiliate links until partner programs are selected and reviewed.
-
-## Safe Work Pattern
+## Safe work pattern
 
 When making changes:
 
 1. Check existing files first.
-2. Preserve working structure.
-3. Do not rebuild features that already exist.
-4. Make one safe upgrade at a time.
-5. Use full-section updates when tiny patches would be fragile.
-6. Keep MathEasy30 separate from ReadEasy30 code.
-7. Put shared planning notes in `marketing-system`, not inside this website repo.
-8. Commit safe improvements directly.
+2. Preserve the simple HTML/CSS/JS structure.
+3. Prefer complete-file replacement when a page is messy or stale.
+4. Do not stack tiny repairs on broken repairs.
+5. Keep navigation consistent.
+6. Keep parent/tutor access visible.
+7. Add important public pages to the sitemap.
+8. Avoid breaking mobile layout.
+9. Commit safe improvements with clear messages.
+10. Report changed files and commit SHAs after useful work.
 
-## Do Not Repeat Work Rule
+## Stop points
+
+Pause for:
+
+- blocked writes
+- unclear repository state
+- credentials/private keys
+- payment setup
+- live tracking
+- live ads
+- affiliate links
+- framework migration
+- major deletion that cannot be safely reversed
+
+## Do not repeat work rule
 
 Before editing this repo, check:
 
 1. `README.md`
-2. `AGENT-INSTRUCTIONS.md`
-3. `FILE-MANAGEMENT.md`
-4. `UX-INSTRUCTIONS.md`
-5. `TIME-MANAGEMENT.md`
-6. latest stable checkpoint if one exists
-7. current live page if deployed
-8. exact file being changed
+2. `AGENTS.md`
+3. `AGENT-INSTRUCTIONS.md`
+4. `PROJECT-STATUS.md` if present
+5. current file being changed
+6. relevant sitemap/robots files
 
-Then make the smallest safe improvement that moves the business forward.
+Then make the safest replacement that moves the site forward.
