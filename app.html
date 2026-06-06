@@ -3,36 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MathEasy30 App | Calm Daily Math Practice</title>
-  <meta name="description" content="Use the MathEasy30 lesson app for calm daily math practice with a gentle math check, daily lessons, simple hints, and Bubbles support." />
+  <title>Free Math Practice App | MathEasy30</title>
+  <meta name="description" content="Start free daily math practice with MathEasy30. Use a calm math check, simple questions, hints, read-aloud support, printable worksheets, and Bubbles the friendly math coach." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2f7d67" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MathEasy30" />
+  <meta property="og:title" content="Free Math Practice App | MathEasy30" />
+  <meta property="og:description" content="Calm daily math practice with short questions, hints, read-aloud support, and Bubbles coaching." />
+  <meta property="og:url" content="https://matheasy30.com/app.html" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Free Math Practice App | MathEasy30" />
+  <meta name="twitter:description" content="Start free daily math practice with simple questions, hints, read-aloud support, and Bubbles coaching." />
   <link rel="canonical" href="https://matheasy30.com/app.html" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/mobile-fixes.css?v=20260604-mobile1" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalApplication",
+    "name": "MathEasy30 App",
+    "url": "https://matheasy30.com/app.html",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "isAccessibleForFree": true,
+    "description": "A free calm math practice app with a placement-style math check, short daily questions, hints, read-aloud support, and Bubbles coaching.",
+    "audience": [
+      { "@type": "Audience", "audienceType": "Students who need math practice" },
+      { "@type": "Audience", "audienceType": "Adult learners" },
+      { "@type": "Audience", "audienceType": "ESL learners" },
+      { "@type": "Audience", "audienceType": "Parents, tutors, and helpers" }
+    ],
+    "publisher": { "@type": "Organization", "name": "MathEasy30", "url": "https://matheasy30.com/" }
+  }
+  </script>
 </head>
 <body>
   <div class="app-wrap">
     <header class="lesson-header">
       <a href="index.html" class="back-btn">← Back to Home</a>
-      <nav class="app-link-row" aria-label="Helpful links">
-        <a href="addition-practice.html">Addition Practice</a>
-        <a href="math-facts-practice.html">Math Facts</a>
-        <a href="240-day-math-path.html">240-Day Path</a>
-        <a href="days-1-240-curriculum.html">Days 1-240</a>
+
+      <nav class="app-link-row" aria-label="MathEasy30 app navigation">
+        <a href="index.html">Home</a>
         <a href="printable-math-worksheets.html">Worksheets</a>
-        <a href="fractions-practice-worksheet.html">Fractions</a>
+        <a href="word-problem-practice.html">Word Problems</a>
         <a href="parent-guide.html">Parent Guide</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="free-reading-and-math-practice.html">Reading + Math</a>
         <a href="https://readeasy30.com/">ReadEasy30</a>
       </nav>
-      <p class="eyebrow">30 minutes a day • Gentle math practice</p>
-      <h1>MathEasy30</h1>
-      <p class="lesson-subtitle">Slow down. Think carefully. Practice one step at a time.</p>
+
+      <p class="eyebrow">100% Free • Calm Daily Math Practice</p>
+      <h1>Math Practice That Starts Small</h1>
+      <p class="lesson-subtitle">Use the math check, try one question at a time, get a hint when needed, and let Bubbles keep the practice calm.</p>
     </header>
 
     <section class="practice-controls" aria-label="Practice controls">
       <div>
-        <label for="daySelect">Jump to Day</label>
+        <label for="daySelect">Choose a Practice Day</label>
         <select id="daySelect" aria-label="Choose a practice day"></select>
       </div>
       <div class="practice-actions">
@@ -43,7 +70,7 @@
 
     <section class="progress-section" aria-label="Lesson progress">
       <div class="progress-top">
-        <span id="progressLabel">Math Check Progress</span>
+        <span id="progressLabel">Math Practice Progress</span>
         <span id="progressText">0%</span>
       </div>
       <div class="progress-bar">
@@ -53,17 +80,17 @@
 
     <section class="coach-box" aria-live="polite">
       <h2>🫧 Bubbles Says</h2>
-      <p id="coachMessage">We will start with easy math first.</p>
+      <p id="coachMessage">Start with one easy step. You do not have to rush.</p>
     </section>
 
-    <main class="question-card">
+    <main class="question-card" aria-label="MathEasy30 practice question">
       <p class="mini-label" id="skillLabel">Skill check</p>
       <h2 id="questionTitle">Math Check</h2>
       <p id="questionText">Loading question...</p>
 
       <div class="button-row">
         <button class="btn secondary" type="button" onclick="readMathProblem()">🔊 Read Problem</button>
-        <button class="btn secondary" type="button" onclick="readMathHint()">🔊 Bubbles Read Hint</button>
+        <button class="btn secondary" type="button" onclick="readMathHint()">🔊 Read Hint</button>
       </div>
 
       <label class="sr-only" for="answerInput">Type your answer</label>
@@ -84,26 +111,33 @@
 
     <section class="parent-tip-box">
       <h3>Parent / Helper Tip</h3>
-      <p id="parentTip">If the learner struggles, read the question out loud and use objects, fingers, or drawings. Keep the tone calm.</p>
+      <p id="parentTip">If the learner struggles, read the question out loud and use objects, fingers, drawings, or a number line. Keep the tone calm.</p>
     </section>
 
     <section class="confidence-box">
-      <h3>Need extra practice?</h3>
-      <p>Use the worksheet hub for calm printable practice after a lesson.</p>
+      <h3>Practice on Paper</h3>
+      <p>Use the worksheet hub after a short app lesson. Paper practice helps learners repeat the same skill away from the screen.</p>
       <a class="btn secondary full" href="printable-math-worksheets.html">Open Math Worksheets</a>
       <a class="btn secondary full" href="fractions-practice-worksheet.html">Open Fractions Worksheet</a>
     </section>
 
     <section class="confidence-box">
-      <h3>240-Day Path</h3>
-      <p>The 240-day overview is still available as a planning page. This app page is running in emergency-stable mode so learners can practice now.</p>
+      <h3>See the Full Path</h3>
+      <p>The 240-day overview helps families and helpers see the full learning path. Start with today’s short practice, then move forward one step at a time.</p>
       <a class="btn secondary full" href="240-day-math-path.html">See the 240-Day Math Path</a>
       <a class="btn secondary full" href="days-1-240-curriculum.html">View All 240 Days</a>
     </section>
 
+    <section class="confidence-box">
+      <h3>Need Reading Practice Too?</h3>
+      <p>Use ReadEasy30 with MathEasy30 for one calm daily routine: reading practice, math practice, and a short review.</p>
+      <a class="btn secondary full" href="free-reading-and-math-practice.html">Open Reading + Math Plan</a>
+      <a class="btn secondary full" href="https://readeasy30.com/">Open ReadEasy30</a>
+    </section>
+
     <footer>
-      <p>MathEasy30 — calm 30-minutes-a-day math practice, one step at a time.</p>
-      <p><a href="index.html">Home</a> | <a href="240-day-math-path.html">240-Day Path</a> | <a href="days-1-240-curriculum.html">Days 1-240</a> | <a href="addition-practice.html">Addition Practice</a> | <a href="math-facts-practice.html">Math Facts</a> | <a href="printable-math-worksheets.html">Worksheets</a> | <a href="parent-guide.html">Parent Guide</a> | <a href="contact.html">Contact</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a> | <a href="https://readeasy30.com/">ReadEasy30</a></p>
+      <p>MathEasy30 — free calm math practice, one step at a time.</p>
+      <p><a href="index.html">Home</a> | <a href="printable-math-worksheets.html">Worksheets</a> | <a href="word-problem-practice.html">Word Problems</a> | <a href="parent-guide.html">Parent Guide</a> | <a href="free-reading-and-math-practice.html">Reading + Math</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
     </footer>
   </div>
 
