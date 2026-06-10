@@ -6,7 +6,7 @@
     return Array.isArray(value) ? value : [];
   }
 
-  const levelALessons = [];
+  const levelALessons = safeArray(window.MATHEASY_LEVEL_A_LESSONS);
   const levelBLessons = safeArray(window.MATHEASY_LEVEL_B_LESSONS);
   const levelCLessons = safeArray(window.MATHEASY_LEVEL_C_LESSONS);
   const levelDLessons = safeArray(window.MATHEASY_LEVEL_D_LESSONS);
@@ -16,6 +16,7 @@
   const levelHLessons = safeArray(window.MATHEASY_LEVEL_H_LESSONS);
 
   const nextPathLessons = [
+    ...levelALessons,
     ...levelBLessons,
     ...levelCLessons,
     ...levelDLessons,
@@ -42,7 +43,7 @@
   window.MATHEASY_240_LESSON_STATUS = {
     liveLevelA: levelALessons.length,
     stagedNextPath: nextPathLessons.length,
-    expectedStagedNextPath: 210,
+    expectedStagedNextPath: 240,
     firstStagedDay: nextPathLessons.length ? nextPathLessons[0].day : null,
     lastStagedDay: nextPathLessons.length ? nextPathLessons[nextPathLessons.length - 1].day : null,
     levelsLoaded: Object.keys(lessonsByLevel)
