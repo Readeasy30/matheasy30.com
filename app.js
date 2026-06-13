@@ -1,7 +1,5 @@
 const placementQuestions = [
-  { level: "A", skill: "Counting", question: "What number comes after 3?", aspx-tastytrade-autotrader: code-complete; needs local .env (TT_SECRET, TT_REFRESH) + a local run to confirm the live connection.
-claude-seo-agent Worker: built, not deployed; needs CLAUDE_API_KEY + GOOGLE_JSON secrets set, then deploy.
-README path fixes (Wholelychit/ → Readeasy30/) where not yet done.nswer: "4", hint: "Count slowly: 1, 2, 3, then what comes next?" },
+  { level: "A", skill: "Counting", question: "What number comes after 3?", answer: "4", hint: "Count slowly: 1, 2, 3, then what comes next?" },
   { level: "A", skill: "Adding one more", question: "What is 2 + 1?", answer: "3", hint: "Start with 2. Add 1 more." },
   { level: "B", skill: "Subtraction", question: "What is 5 - 2?", answer: "3", hint: "Start with 5. Take away 2. Count what is left." },
   { level: "B", skill: "Comparing numbers", question: "Which is bigger: 7 or 4?", answer: "7", hint: "The bigger number means more." },
@@ -11,7 +9,7 @@ README path fixes (Wholelychit/ → Readeasy30/) where not yet done.nswer: "4", 
   { level: "D", skill: "Array thinking", question: "A box has 4 rows of 3 apples. How many apples are there?", answer: "12", hint: "4 rows of 3 means 4 × 3. Count 3, 6, 9, 12." }
 ];
 
-const lessonPlan = [
+const embeddedLessonPlan = [
   { day: 1, topic: "Counting Forward", focus: "Number order", coach: "Today we count slowly and notice what number comes next.", tip: "Use fingers, blocks, or coins. Touch one item for each number.", qs: [["Counting", "What number comes after 1?", "2", "Count 1, then 2."], ["Counting", "What number comes after 4?", "5", "Count 1, 2, 3, 4, 5."], ["Counting", "What number comes before 6?", "5", "Count up to 6. The number right before it is 5."]] },
   { day: 2, topic: "Counting Back", focus: "Before and after", coach: "Counting backward helps subtraction feel easier.", tip: "Count forward first if counting backward feels hard.", qs: [["Counting", "What number comes before 5?", "4", "Say 1, 2, 3, 4, 5."], ["Counting", "What number comes before 9?", "8", "The number just before 9 is 8."], ["Order", "Which comes first: 6 or 8?", "6", "Count up. You say 6 before 8."]] },
   { day: 3, topic: "Bigger and Smaller", focus: "Comparing numbers", coach: "Today we compare numbers without rushing.", tip: "Draw dots under each number. More dots means the number is bigger.", qs: [["Compare", "Which is bigger: 5 or 2?", "5", "5 means more than 2."], ["Compare", "Which is smaller: 3 or 7?", "3", "3 means less than 7."], ["Compare", "Which is bigger: 9 or 6?", "9", "9 is farther along when you count."]] },
@@ -43,6 +41,33 @@ const lessonPlan = [
   { day: 29, topic: "Mixed Review", focus: "All operations", coach: "Today we mix skills gently so the brain can connect them.", tip: "Pause after each question and name the skill: add, subtract, multiply, divide, or fraction.", qs: [["Review", "What is 6 + 3?", "9", "Count on from 6."], ["Review", "What is 12 ÷ 3?", "4", "3 groups of 4 make 12."], ["Review", "Which is bigger: 1/2 or 1/4?", "1/2", "Half is bigger."]] },
   { day: 30, topic: "Final Confidence Check", focus: "30-day review", coach: "You made it to Day 30. That is real progress.", tip: "Celebrate effort and name one skill that feels easier now.", qs: [["Final review", "What is 8 + 2?", "10", "8 and 2 make 10."], ["Final review", "What is 3 × 5?", "15", "3 groups of 5."], ["Final review", "What is 16 ÷ 2?", "8", "Half of 16 is 8."]] }
 ];
+
+// --- 240-day staged-data wiring (added 2026-06-12) ---------------------------
+// Build the live lesson plan from the staged Level A-H data loaded by
+// lesson-loader-240.js. Falls back to the embedded 30-day plan if the staged
+// data is unavailable for any reason, so the app never renders empty.
+function buildStagedLessonPlan() {
+  var staged = (typeof window !== "undefined" && Array.isArray(window.MATHEASY_NEXT_PATH_LESSONS))
+    ? window.MATHEASY_NEXT_PATH_LESSONS
+    : [];
+  if (!staged.length) return null;
+  return staged.map(function (s) {
+    var skill = s.focus || s.title || ("Level " + (s.level || ""));
+    return {
+      day: s.day,
+      level: s.level,
+      topic: s.title || ("Day " + s.day),
+      focus: s.focus || "",
+      coach: s.bubbles || s.focus || "Take your time. You only need to try.",
+      tip: "Helper tip: " + (s.focus || s.title || "Work through it together.") +
+           " Go slowly and let the learner explain their thinking.",
+      qs: [[skill, s.problem, String(s.answer), s.hint || "Look closely at the numbers and take it one step at a time."]]
+    };
+  });
+}
+
+const lessonPlan = buildStagedLessonPlan() || embeddedLessonPlan;
+// ----------------------------------------------------------------------------
 
 let mode = localStorage.getItem("mathEasy30CurrentMode") || "placement";
 let currentQuestion = Number(localStorage.getItem("mathEasy30CurrentQuestion")) || 0;
