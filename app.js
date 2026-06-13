@@ -1,5 +1,7 @@
 const placementQuestions = [
-  { level: "A", skill: "Counting", question: "What number comes after 3?", answer: "4", hint: "Count slowly: 1, 2, 3, then what comes next?" },
+  { level: "A", skill: "Counting", question: "What number comes after 3?", aspx-tastytrade-autotrader: code-complete; needs local .env (TT_SECRET, TT_REFRESH) + a local run to confirm the live connection.
+claude-seo-agent Worker: built, not deployed; needs CLAUDE_API_KEY + GOOGLE_JSON secrets set, then deploy.
+README path fixes (Wholelychit/ → Readeasy30/) where not yet done.nswer: "4", hint: "Count slowly: 1, 2, 3, then what comes next?" },
   { level: "A", skill: "Adding one more", question: "What is 2 + 1?", answer: "3", hint: "Start with 2. Add 1 more." },
   { level: "B", skill: "Subtraction", question: "What is 5 - 2?", answer: "3", hint: "Start with 5. Take away 2. Count what is left." },
   { level: "B", skill: "Comparing numbers", question: "Which is bigger: 7 or 4?", answer: "7", hint: "The bigger number means more." },
