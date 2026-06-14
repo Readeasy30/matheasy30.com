@@ -1,0 +1,20 @@
+name: Daily Marketing Check
+on:
+  schedule:
+    - cron: '0 13 * * *'  # 8am CT daily
+  workflow_dispatch:
+
+jobs:
+  marketing-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get today's marketing task
+        run: |
+          RESPONSE=$(curl -s https://marketing-auto.workers.dev/today)
+          echo "Today's marketing task:"
+          echo "$RESPONSE" | python3 -m json.tool
+          
+      - name: Ping marketing scheduler
+        run: |
+          echo "Marketing check complete for $(date)"
+          echo "Visit https://marketing-auto.workers.dev/today for today's full task"
