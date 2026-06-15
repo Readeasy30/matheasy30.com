@@ -1,3 +1,49 @@
+# CLAUDE.md
+
+GitHub is the source of truth for this project.
+
+## Start every session
+
+1. Read CLAUDE.md.
+2. Read STATUS.md if present.
+3. Inspect the real repository file tree.
+4. Trust the live repo over memory, chat notes, or old summaries.
+5. Report any mismatch before editing.
+
+## Work rules
+
+- Gerry names the task; Claude works from the repo.
+- Make the best reasonable assumption and continue.
+- Avoid repeated questions.
+- Keep replies short and useful.
+- Prefer full-file replacements for larger changes.
+- Do not redesign unless Gerry asks.
+- Use plain HTML, CSS, and JavaScript unless Gerry clearly approves something else.
+- For MathEasy30, avoid React, Vite, Node build systems, npm build tools, and complicated routing unless Gerry clearly approves.
+
+## Website rules
+
+- Use simple language.
+- Aim for grade 7 to 9 reading level.
+- Build mobile-first pages.
+- Keep pages fast.
+- Use clear buttons.
+- Include basic SEO.
+- Avoid fake claims.
+- Check for broken links.
+
+## Commit report
+
+After changes, report:
+
+1. Repo worked on
+2. Files changed
+3. Commit made
+4. What to check next
+5. Any blocker
+
+---
+
 # MathEasy30 — Project Context for Claude
 
 ## Project Overview
