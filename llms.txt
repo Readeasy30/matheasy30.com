@@ -1,0 +1,10 @@
+# MathEasy30
+
+MathEasy30 provides simple math practice pages.
+
+## Core pages
+
+- / — Homepage
+- /multiplication-practice.html — Multiplication practice
+- /fractions-practice.html — Fractions practice
+- /free-reading-and-math-practice.html — Free reading and math practice
