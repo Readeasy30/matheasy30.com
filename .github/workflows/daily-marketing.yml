@@ -1,19 +1,30 @@
 name: Daily Marketing Check
+
 on:
   schedule:
-    - cron: '0 13 * * *'  # 8am CT daily
+    - cron: '0 13 * * *'   # 8am CT daily
   workflow_dispatch:
 
 jobs:
   marketing-check:
     runs-on: ubuntu-latest
+
     steps:
       - name: Get today's marketing task
         run: |
-          RESPONSE=$(curl -s https://marketing-auto.workers.dev/today)
-          echo "Today's marketing task:"
-          echo "$RESPONSE" | python3 -m json.tool
-          
+          echo "Checking marketing endpoint..."
+          RESPONSE=$(curl -sL https://marketing-auto.workers.dev/today)
+
+          echo "Raw response:"
+          echo "$RESPONSE"
+
+          if echo "$RESPONSE" | python3 -c "import sys, json; json.load(sys.stdin)" >/dev/null 2>&1; then
+            echo "Valid JSON detected:"
+            echo "$RESPONSE" | python3 -m json.tool
+          else
+            echo "Response is not valid JSON. Skipping JSON formatting."
+          fi
+
       - name: Ping marketing scheduler
         run: |
           echo "Marketing check complete for $(date)"
