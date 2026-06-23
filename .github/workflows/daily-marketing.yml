@@ -29,3 +29,5 @@ jobs:
         run: |
           echo "Marketing check complete for $(date)"
           echo "Visit https://marketing-auto.workers.dev/today for today's full task"
+
+    
