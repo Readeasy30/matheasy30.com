@@ -1,4 +1,6 @@
-name: Daily Marketing Check
+In readeasy30.com and matheasy30.com, replace the entire contents of .github/workflows/daily-marketing.yml with this exact file (identical in both repos). Commit directly to main with message "Fix daily-marketing.yml: remove dead network call, use self-contained rotating tasks".
+
+name: Daily Marketing Task
 
 on:
   schedule:
@@ -6,28 +8,26 @@ on:
   workflow_dispatch:
 
 jobs:
-  marketing-check:
+  marketing-task:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Get today's marketing task
+      - name: Pick today's task
         run: |
-          echo "Checking marketing endpoint..."
-          RESPONSE=$(curl -sL https://marketing-auto.workers.dev/today)
+          TASKS=(
+            "Share a lesson link on X/Twitter"
+            "Post a tip in a homeschool Facebook group"
+            "Reply to 3 relevant Reddit threads in r/homeschool or r/ESL"
+            "Submit site to a new educational directory"
+            "Email one homeschool blogger about a link exchange"
+            "Post a student success story on socials"
+            "Check and respond to any site contact form messages"
+            "Update meta descriptions on 2 lesson pages for SEO"
+          )
+          DAY=$(date +%j)
+          IDX=$(( (10#$DAY) % ${#TASKS[@]} ))
+          TASK="${TASKS[$IDX]}"
+          echo "## Today's Marketing Task" >> $GITHUB_STEP_SUMMARY
+          echo "$TASK" >> $GITHUB_STEP_SUMMARY
+          echo "Task: $TASK"
 
-          echo "Raw response:"
-          echo "$RESPONSE"
-
-          if echo "$RESPONSE" | python3 -c "import sys, json; json.load(sys.stdin)" >/dev/null 2>&1; then
-            echo "Valid JSON detected:"
-            echo "$RESPONSE" | python3 -m json.tool
-          else
-            echo "Response is not valid JSON. Skipping JSON formatting."
-          fi
-
-      - name: Ping marketing scheduler
-        run: |
-          echo "Marketing check complete for $(date)"
-          echo "Visit https://marketing-auto.workers.dev/today for today's full task"
-
-    
+After committing, confirm the file starts with "name:" as the literal first line (no fence artifacts), and confirm the Actions tab shows it green on manual dispatch for both repos.
