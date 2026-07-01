@@ -2,7 +2,7 @@ name: Daily Marketing Task
 
 on:
   schedule:
-    - cron: '0 13 * * *'   # 8am CT / 1pm UTC daily — adjust if needed
+    - cron: '0 13 * * *'   # 8am CT / 1pm UTC daily
   workflow_dispatch: {}
 
 permissions:
@@ -12,31 +12,110 @@ jobs:
   daily-task:
     runs-on: ubuntu-latest
     steps:
-      - name: Pick today's marketing task
+      - name: Generate today's distribution tasks
         run: |
           set -eo pipefail
 
-          TASKS=(
-            "Share a recent lesson page on social media (pick a top-performing page from analytics)."
-            "Check for broken links on the homepage and one interior page."
-            "Post a tip or fact related to reading/math practice on social media."
-            "Review site analytics for the past 7 days and note any traffic spikes or drops."
-            "Reach out to one homeschool or ESL community/forum with a link to the site."
-            "Check that all lesson level files (1-8) are loading correctly on both sites."
-            "Write or schedule one short blog/update post about a new feature or lesson set."
-            "Check Google Search Console for new indexing issues or crawl errors."
-            "Review and respond to any user feedback or contact form submissions."
-            "Cross-promote readeasy30.com and matheasy30.com to each other's audiences."
+          DAY_OF_YEAR=$(date +%j)
+          DAY_OF_WEEK=$(date +%u)   # 1=Mon ... 7=Sun
+          DAY_OF_MONTH=$(date +%-d)
+          DATE=$(date +%Y-%m-%d)
+
+          echo "## 📋 MathEasy30 Distribution Tasks — $DATE" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+
+          # --- Daily: rotate Facebook Page post type ---
+          FB_TASKS=(
+            "Post a lesson highlight (pick today's featured math lesson)."
+            "Post a printable worksheet spotlight with direct link."
+            "Post a parent/tutor tip for helping with math practice at home."
           )
+          FB_INDEX=$(( (10#$DAY_OF_YEAR) % ${#FB_TASKS[@]} ))
+          echo "- **Facebook Page:** ${FB_TASKS[$FB_INDEX]}" >> "$GITHUB_STEP_SUMMARY"
+
+          # --- 2x/week: Pinterest pin (Tue & Fri) ---
+          if [ "$DAY_OF_WEEK" = "2" ] || [ "$DAY_OF_WEEK" = "5" ]; then
+            echo "- **Pinterest:** Create a pin for one existing math worksheet page not yet pinned." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          # --- Weekly: new community (Tuesday only, offset from readeasy30) ---
+          if [ "$DAY_OF_WEEK" = "2" ]; then
+            COMMUNITIES=(
+              "A homeschool math Facebook group not posted in yet"
+              "r/homeschool on Reddit"
+              "r/matheducation on Reddit"
+              "r/elementary_education on Reddit"
+              "A homeschool math curriculum Facebook group"
+            )
+            WEEK_NUM=$(( ( (10#$DAY_OF_YEAR) / 7 ) % ${#COMMUNITIES[@]} ))
+            echo "- **New community this week:** Share matheasy30.com in ${COMMUNITIES[$WEEK_NUM]}." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          # --- Monthly: blogger/roundup outreach (first 3 days of month) ---
+          if [ "$DAY_OF_MONTH" -le 3 ]; then
+            echo "- **Monthly outreach:** Reach out to 2-3 homeschool bloggers or free-resource roundup sites for inclusion." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "_See distribution-plan.md in control-room for ready-to-post copy templates._" >> "$GITHUB_STEP_SUMMARY"
+
+ame: Daily Marketing Task
+
+on:
+  schedule:
+    - cron: '0 13 * * *'   # 8am CT / 1pm UTC daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  daily-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate today's distribution tasks
+        run: |
+          set -eo pipefail
 
           DAY_OF_YEAR=$(date +%j)
-          INDEX=$(( (10#$DAY_OF_YEAR) % ${#TASKS[@]} ))
-          TASK="${TASKS[$INDEX]}"
+          DAY_OF_WEEK=$(date +%u)   # 1=Mon ... 7=Sun
+          DAY_OF_MONTH=$(date +%-d)
+          DATE=$(date +%Y-%m-%d)
 
-          echo "## 📋 Today's Marketing Task" >> "$GITHUB_STEP_SUMMARY"
+          echo "## 📋 MathEasy30 Distribution Tasks — $DATE" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Date:** $(date +%Y-%m-%d)" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "$TASK" >> "$GITHUB_STEP_SUMMARY"
 
-          echo "Task for today: $TASK"
+          # --- Daily: rotate Facebook Page post type ---
+          FB_TASKS=(
+            "Post a lesson highlight (pick today's featured math lesson)."
+            "Post a printable worksheet spotlight with direct link."
+            "Post a parent/tutor tip for helping with math practice at home."
+          )
+          FB_INDEX=$(( (10#$DAY_OF_YEAR) % ${#FB_TASKS[@]} ))
+          echo "- **Facebook Page:** ${FB_TASKS[$FB_INDEX]}" >> "$GITHUB_STEP_SUMMARY"
+
+          # --- 2x/week: Pinterest pin (Tue & Fri) ---
+          if [ "$DAY_OF_WEEK" = "2" ] || [ "$DAY_OF_WEEK" = "5" ]; then
+            echo "- **Pinterest:** Create a pin for one existing math worksheet page not yet pinned." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          # --- Weekly: new community (Tuesday only, offset from readeasy30) ---
+          if [ "$DAY_OF_WEEK" = "2" ]; then
+            COMMUNITIES=(
+              "A homeschool math Facebook group not posted in yet"
+              "r/homeschool on Reddit"
+              "r/matheducation on Reddit"
+              "r/elementary_education on Reddit"
+              "A homeschool math curriculum Facebook group"
+            )
+            WEEK_NUM=$(( ( (10#$DAY_OF_YEAR) / 7 ) % ${#COMMUNITIES[@]} ))
+            echo "- **New community this week:** Share matheasy30.com in ${COMMUNITIES[$WEEK_NUM]}." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          # --- Monthly: blogger/roundup outreach (first 3 days of month) ---
+          if [ "$DAY_OF_MONTH" -le 3 ]; then
+            echo "- **Monthly outreach:** Reach out to 2-3 homeschool bloggers or free-resource roundup sites for inclusion." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "_See distribution-plan.md in control-room for ready-to-post copy templates._" >> "$GITHUB_STEP_SUMMARY"
