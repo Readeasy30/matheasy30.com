@@ -1,91 +1,42 @@
-Replace .github/workflows/daily-marketing.yml in readeasy30.com and matheasy30.com with this exact content (identical in both, just swap domain checks for matheasy30.com's own files/URLs where noted). Commit to main: "Fix daily-marketing.yml: remove dead endpoint, fix invalid empty step".
-
-name: Daily Marketing Check
+name: Daily Marketing Task
 
 on:
   schedule:
-    - cron: '0 13 * * *'  # 8am CT daily
-  workflow_dispatch:
+    - cron: '0 13 * * *'   # 8am CT / 1pm UTC daily — adjust if needed
+  workflow_dispatch: {}
 
 permissions:
   contents: read
-  issues: write
 
 jobs:
-  marketing-check:
+  daily-task:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Site health check
-        id: health
-        run: |
-          set -euo pipefail
-          PROBLEMS=""
-          for file in index.html app.html app.js css/style.css sitemap.xml robots.txt; do
-            if [ ! -f "$file" ]; then
-              PROBLEMS="$PROBLEMS\n- Missing file: $file"
-            fi
-          done
-          HTTP=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://readeasy30.com/ || echo "000")
-          if [ "$HTTP" != "200" ]; then
-            PROBLEMS="$PROBLEMS\n- readeasy30.com returned HTTP $HTTP (expected 200)"
-          fi
-          HTTP2=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://readeasy30.com/app.html || echo "000")
-          if [ "$HTTP2" != "200" ]; then
-            PROBLEMS="$PROBLEMS\n- readeasy30.com/app.html returned HTTP $HTTP2"
-          fi
-          HTTP3=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://readeasy30.com/math/ || echo "000")
-          if [ "$HTTP3" != "200" ]; then
-            PROBLEMS="$PROBLEMS\n- readeasy30.com/math/ returned HTTP $HTTP3"
-          fi
-          if [ -n "$PROBLEMS" ]; then
-            echo "problems=true" >> $GITHUB_OUTPUT
-            echo "PROBLEMS<<EOF" >> $GITHUB_OUTPUT
-            echo -e "$PROBLEMS" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-            echo "Site problems found:"
-            echo -e "$PROBLEMS"
-          else
-            echo "problems=false" >> $GITHUB_OUTPUT
-            echo "All site checks passed."
-          fi
-
-      - name: Open issue if problems found
-        if: steps.health.outputs.problems == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const today = new Date().toISOString().slice(0, 10);
-            const problems = `${{ steps.health.outputs.PROBLEMS }}`;
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `Site health issue detected — ${today}`,
-              body: `## Daily Site Check Found Problems\n\nDate: ${today}\n\n### Problems:\n${problems}\n\n### Next step:\nOpen a Claude Code session on this repo and type: **Fix today's site issue.**`,
-              labels: []
-            });
-
       - name: Pick today's marketing task
         run: |
+          set -eo pipefail
+
           TASKS=(
-            "Share a lesson link on X/Twitter"
-            "Post a tip in a homeschool Facebook group"
-            "Reply to 3 relevant Reddit threads in r/homeschool or r/ESL"
-            "Submit site to a new educational directory"
-            "Email one homeschool blogger about a link exchange"
-            "Post a student success story on socials"
-            "Check and respond to any site contact form messages"
-            "Update meta descriptions on 2 lesson pages for SEO"
+            "Share a recent lesson page on social media (pick a top-performing page from analytics)."
+            "Check for broken links on the homepage and one interior page."
+            "Post a tip or fact related to reading/math practice on social media."
+            "Review site analytics for the past 7 days and note any traffic spikes or drops."
+            "Reach out to one homeschool or ESL community/forum with a link to the site."
+            "Check that all lesson level files (1-8) are loading correctly on both sites."
+            "Write or schedule one short blog/update post about a new feature or lesson set."
+            "Check Google Search Console for new indexing issues or crawl errors."
+            "Review and respond to any user feedback or contact form submissions."
+            "Cross-promote readeasy30.com and matheasy30.com to each other's audiences."
           )
-          DAY=$(date +%j)
-          IDX=$(( (10#$DAY) % ${#TASKS[@]} ))
-          TASK="${TASKS[$IDX]}"
-          echo "## Today's Marketing Task" >> $GITHUB_STEP_SUMMARY
-          echo "$TASK" >> $GITHUB_STEP_SUMMARY
-          echo "Task: $TASK"
 
-For matheasy30.com, change the three curl URL checks (/, /app.html, /math/) to matheasy30.com's own live paths — verify what those should be from the repo's actual file structure (likely https://matheasy30.com/, /app.html, and whatever level-selector or lesson path matheasy30.com actually serves) before committing.
+          DAY_OF_YEAR=$(date +%j)
+          INDEX=$(( (10#$DAY_OF_YEAR) % ${#TASKS[@]} ))
+          TASK="${TASKS[$INDEX]}"
 
-After committing both, trigger workflow_dispatch manually on each repo and confirm the run is green with no invalid-step errors and no dead-host calls.
+          echo "## 📋 Today's Marketing Task" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Date:** $(date +%Y-%m-%d)" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "$TASK" >> "$GITHUB_STEP_SUMMARY"
+
+          echo "Task for today: $TASK"
