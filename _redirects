@@ -1,2 +1,2 @@
-# Cloudflare Pages redirects for MathEasy30
-# Keep /app and /app/ pointed at the stable app.html page.
+/app /app.html 301
+/app/ /app.html 301
