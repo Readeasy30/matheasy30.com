@@ -1,0 +1,79 @@
+name: OpenCode AI Link
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 13 * * *'   # ~8am Central, daily
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://readeasy30.com
+      CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check site uptime and crawl internal links
+        run: |
+          set +e
+          echo "## Site Health Check — $(date -u)" >> "$GITHUB_STEP_SUMMARY"
+
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 15 "$SITE_URL")
+          echo "Homepage status: $STATUS" >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$STATUS" != "200" ]; then
+            echo "⚠️ Homepage did not return 200" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          curl -s -L --max-time 15 "$SITE_URL" -o /tmp/home.html
+
+          grep -oE 'href="[^"]+"' /tmp/home.html \
+            | sed -E 's/href="([^"]+)"/\1/' \
+            | grep -Ev '^(mailto:|tel:|javascript:|#)' \
+            | sed -E "s|^/|$SITE_URL/|" \
+            | grep -E "^($SITE_URL|https?://)" \
+            | sort -u \
+            | head -50 > /tmp/links.txt
+
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Links checked: $(wc -l < /tmp/links.txt)" >> "$GITHUB_STEP_SUMMARY"
+
+          > /tmp/broken.txt
+          while read -r link; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 10 "$link")
+            if [ "$code" != "200" ]; then
+              echo "$code $link" >> /tmp/broken.txt
+            fi
+          done < /tmp/links.txt
+
+          if [ -s /tmp/broken.txt ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "### ⚠️ Broken links found:" >> "$GITHUB_STEP_SUMMARY"
+            cat /tmp/broken.txt >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "✅ No broken links found." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: AI summary of results (only if issues found)
+        if: always()
+        run: |
+          if [ -s /tmp/broken.txt ] || [ -z "$CLAUDE_API_KEY" ]; then
+            if [ -z "$CLAUDE_API_KEY" ]; then
+              echo "CLAUDE_API_KEY not set, skipping AI summary." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            BROKEN=$(cat /tmp/broken.txt)
+            PROMPT="Site health check found these broken links on readeasy30.com. Give a 2-3 sentence prioritized summary of what to fix first:\n\n$BROKEN"
+            RESPONSE=$(curl -s https://api.anthropic.com/v1/messages \
+              -H "x-api-key: $CLAUDE_API_KEY" \
+              -H "anthropic-version: 2023-06-01" \
+              -H "content-type: application/json" \
+              -d "$(jq -n --arg p "$PROMPT" '{model:"claude-sonnet-4-6",max_tokens:300,messages:[{role:"user",content:$p}]}')")
+            SUMMARY=$(echo "$RESPONSE" | jq -r '.content[0].text // "No summary returned."')
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "### 🤖 AI Summary" >> "$GITHUB_STEP_SUMMARY"
+            echo "$SUMMARY" >> "$GITHUB_STEP_SUMMARY"
+          fi
