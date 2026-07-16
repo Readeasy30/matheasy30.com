@@ -12,6 +12,21 @@ jobs:
   post:
     runs-on: ubuntu-latest
     steps:
+      - name: Validate Facebook configuration
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${FB_PAGE_ID}" ]; then
+            echo "Missing GitHub Secret: FB_PAGE_ID"
+            exit 1
+          fi
+          if [ -z "${FB_PAGE_TOKEN}" ]; then
+            echo "Missing GitHub Secret: FB_PAGE_TOKEN"
+            exit 1
+          fi
+
       - name: Post to MathEasy30 Facebook Page
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
