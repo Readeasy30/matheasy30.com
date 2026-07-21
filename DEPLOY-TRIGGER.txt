@@ -1,3 +1,3 @@
-Build Sync - Version 1.0.3
+ Unified Printables Sync Live
 
 This file exists to trigger Cloudflare Pages deployments when needed.
