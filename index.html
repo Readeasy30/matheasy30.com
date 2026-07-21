@@ -1,36 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MathEasy30: Build Math Skills with 30 Minutes of Daily Practice</title>
-<meta name="description" content="MathEasy30 helps learners build math skills with free 30-minute daily practice. Follow a simple learning path designed for students, parents, teachers, and adult learners.">
-<link rel="canonical" href="https://matheasy30.com/">
-<style>
-body{font-family:Arial,sans-serif;margin:0;line-height:1.6;color:#222}header,section,footer{max-width:900px;margin:auto;padding:30px 20px}.hero{background:#f4f8ff;text-align:center}h1{font-size:2.2rem;color:#123}h2{color:#245} .button{display:inline-block;background:#1565c0;color:white;padding:12px 24px;border-radius:6px;text-decoration:none}footer{font-size:.9rem;text-align:center}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathEasy30 | Fast, Free Math for Everyone</title>
+    <script src="https://jsdelivr.net"></script>
+    <!-- Inject your existing foundational rules dynamically -->
+    <link rel="stylesheet" href="css/style.css" onerror="this.remove()">
 </head>
-<body>
-<header class="hero">
-<h1>Build Math Skills with 30 Minutes of Daily Practice</h1>
-<p>Free math practice designed to help learners improve skills through focused daily learning.</p>
-<a class="button" href="#start">Start Practicing</a>
-</header>
-<section id="start">
-<h2>How MathEasy30 Works</h2>
-<p>Spend 30 minutes each day building stronger math skills with structured practice activities.</p>
-<ul><li>Daily focused math practice</li><li>Clear learning progression</li><li>Practice for students, parents, teachers, and adult learners</li></ul>
-</section>
-<section>
-<h2>30-Day Learning Path</h2>
-<p>The program uses a 30-day pathway to create a consistent learning habit while supporting long-term math growth.</p>
-</section>
-<section>
-<h2>Why Daily Practice Works</h2>
-<p>Consistent short sessions help learners strengthen understanding, accuracy, and confidence over time.</p>
-</section>
-<footer>
-<p>© MathEasy30. Free daily math practice.</p>
-</footer>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Active Trust Banner (Leveraging your existing asset) -->
+    <div id="trust-banner-container"></div>
+
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-black tracking-tight text-indigo-600">math<span class="text-slate-800">easy30</span></h1>
+            <nav class="flex gap-4 text-sm font-medium text-slate-600">
+                <a href="days-1-240-curriculum.html" class="hover:text-indigo-600">Curriculum</a>
+                <a href="faq.html" class="hover:text-indigo-600">FAQ</a>
+                <a href="about.html" class="hover:text-indigo-600">Free Access</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Application Hub -->
+    <main class="max-w-4xl w-full mx-auto p-6 flex-grow">
+        
+        <!-- Value Hook centered on Adult/Student Anxiety -->
+        <div class="text-center my-10">
+            <h2 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">Math shouldn't be hard.</h2>
+            <p class="mt-3 text-lg text-slate-500 max-w-xl mx-auto">No confusing formulas. Zero judgment. Just instant answers and dead-simple 30-day pathways for students and adults.</p>
+        </div>
+
+        <!-- Quick-Action Segmented Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <a href="calm-math-practice.html" class="p-5 rounded-2xl border-2 border-indigo-600 bg-indigo-50/50 hover:bg-indigo-50 transition-all text-left">
+                <div class="font-bold text-lg text-indigo-900">🏠 Adult Survival Math</div>
+                <p class="text-xs text-indigo-700 mt-1">Clear explanations for money, bills, taxes, and daily measurements.</p>
+            </a>
+            <a href="app-240.html" class="p-5 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 transition-all text-left">
+                <div class="font-bold text-lg text-slate-800">🎒 Student 240-Day Path</div>
+                <p class="text-xs text-slate-500 mt-1">Staged interactive daily lessons from simple numbers to algebra.</p>
+            </a>
+            <a href="printable-math-worksheets.html" class="p-5 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 transition-all text-left">
+                <div class="font-bold text-lg text-slate-800">📄 Free Printable Hub</div>
+                <p class="text-xs text-slate-500 mt-1">Clean, distraction-free practice worksheets built for mobile download.</p>
+            </a>
+        </div>
+
+        <!-- Micro-Practice Module (Plugging directly into your current practice engines) -->
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8">
+            <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">🎛️ Jump Straight Into Rapid Practice</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <a href="addition-practice.html" class="py-3 px-4 bg-slate-50 hover:bg-slate-100 text-center rounded-xl font-semibold text-sm border border-slate-200 text-slate-700 transition-all">➕ Addition</a>
+                <a href="subtraction-practice.html" class="py-3 px-4 bg-slate-50 hover:bg-slate-100 text-center rounded-xl font-semibold text-sm border border-slate-200 text-slate-700 transition-all" onerror="this.href='math-facts-practice.html'">➖ Subtraction</a>
+                <a href="multiplication-practice.html" class="py-3 px-4 bg-slate-50 hover:bg-slate-100 text-center rounded-xl font-semibold text-sm border border-slate-200 text-slate-700 transition-all">✖️ Multiplication</a>
+                <a href="division-practice.html" class="py-3 px-4 bg-slate-50 hover:bg-slate-100 text-center rounded-xl font-semibold text-sm border border-slate-200 text-slate-700 transition-all">➗ Division</a>
+                <a href="fractions-practice.html" class="py-3 px-4 bg-slate-50 hover:bg-slate-100 text-center rounded-xl font-semibold text-sm border border-slate-200 text-slate-700 transition-all">🍕 Fractions</a>
+                <a href="decimals-practice.html" class="py-3 px-4 bg-slate-50 hover:bg-slate-100 text-center rounded-xl font-semibold text-sm border border-slate-200 text-slate-700 transition-all">🪙 Decimals</a>
+                <a href="money-practice.html" class="py-3 px-4 bg-slate-50 hover:bg-slate-100 text-center rounded-xl font-semibold text-sm border border-slate-200 text-slate-700 transition-all">💵 Money Math</a>
+                <a href="word-problem-practice.html" class="py-3 px-4 bg-slate-50 hover:bg-slate-100 text-center rounded-xl font-semibold text-sm border border-slate-200 text-slate-700 transition-all">📝 Word Problems</a>
+            </div>
+        </div>
+
+        <!-- Special Support Section (Linked to your active SEO campaigns) -->
+        <div class="mt-6 bg-amber-50/60 border border-amber-200 rounded-2xl p-6 text-center sm:text-left sm:flex justify-between items-center gap-4">
+            <div>
+                <h4 class="font-bold text-amber-900 text-lg">Looking for Special Learning Accommodations?</h4>
+                <p class="text-sm text-amber-700 mt-0.5">Explore our dedicated formats crafted explicitly for dyscalculia and high math anxiety.</p>
+            </div>
+            <a href="special-learning-support.html" class="mt-4 sm:mt-0 block text-center bg-amber-800 hover:bg-amber-900 text-white font-bold py-2.5 px-5 text-sm rounded-xl transition-all whitespace-nowrap">Get Free Support</a>
+        </div>
+
+    </main>
+
+    <!-- Footer Stand-by Rules -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 px-6">
+            <p>&copy; 2026 MathEasy30. Completely Free Alternative.</p>
+            <div class="flex gap-4">
+                <a href="privacy.html" class="hover:underline">Privacy</a>
+                <a href="terms.html" class="hover:underline">Terms</a>
+                <a href="contact.html" class="hover:underline">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wire your system scripts to maintain functionality with existing tracking modules -->
+    <script src="free-trust-banner.js"></script>
+    <script src="math-voice-picker.js"></script>
+    <script>
+        // Mount trust banner component if asset loads successfully
+        if(typeof initializeTrustBanner === 'function') {
+            initializeTrustBanner('#trust-banner-container');
+        }
+    </script>
 </body>
 </html>
+
