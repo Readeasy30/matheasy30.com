@@ -71,3 +71,9 @@ venv/
 private/
 _private/
 exports/private/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
