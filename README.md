@@ -209,3 +209,7 @@ Test on phone and desktop:
 Replace broken files cleanly. Do not stack small repairs on top of broken repairs.
 
 When changing a public page, prefer one complete-file replacement with a clear commit message.
+
+
+## Permanent Directives
+- [403 Resolution & GitHub App Permissions Procedure](403-RESOLUTION.md)
