@@ -3,61 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MathEasy30 - Fun 30-Second Math Practice for Kids</title>
+  <title>MathEasy30 - Fun 30-Second Math Practice</title>
   <style>
     * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background: #f0fdf4; color: #166534; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-    header { text-align: center; margin-bottom: 20px; }
-    h1 { font-size: 2.5rem; margin: 0; color: #15803d; }
-    p.subtitle { font-size: 1.1rem; color: #166534; margin-top: 5px; }
-    .card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); width: 100%; max-width: 480px; text-align: center; border: 2px solid #bbf7d0; }
-    .stats { display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: bold; font-size: 1.1rem; }
-    .stat-box { background: #f0fdf4; padding: 10px 15px; border-radius: 8px; border: 1px solid #bbf7d0; }
-    .problem { font-size: 3.5rem; font-weight: 800; color: #166534; margin: 20px 0; letter-spacing: 2px; }
-    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-    button.btn-opt { background: #22c55e; color: white; border: none; padding: 18px; font-size: 1.8rem; font-weight: bold; border-radius: 12px; cursor: pointer; transition: transform 0.1s, background 0.2s; }
-    button.btn-opt:hover { background: #16a34a; transform: translateY(-2px); }
-    button.btn-opt:active { transform: translateY(0); }
-    .badge-container { margin-top: 25px; font-size: 1.2rem; font-weight: bold; }
-    .mode-selector { margin-bottom: 20px; display: flex; gap: 10px; justify-content: center; }
-    .mode-btn { background: #e2e8f0; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+    body { background: #f0fdf4; color: #166534; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    .nav-bridge { background: #15803d; color: white; padding: 12px 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .nav-bridge a { color: #fef08a; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; }
+    .container { padding: 20px; width: 100%; max-width: 480px; text-align: center; }
+    h1 { font-size: 2.2rem; margin: 10px 0 5px; color: #15803d; }
+    .card { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 2px solid #bbf7d0; margin-top: 15px; }
+    .stats { display: flex; justify-content: space-around; margin-bottom: 15px; font-weight: bold; font-size: 1.1rem; }
+    .stat-box { background: #f0fdf4; padding: 8px 12px; border-radius: 8px; border: 1px solid #bbf7d0; }
+    .problem { font-size: 3.5rem; font-weight: 800; color: #166534; margin: 15px 0; }
+    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    button.btn-opt { background: #22c55e; color: white; border: none; padding: 16px; font-size: 1.8rem; font-weight: bold; border-radius: 12px; cursor: pointer; transition: transform 0.1s; }
+    button.btn-opt:active { transform: scale(0.98); }
+    .mode-selector { display: flex; gap: 8px; justify-content: center; margin-bottom: 15px; }
+    .mode-btn { background: #e2e8f0; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; }
     .mode-btn.active { background: #15803d; color: white; }
+    .progress-bar { background: #e2e8f0; height: 10px; border-radius: 5px; margin: 15px 0; overflow: hidden; }
+    .progress-fill { background: #22c55e; height: 100%; width: 0%; transition: width 0.3s; }
+    .feedback { font-weight: bold; margin-top: 15px; font-size: 1.1rem; }
   </style>
 </head>
 <body>
-  <nav class="nav-bridge" style="background: #15803d; color: white; padding: 10px 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <nav class="nav-bridge">
     <span style="font-weight: bold;">🧮 MathEasy 30</span>
-    <a href="https://readeasy30.com" style="color: #fef08a; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px;">Switch to Reading 📚 ➔</a>
+    <a href="https://readeasy30.com">Switch to Reading 📚 ➔</a>
   </nav>
-  <header>
-    <h1>MathEasy 30 🧮</h1>
-    <p class="subtitle">Master Math in 30 Seconds a Day!</p>
-  </header>
 
-  <div class="card">
-    <div class="mode-selector">
-      <button class="mode-btn active" onclick="setMode('+')">Addition (+)</button>
-      <button class="mode-btn" onclick="setMode('-')">Subtraction (-)</button>
-      <button class="mode-btn" onclick="setMode('×')">Multiplication (×)</button>
+  <div class="container">
+    <h1>MathEasy 30</h1>
+    <p style="margin:0; color:#166534;">Master Math in 30 Seconds a Day!</p>
+
+    <div class="card">
+      <div class="mode-selector">
+        <button class="mode-btn active" onclick="setMode('+')">Addition</button>
+        <button class="mode-btn" onclick="setMode('-')">Subtraction</button>
+        <button class="mode-btn" onclick="setMode('×')">Multiplication</button>
+      </div>
+
+      <div class="progress-bar"><div class="progress-fill" id="dailyProgress"></div></div>
+
+      <div class="stats">
+        <div class="stat-box">⭐ High Score: <span id="highScore">0</span></div>
+        <div class="stat-box">🔥 Streak: <span id="streak">0</span></div>
+      </div>
+
+      <div class="problem" id="problemDisplay">2 + 3</div>
+
+      <div class="options" id="optionsContainer"></div>
+
+      <div class="feedback" id="feedback">Tap the correct answer!</div>
     </div>
-
-    <div class="stats">
-      <div class="stat-box">⭐ Score: <span id="score">0</span></div>
-      <div class="stat-box">🔥 Streak: <span id="streak">0</span></div>
-    </div>
-
-    <div class="problem" id="problemDisplay">2 + 3</div>
-
-    <div class="options" id="optionsContainer"></div>
-
-    <div class="badge-container" id="feedback">Tap the correct answer!</div>
   </div>
 
   <script>
     let score = 0;
+    let highScore = localStorage.getItem('math_highscore') || 0;
     let streak = 0;
+    let dailyDone = 0;
     let currentOp = '+';
     let num1 = 0, num2 = 0, correctAnswer = 0;
+
+    document.getElementById('highScore').innerText = highScore;
+
+    function playSound(type) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        if (type === 'good') {
+          osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+          osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+        } else {
+          osc.frequency.setValueAtTime(220, ctx.currentTime);
+        }
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.3);
+      } catch(e){}
+    }
 
     function setMode(op) {
       currentOp = op;
@@ -106,15 +134,23 @@
       if (selected === correctAnswer) {
         score += 10;
         streak += 1;
-        feedback.innerHTML = "🎉 Correct! Keep Going!";
+        dailyDone = Math.min(10, dailyDone + 1);
+        playSound('good');
+        feedback.innerHTML = "🎉 Correct! Great job!";
         feedback.style.color = "#16a34a";
+        if (score > highScore) {
+          highScore = score;
+          localStorage.setItem('math_highscore', highScore);
+          document.getElementById('highScore').innerText = highScore;
+        }
       } else {
         streak = 0;
-        feedback.innerHTML = ❌ Oops! The answer was \;
+        playSound('bad');
+        feedback.innerHTML = ❌ Oops! Answer was \;
         feedback.style.color = "#dc2626";
       }
-      document.getElementById('score').innerText = score;
       document.getElementById('streak').innerText = streak;
+      document.getElementById('dailyProgress').style.width = \%;
       generateProblem();
     }
 
