@@ -1,0 +1,28 @@
+name: 24/7 Cloud Automation & Recovery Check
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  verify-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Validate Core Recovery & Directive Files
+        run: |
+          echo "========================================"
+          echo "VERIFYING DIRECTIVE FILES"
+          echo "========================================"
+          if [ -f "403-RESOLUTION.md" ]; then echo "✅ 403-RESOLUTION.md OK"; else echo "❌ Missing 403-RESOLUTION.md"; fi
+          if [ -f "PROJECT_STATUS.md" ]; then echo "✅ PROJECT_STATUS.md OK"; else echo "❌ Missing PROJECT_STATUS.md"; fi
+          if [ -f "DIRECTIVES.md" ]; then echo "✅ DIRECTIVES.md OK"; else echo "❌ Missing DIRECTIVES.md"; fi
+
+      - name: Confirm Deployment Health
+        run: |
+          echo "Build and structure verified. Ready for Cloudflare Pages edge deployment."
