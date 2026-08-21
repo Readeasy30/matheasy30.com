@@ -1,195 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Math Practice App | MathEasy30</title>
-  <meta name="description" content="Start free daily math practice with MathEasy30. Use a calm math check, simple questions, hints, read-aloud support, printable worksheets, and Bubbles the friendly math coach." />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#2f7d67" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="MathEasy30" />
-  <meta property="og:title" content="Free Math Practice App | MathEasy30" />
-  <meta property="og:description" content="Calm daily math practice with short questions, hints, read-aloud support, and Bubbles coaching." />
-  <meta property="og:url" content="https://matheasy30.com/app.html" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Free Math Practice App | MathEasy30" />
-  <meta name="twitter:description" content="Start free daily math practice with simple questions, hints, read-aloud support, and Bubbles coaching." />
-  <link rel="canonical" href="https://matheasy30.com/app.html" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/mobile-fixes.css?v=20260604-mobile1" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalApplication",
-    "name": "MathEasy30 App",
-    "url": "https://matheasy30.com/app.html",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "Any",
-    "isAccessibleForFree": true,
-    "description": "A free calm math practice app with a placement-style math check, short daily questions, hints, read-aloud support, and Bubbles coaching.",
-    "audience": [
-      { "@type": "Audience", "audienceType": "Students who need math practice" },
-      { "@type": "Audience", "audienceType": "Adult learners" },
-      { "@type": "Audience", "audienceType": "ESL learners" },
-      { "@type": "Audience", "audienceType": "Parents, tutors, and helpers" }
-    ],
-    "publisher": { "@type": "Organization", "name": "MathEasy30", "url": "https://matheasy30.com/" }
-  }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathEasy30 - Active Practice</title>
+  <style>
+    body { font-family: 'Comic Sans MS', sans-serif, system-ui; background-color: #f0fdf4; color: #1e293b; margin: 0; padding: 20px; text-align: center; }
+    main { max-width: 600px; margin: 30px auto; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 3px solid #4ade80; }
+    h1 { color: #16a34a; font-size: 2.5rem; margin-bottom: 10px; }
+    .math-box { background: #f8fafc; padding: 20px; border-radius: 12px; margin: 20px 0; border: 2px dashed #cbd5e1; }
+    .problem { font-size: 3.5rem; font-weight: bold; color: #0f172a; margin: 10px 0; }
+    .input-row { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+    input { width: 120px; font-size: 1.8rem; padding: 8px; border: 2px solid #cbd5e1; border-radius: 8px; text-align: center; }
+    button { font-size: 1.3rem; padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: #16a34a; color: white; }
+    .score-board { font-size: 1.2rem; font-weight: bold; color: #16a34a; margin-top: 15px; }
+    .app-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.95rem; }
+    .footer-links a { margin: 0 10px; color: #2563eb; text-decoration: none; font-weight: bold; }
+  </style>
 </head>
 <body>
-  <div class="app-wrap">
-    <header class="lesson-header">
-      <a href="index.html" class="back-btn">← Back to Home</a>
 
-      <nav class="app-link-row" aria-label="MathEasy30 app navigation">
+  <main>
+    <h1>MathEasy30 Game 🎮</h1>
+    
+    <section class="math-box">
+      <div class="problem" id="question">0 + 0</div>
+      <div class="input-row">
+        <input type="number" id="answerInput" placeholder="?" autocomplete="off">
+        <button type="button" onclick="checkMathAnswer()">Check</button>
+      </div>
+      <p id="mathFeedback" style="font-weight: bold; min-height: 24px; margin: 15px 0 0 0;"></p>
+      <div class="score-board">Points: <span id="scoreValue">0</span></div>
+    </section>
+
+    <footer class="app-footer">
+      <nav class="footer-links">
         <a href="index.html">Home</a>
-        <a href="printable-math-worksheets.html">Worksheets</a>
-        <a href="word-problem-practice.html">Word Problems</a>
-        <a href="parent-guide.html">Parent Guide</a>
-        <a href="free-reading-and-math-practice.html">Reading + Math</a>
-        <a href="https://readeasy30.com/">ReadEasy30</a>
       </nav>
-
-      <p class="eyebrow">100% Free • Calm Daily Math Practice</p>
-      <h1>Math Practice That Starts Small</h1>
-      <p class="lesson-subtitle">Use the math check, try one question at a time, get a hint when needed, and let Bubbles keep the practice calm.</p>
-    </header>
-
-    <section class="practice-controls" aria-label="Practice controls">
-      <div>
-        <label for="daySelect">Choose a Practice Day</label>
-        <select id="daySelect" aria-label="Choose a practice day"></select>
-      </div>
-      <div class="practice-actions">
-        <button id="placementBtn" class="btn secondary" type="button">Math Check</button>
-        <button id="resetBtn" class="btn secondary" type="button">Reset This Student</button>
-      </div>
-    </section>
-
-    <section class="progress-section" aria-label="Lesson progress">
-      <div class="progress-top">
-        <span id="progressLabel">Math Practice Progress</span>
-        <span id="progressText">0%</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-    </section>
-
-    <section class="coach-box" aria-live="polite">
-      <h2>🫧 Bubbles Says</h2>
-      <p id="coachMessage">Start with one easy step. You do not have to rush.</p>
-    </section>
-
-    <main class="question-card" aria-label="MathEasy30 practice question">
-      <p class="mini-label" id="skillLabel">Skill check</p>
-      <h2 id="questionTitle">Math Check</h2>
-      <p id="questionText">Loading question...</p>
-
-      <div class="button-row">
-        <button class="btn secondary" type="button" onclick="readMathProblem()">🔊 Read Problem</button>
-        <button class="btn secondary" type="button" onclick="readMathHint()">🔊 Read Hint</button>
-      </div>
-
-      <label class="sr-only" for="answerInput">Type your answer</label>
-      <input type="text" id="answerInput" placeholder="Type your answer" autocomplete="off" inputmode="text" />
-
-      <div class="button-row">
-        <button id="checkBtn" class="btn primary" type="button">Check Answer</button>
-        <button id="hintBtn" class="btn secondary" type="button">Need a Hint?</button>
-        <button id="clearBtn" class="btn secondary" type="button">Clear</button>
-        <button id="nextBtn" class="btn secondary" type="button">Next →</button>
-      </div>
-    </main>
-
-    <section class="confidence-box" aria-live="polite">
-      <h3>Confidence Builder</h3>
-      <p id="confidenceMessage">Every small step helps your brain grow stronger.</p>
-    </section>
-
-    <section class="parent-tip-box">
-      <h3>Parent / Helper Tip</h3>
-      <p id="parentTip">If the learner struggles, read the question out loud and use objects, fingers, drawings, or a number line. Keep the tone calm.</p>
-    </section>
-
-    <section class="confidence-box">
-      <h3>Practice on Paper</h3>
-      <p>Use the worksheet hub after a short app lesson. Paper practice helps learners repeat the same skill away from the screen.</p>
-      <a class="btn secondary full" href="printable-math-worksheets.html">Open Math Worksheets</a>
-      <a class="btn secondary full" href="fractions-practice-worksheet.html">Open Fractions Worksheet</a>
-    </section>
-
-    <section class="confidence-box">
-      <h3>See the Full Path</h3>
-      <p>The 240-day overview helps families and helpers see the full learning path. Start with today’s short practice, then move forward one step at a time.</p>
-      <a class="btn secondary full" href="240-day-math-path.html">See the 240-Day Math Path</a>
-      <a class="btn secondary full" href="days-1-240-curriculum.html">View All 240 Days</a>
-    </section>
-
-    <section class="confidence-box">
-      <h3>Need Reading Practice Too?</h3>
-      <p>Use ReadEasy30 with MathEasy30 for one calm daily routine: reading practice, math practice, and a short review.</p>
-      <a class="btn secondary full" href="free-reading-and-math-practice.html">Open Reading + Math Plan</a>
-      <a class="btn secondary full" href="https://readeasy30.com/">Open ReadEasy30</a>
-    </section>
-
-    <footer>
-      <p>MathEasy30 — free calm math practice, one step at a time.</p>
-      <p><a href="index.html">Home</a> | <a href="printable-math-worksheets.html">Worksheets</a> | <a href="word-problem-practice.html">Word Problems</a> | <a href="parent-guide.html">Parent Guide</a> | <a href="free-reading-and-math-practice.html">Reading + Math</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+      <p>&copy; 2026 MathEasy30</p>
     </footer>
-  </div>
+  </main>
 
-   <script src="student-profiles.js?v=20260605-students1"></script>
-  <script src="level-a-lessons.js?v=20260610-a1"></script>
-  <script src="level-b-lessons.js?v=20260603-b1"></script>
-  <script src="level-c-lessons.js?v=20260603-c1"></script>
-  <script src="level-d-lessons.js?v=20260603-d1"></script>
-  <script src="level-e-lessons.js?v=20260603-e1"></script>
-  <script src="level-f-lessons.js?v=20260603-f1"></script>
-  <script src="level-g-lessons.js?v=20260603-g1"></script>
-  <script src="level-h-lessons.js?v=20260603-h1"></script>
-  <script src="lesson-loader-240.js?v=20260603-loader1"></script>
-
-Commit changes.
-
-STEP 3 — check (after ~2 min)
-
-Open matheasy30.com/app.html, move the day dropdown to 180. A question loads = 240 days are live.
-
-That's the whole MathEasy30 job. Do those, tell me "done," and I'll line up ReadEasy30 the same way.You said: no app.no app.html7:29 PMClaude responded: It's there — I read it directly from your repo.Verified file existence and pinpointed its locationVerified file existence and pinpointed its locationIt's there — I read it directly from your repo. You're probably just past it in the list. The files are sorted A→Z, and you've got several "app" files clustered together. Near the top of the file list you'll see, in this order:
-
-app-240.html
-app-240.js
-app.html ← this one
-app.js
-
-Click app.html (not app-240.html — that's the old preview).
-If you don't see that cluster at all, you're not at the repo root — click the matheasy30.com repo name at the top to get back to the main page, and they'll be right there near the top.
-Find app.html in that group?Opus 4.8 High
-  
-  
-  <script src="app.js?v=20260612-staged1"></script>
   <script>
-    function mathEasy30Speak(text) {
-      if (!text || !window.speechSynthesis) return;
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.85;
-      utterance.pitch = 1;
-      window.speechSynthesis.speak(utterance);
+    let num1, num2, correctAnswer;
+    let score = 0;
+
+    function generateProblem() {
+        num1 = Math.floor(Math.random() * 10) + 1;
+        num2 = Math.floor(Math.random() * 10) + 1;
+        correctAnswer = num1 + num2;
+        document.getElementById('question').innerText = `${num1} + ${num2}`;
+        document.getElementById('answerInput').value = '';
+        document.getElementById('answerInput').focus();
     }
 
-    function readMathProblem() {
-      const question = document.getElementById("questionText");
-      mathEasy30Speak(question ? question.textContent : "");
+    function checkMathAnswer() {
+        const inputField = document.getElementById('answerInput');
+        const feedback = document.getElementById('mathFeedback');
+        const userAnswer = parseInt(inputField.value);
+
+        if (isNaN(userAnswer)) return;
+
+        if (userAnswer === correctAnswer) {
+            score++;
+            document.getElementById('scoreValue').innerText = score;
+            feedback.innerText = "🌟 Correct answer!";
+            feedback.style.color = "#16a34a";
+            setTimeout(generateProblem, 1000);
+        } else {
+            feedback.innerText = "❌ Try again!";
+            feedback.style.color = "#dc3545";
+            inputField.select();
+        }
     }
 
-    function readMathHint() {
-      const coach = document.getElementById("coachMessage");
-      mathEasy30Speak(coach ? coach.textContent : "");
-    }
+    document.addEventListener('DOMContentLoaded', generateProblem);
+    document.getElementById('answerInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') checkMathAnswer();
+    });
   </script>
+
 </body>
 </html>
+
+  
