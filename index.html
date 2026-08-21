@@ -1,160 +1,89 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MathEasy30 - Fun 30-Second Math Practice</title>
+  <title>MathEasy30 - Fun & Steady Math Practice</title>
   <style>
-    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background: #f0fdf4; color: #166534; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-    .nav-bridge { background: #15803d; color: white; padding: 12px 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .nav-bridge a { color: #fef08a; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; }
-    .container { padding: 20px; width: 100%; max-width: 480px; text-align: center; }
-    h1 { font-size: 2.2rem; margin: 10px 0 5px; color: #15803d; }
-    .card { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 2px solid #bbf7d0; margin-top: 15px; }
-    .stats { display: flex; justify-content: space-around; margin-bottom: 15px; font-weight: bold; font-size: 1.1rem; }
-    .stat-box { background: #f0fdf4; padding: 8px 12px; border-radius: 8px; border: 1px solid #bbf7d0; }
-    .problem { font-size: 3.5rem; font-weight: 800; color: #166534; margin: 15px 0; }
-    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    button.btn-opt { background: #22c55e; color: white; border: none; padding: 16px; font-size: 1.8rem; font-weight: bold; border-radius: 12px; cursor: pointer; transition: transform 0.1s; }
-    button.btn-opt:active { transform: scale(0.98); }
-    .mode-selector { display: flex; gap: 8px; justify-content: center; margin-bottom: 15px; }
-    .mode-btn { background: #e2e8f0; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; }
-    .mode-btn.active { background: #15803d; color: white; }
-    .progress-bar { background: #e2e8f0; height: 10px; border-radius: 5px; margin: 15px 0; overflow: hidden; }
-    .progress-fill { background: #22c55e; height: 100%; width: 0%; transition: width 0.3s; }
-    .feedback { font-weight: bold; margin-top: 15px; font-size: 1.1rem; }
+    body { font-family: 'Comic Sans MS', sans-serif, system-ui; background-color: #f0fdf4; color: #1e293b; margin: 0; padding: 20px; text-align: center; }
+    main { max-width: 600px; margin: 30px auto; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 3px solid #4ade80; }
+    h1 { color: #16a34a; font-size: 2.5rem; margin-bottom: 10px; }
+    p { font-size: 1.2rem; color: #475569; }
+    .math-box { background: #f8fafc; padding: 20px; border-radius: 12px; margin: 20px 0; border: 2px dashed #cbd5e1; }
+    .problem { font-size: 3.5rem; font-weight: bold; color: #0f172a; margin: 10px 0; letter-spacing: 2px; }
+    .input-row { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+    input { width: 120px; font-size: 1.8rem; padding: 8px; border: 2px solid #cbd5e1; border-radius: 8px; text-align: center; }
+    button { font-size: 1.3rem; padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: #16a34a; color: white; transition: transform 0.1s; }
+    button:active { transform: scale(0.95); }
+    .score-board { font-size: 1.1rem; font-weight: bold; color: #16a34a; margin-top: 15px; }
+    .app-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.95rem; }
+    .footer-links a { margin: 0 10px; color: #2563eb; text-decoration: none; font-weight: bold; }
   </style>
 </head>
 <body>
-  <nav class="nav-bridge">
-    <span style="font-weight: bold;">🧮 MathEasy 30</span>
-    <a href="https://readeasy30.com">Switch to Reading 📚 ➔</a>
-  </nav>
 
-  <div class="container">
-    <h1>MathEasy 30</h1>
-    <p style="margin:0; color:#166534;">Master Math in 30 Seconds a Day!</p>
+  <main>
+    <h1>MathEasy30 ➕</h1>
+    <p>Calm, steady math practice for fast learners!</p>
 
-    <div class="card">
-      <div class="mode-selector">
-        <button class="mode-btn active" onclick="setMode('+')">Addition</button>
-        <button class="mode-btn" onclick="setMode('-')">Subtraction</button>
-        <button class="mode-btn" onclick="setMode('×')">Multiplication</button>
+    <section class="math-box">
+      <div class="problem" id="question">Loading...</div>
+      <div class="input-row">
+        <input type="number" id="answerInput" placeholder="?" autocomplete="off">
+        <button type="button" onclick="checkMathAnswer()">Check</button>
       </div>
+      <p id="mathFeedback" style="font-weight: bold; min-height: 24px; margin: 15px 0 0 0;"></p>
+      <div class="score-board">Score: <span id="scoreValue">0</span></div>
+    </section>
 
-      <div class="progress-bar"><div class="progress-fill" id="dailyProgress"></div></div>
-
-      <div class="stats">
-        <div class="stat-box">⭐ High Score: <span id="highScore">0</span></div>
-        <div class="stat-box">🔥 Streak: <span id="streak">0</span></div>
-      </div>
-
-      <div class="problem" id="problemDisplay">2 + 3</div>
-
-      <div class="options" id="optionsContainer"></div>
-
-      <div class="feedback" id="feedback">Tap the correct answer!</div>
-    </div>
-  </div>
+    <footer class="app-footer">
+      <nav class="footer-links">
+        <a href="https://readeasy30.com">Go to Reading App 📚</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+      <p>&copy; 2026 MathEasy30</p>
+    </footer>
+  </main>
 
   <script>
+    let num1, num2, correctAnswer;
     let score = 0;
-    let highScore = localStorage.getItem('math_highscore') || 0;
-    let streak = 0;
-    let dailyDone = 0;
-    let currentOp = '+';
-    let num1 = 0, num2 = 0, correctAnswer = 0;
-
-    document.getElementById('highScore').innerText = highScore;
-
-    function playSound(type) {
-      try {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        if (type === 'good') {
-          osc.frequency.setValueAtTime(523.25, ctx.currentTime);
-          osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
-        } else {
-          osc.frequency.setValueAtTime(220, ctx.currentTime);
-        }
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.3);
-      } catch(e){}
-    }
-
-    function setMode(op) {
-      currentOp = op;
-      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      generateProblem();
-    }
 
     function generateProblem() {
-      if (currentOp === '+') {
-        num1 = Math.floor(Math.random() * 12) + 1;
-        num2 = Math.floor(Math.random() * 12) + 1;
-        correctAnswer = num1 + num2;
-      } else if (currentOp === '-') {
-        num1 = Math.floor(Math.random() * 12) + 6;
-        num2 = Math.floor(Math.random() * num1) + 1;
-        correctAnswer = num1 - num2;
-      } else {
         num1 = Math.floor(Math.random() * 10) + 1;
         num2 = Math.floor(Math.random() * 10) + 1;
-        correctAnswer = num1 * num2;
-      }
-
-      document.getElementById('problemDisplay').innerText = \ \ \;
-      
-      let answers = [correctAnswer];
-      while (answers.length < 4) {
-        let wrong = correctAnswer + (Math.floor(Math.random() * 7) - 3);
-        if (wrong >= 0 && !answers.includes(wrong)) answers.push(wrong);
-      }
-      answers.sort(() => Math.random() - 0.5);
-
-      const container = document.getElementById('optionsContainer');
-      container.innerHTML = '';
-      answers.forEach(ans => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-opt';
-        btn.innerText = ans;
-        btn.onclick = () => checkAnswer(ans);
-        container.appendChild(btn);
-      });
+        correctAnswer = num1 + num2;
+        document.getElementById('question').innerText = `${num1} + ${num2}`;
+        document.getElementById('answerInput').value = '';
+        document.getElementById('answerInput').focus();
     }
 
-    function checkAnswer(selected) {
-      const feedback = document.getElementById('feedback');
-      if (selected === correctAnswer) {
-        score += 10;
-        streak += 1;
-        dailyDone = Math.min(10, dailyDone + 1);
-        playSound('good');
-        feedback.innerHTML = "🎉 Correct! Great job!";
-        feedback.style.color = "#16a34a";
-        if (score > highScore) {
-          highScore = score;
-          localStorage.setItem('math_highscore', highScore);
-          document.getElementById('highScore').innerText = highScore;
+    function checkMathAnswer() {
+        const inputField = document.getElementById('answerInput');
+        const feedback = document.getElementById('mathFeedback');
+        const userAnswer = parseInt(inputField.value);
+
+        if (isNaN(userAnswer)) return;
+
+        if (userAnswer === correctAnswer) {
+            score++;
+            document.getElementById('scoreValue').innerText = score;
+            feedback.innerText = "🌟 Great job! Correct!";
+            feedback.style.color = "#16a34a";
+            setTimeout(generateProblem, 1200);
+        } else {
+            feedback.innerText = "❌ Try again! You can do it!";
+            feedback.style.color = "#dc3545";
+            inputField.select();
         }
-      } else {
-        streak = 0;
-        playSound('bad');
-        feedback.innerHTML = ❌ Oops! Answer was \;
-        feedback.style.color = "#dc2626";
-      }
-      document.getElementById('streak').innerText = streak;
-      document.getElementById('dailyProgress').style.width = \%;
-      generateProblem();
     }
 
-    generateProblem();
+    document.addEventListener('DOMContentLoaded', generateProblem);
+    document.getElementById('answerInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') checkMathAnswer();
+    });
   </script>
+
 </body>
 </html>
