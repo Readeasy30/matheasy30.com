@@ -1,86 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MathEasy30 - Active Practice</title>
-  <style>
-    body { font-family: 'Comic Sans MS', sans-serif, system-ui; background-color: #f0fdf4; color: #1e293b; margin: 0; padding: 20px; text-align: center; }
-    main { max-width: 600px; margin: 30px auto; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 3px solid #4ade80; }
-    h1 { color: #16a34a; font-size: 2.5rem; margin-bottom: 10px; }
-    .math-box { background: #f8fafc; padding: 20px; border-radius: 12px; margin: 20px 0; border: 2px dashed #cbd5e1; }
-    .problem { font-size: 3.5rem; font-weight: bold; color: #0f172a; margin: 10px 0; }
-    .input-row { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
-    input { width: 120px; font-size: 1.8rem; padding: 8px; border: 2px solid #cbd5e1; border-radius: 8px; text-align: center; }
-    button { font-size: 1.3rem; padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: #16a34a; color: white; }
-    .score-board { font-size: 1.2rem; font-weight: bold; color: #16a34a; margin-top: 15px; }
-    .app-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.95rem; }
-    .footer-links a { margin: 0 10px; color: #2563eb; text-decoration: none; font-weight: bold; }
-  </style>
-</head>
-<body>
-
-  <main>
-    <h1>MathEasy30 Game 🎮</h1>
-    
-    <section class="math-box">
-      <div class="problem" id="question">0 + 0</div>
-      <div class="input-row">
-        <input type="number" id="answerInput" placeholder="?" autocomplete="off">
-        <button type="button" onclick="checkMathAnswer()">Check</button>
-      </div>
-      <p id="mathFeedback" style="font-weight: bold; min-height: 24px; margin: 15px 0 0 0;"></p>
-      <div class="score-board">Points: <span id="scoreValue">0</span></div>
-    </section>
-
-    <footer class="app-footer">
-      <nav class="footer-links">
-        <a href="index.html">Home</a>
-      </nav>
-      <p>&copy; 2026 MathEasy30</p>
-    </footer>
-  </main>
-
-  <script>
-    let num1, num2, correctAnswer;
-    let score = 0;
-
-    function generateProblem() {
-        num1 = Math.floor(Math.random() * 10) + 1;
-        num2 = Math.floor(Math.random() * 10) + 1;
-        correctAnswer = num1 + num2;
-        document.getElementById('question').innerText = `${num1} + ${num2}`;
-        document.getElementById('answerInput').value = '';
-        document.getElementById('answerInput').focus();
-    }
-
-    function checkMathAnswer() {
-        const inputField = document.getElementById('answerInput');
-        const feedback = document.getElementById('mathFeedback');
-        const userAnswer = parseInt(inputField.value);
-
-        if (isNaN(userAnswer)) return;
-
-        if (userAnswer === correctAnswer) {
-            score++;
-            document.getElementById('scoreValue').innerText = score;
-            feedback.innerText = "🌟 Correct answer!";
-            feedback.style.color = "#16a34a";
-            setTimeout(generateProblem, 1000);
-        } else {
-            feedback.innerText = "❌ Try again!";
-            feedback.style.color = "#dc3545";
-            inputField.select();
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathEasy30 - Calm & Steady Math Practice</title>
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        .math-box {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2d2a26;
+            margin: 20px 0;
+            min-height: 90px;
         }
-    }
+        .bubbles-avatar-pulse.speaking {
+            animation: bounceTalk 0.5s infinite alternate ease-in-out;
+        }
+        @keyframes bounceTalk {
+            from { transform: translateY(0); }
+            to { transform: translateY(-6px); }
+        }
+    </style>
+</head>
+<body class="bg-[#fdfbf7] text-[#2d2a26] font-sans min-h-screen pb-12 flex flex-col items-center justify-center p-4">
 
-    document.addEventListener('DOMContentLoaded', generateProblem);
-    document.getElementById('answerInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') checkMathAnswer();
-    });
-  </script>
+    <main class="max-w-2xl w-full mx-auto my-6 px-4">
+        <header class="text-center mb-6">
+            <h1 class="text-4xl font-bold text-[#357abd] mb-1">MathEasy30 🧮</h1>
+            <p class="text-md opacity-80">Your daily path to mental numbers mastery!</p>
+        </header>
 
+        <!-- Live Scoreboard -->
+        <section class="bg-white border-2 border-[#f1edd9] rounded-2xl p-4 mb-6 shadow-sm grid grid-cols-2 gap-4 text-center text-sm font-bold">
+            <div id="mathScore" class="bg-[#fdfbf7] p-3 rounded-xl border border-[#f1edd9] text-slate-700">Solved: 0</div>
+            <div id="mathStreak" class="bg-[#fdfbf7] p-3 rounded-xl border border-[#f1edd9] text-amber-700">Streak: 0 🔥</div>
+        </section>
+
+        <!-- Main Work Interface -->
+        <article class="bg-white border-4 border-[#f1edd9] rounded-3xl p-6 shadow-sm text-center">
+            <div class="w-16 h-16 bg-[#ffcb77] rounded-full flex items-center justify-center text-3xl shadow-sm mb-4 mx-auto bubbles-avatar-pulse" id="mathAvatar">
+                🧮
+            </div>
+            
+            <div id="mathSpeech" class="text-md font-medium text-slate-700 italic mb-4 bg-[#fdfbf7] p-4 rounded-xl border border-[#f1edd9]">
+                "Let's solve some equations together! Look at the problem below."
+            </div>
+
+            <div class="math-box" id="mathProblem">5 + 3 = ?</div>
+
+            <!-- Answer Buttons Grid -->
+            <div class="grid grid-cols-2 gap-3 max-w-sm mx-auto mb-6" id="mathAnswers"></div>
+
+            <button type="button" onclick="mathEngine.readProblem()" class="bg-[#4a90e2] hover:bg-[#357abd] text-white font-bold py-3.5 px-6 rounded-xl shadow transition transform active:scale-95 w-full max-w-sm">
+                🔊 Read Problem to Me
+            </button>
+        </article>
+    </main>
+
+    <script>
+        const MATH_CURRICULUM = [
+            { question: "1 + 1 = ?", voice: "What is 1 plus 1?", options: ["2", "3", "4"], correct: "2" },
+            { question: "2 + 3 = ?", voice: "What is 2 plus 3?", options: ["4", "5", "6"], correct: "5" },
+            { question: "5 + 4 = ?", voice: "What is 5 plus 4?", options: ["8", "9", "10"], correct: "9" },
+            { question: "10 - 2 = ?", voice: "What is 10 minus 2?", options: ["7", "8", "9"], correct: "8" },
+            { question: "6 - 3 = ?", voice: "What is 6 minus 3?", options: ["2", "3", "4"], correct: "3" }
+        ];
+
+        class MathEasyEngine {
+            constructor() {
+                this.problems = MATH_CURRICULUM;
+                this.idx = 0;
+                this.score = parseInt(localStorage.getItem('me30_score')) || 0;
+                this.streak = parseInt(localStorage.getItem('me30_streak')) || 0;
+
+                this.avatar = document.getElementById('mathAvatar');
+                this.speechBox = document.getElementById('mathSpeech');
+                this.problemBox = document.getElementById('mathProblem');
+                this.answersBox = document.getElementById('mathAnswers');
+
+                this.loadProblem();
+                this.updateUI();
+            }
+
+            loadProblem() {
+                const current = this.problems[this.idx];
+                this.problemBox.textContent = current.question;
+                this.answersBox.innerHTML = '';
+
+                current.options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = "p-4 border-2 border-[#f1edd9] bg-[#fdfbf7] font-bold rounded-xl transition hover:border-[#4a90e2] active:scale-95";
+                    btn.textContent = opt;
+                    btn.onclick = () => this.checkChoice(opt, current.correct, btn);
+                    this.answersBox.appendChild(btn);
+                });
+            }
+
+            checkChoice(choice, correct, buttonElement) {
+                if (choice === correct) {
+                    buttonElement.className = "p-4 border-2 border-green-500 bg-green-50 text-green-800 font-bold rounded-xl";
+                    this.speechBox.textContent = '"Correct! Excellent calculations."';
+                    this.speak("Correct! Excellent calculations.");
+
+                    this.score += 1;
+                    if (this.streak === 0) this.streak = 1;
+                    localStorage.setItem('me30_score', this.score);
+                    localStorage.setItem('me30_streak', this.streak);
+                    this.updateUI();
+
+                    setTimeout(() => {
+                        this.idx = (this.idx + 1) % this.problems.length;
+                        this.loadProblem();
+                        this.speechBox.textContent = '"Here is your next challenge!"';
+                    }, 1500);
+                } else {
+                    buttonElement.className = "p-4 border-2 border-red-500 bg-red-50 text-red-800 font-bold rounded-xl";
+                    this.speechBox.textContent = '"Not quite, let\'s recount and try again!"';
+                    this.speak("Let's try that one again.");
+                }
+            }
+
+            speak(text) {
+                if (!window.speechSynthesis) return;
+                window.speechSynthesis.cancel();
+                const u = new SpeechSynthesisUtterance(text);
+                u.rate = 0.85;
+                u.onstart = () => this.avatar.classList.add('speaking');
+                u.onend = () => this.avatar.classList.remove('speaking');
+                window.speechSynthesis.speak(u);
+            }
+
+            readProblem() {
+                this.speak(this.problems[this.idx].voice);
+            }
+
+            updateUI() {
+                document.getElementById('mathScore').textContent = `Solved: ${this.score}`;
+                document.getElementById('mathStreak').textContent = `Streak: ${this.streak} 🔥`;
+            }
+        }
+
+        let mathEngine;
+        window.addEventListener('DOMContentLoaded', () => {
+            mathEngine = new MathEasyEngine();
+        });
+    </script>
 </body>
 </html>
 
-  
