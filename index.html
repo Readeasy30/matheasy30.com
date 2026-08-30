@@ -1,89 +1,52 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MathEasy30 - Fun & Steady Math Practice</title>
-  <style>
-    body { font-family: 'Comic Sans MS', sans-serif, system-ui; background-color: #f0fdf4; color: #1e293b; margin: 0; padding: 20px; text-align: center; }
-    main { max-width: 600px; margin: 30px auto; background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 3px solid #4ade80; }
-    h1 { color: #16a34a; font-size: 2.5rem; margin-bottom: 10px; }
-    p { font-size: 1.2rem; color: #475569; }
-    .math-box { background: #f8fafc; padding: 20px; border-radius: 12px; margin: 20px 0; border: 2px dashed #cbd5e1; }
-    .problem { font-size: 3.5rem; font-weight: bold; color: #0f172a; margin: 10px 0; letter-spacing: 2px; }
-    .input-row { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
-    input { width: 120px; font-size: 1.8rem; padding: 8px; border: 2px solid #cbd5e1; border-radius: 8px; text-align: center; }
-    button { font-size: 1.3rem; padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; background: #16a34a; color: white; transition: transform 0.1s; }
-    button:active { transform: scale(0.95); }
-    .score-board { font-size: 1.1rem; font-weight: bold; color: #16a34a; margin-top: 15px; }
-    .app-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.95rem; }
-    .footer-links a { margin: 0 10px; color: #2563eb; text-decoration: none; font-weight: bold; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathEasy30 | Free Foundational Math Platform</title>
+    <!-- Tailwind CSS for modern formatting -->
+    <script src="https://tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-[#fdfbf7] text-[#2d2a26] font-sans min-h-screen flex flex-col justify-center items-center p-6">
 
-  <main>
-    <h1>MathEasy30 ➕</h1>
-    <p>Calm, steady math practice for fast learners!</p>
+    <main class="max-w-xl w-full bg-white border-4 border-[#f1edd9] rounded-3xl p-8 text-center shadow-sm">
+        
+        <div class="w-20 h-20 bg-[#ffcb77] rounded-full flex items-center justify-center text-4xl shadow-sm mb-4 mx-auto animate-bounce">
+            🧮
+        </div>
 
-    <section class="math-box">
-      <div class="problem" id="question">Loading...</div>
-      <div class="input-row">
-        <input type="number" id="answerInput" placeholder="?" autocomplete="off">
-        <button type="button" onclick="checkMathAnswer()">Check</button>
-      </div>
-      <p id="mathFeedback" style="font-weight: bold; min-height: 24px; margin: 15px 0 0 0;"></p>
-      <div class="score-board">Score: <span id="scoreValue">0</span></div>
-    </section>
+        <header class="mb-6">
+            <h1 class="text-4xl font-extrabold text-[#357abd] mb-2">MathEasy30</h1>
+            <p class="text-md opacity-80 font-medium">A friendly, calm, and free space dedicated to foundational math practice.</p>
+        </header>
 
-    <footer class="app-footer">
-      <nav class="footer-links">
-        <a href="https://readeasy30.com">Go to Reading App 📚</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </nav>
-      <p>&copy; 2026 MathEasy30</p>
+        <section class="space-y-4 mb-6 text-left bg-[#fdfbf7] p-4 rounded-2xl border border-[#f1edd9] text-sm">
+            <div class="flex items-start gap-2">
+                <span>🔢</span>
+                <p><strong>Interactive addition & subtraction:</strong> Progression designed for quick success.</p>
+            </div>
+            <div class="flex items-start gap-2">
+                <span>🔊</span>
+                <p><strong>Audio prompt feedback:</strong> Clear math problem sound recitation.</p>
+            </div>
+            <div class="flex items-start gap-2">
+                <span>🔥</span>
+                <p><strong>Zero cost public domain framework:</strong> No accounts, ads, or tracking cookies.</p>
+            </div>
+        </section>
+
+        <div class="pt-2">
+            <a href="/app" class="inline-block bg-[#4a90e2] hover:bg-[#357abd] text-white font-bold text-lg py-4 px-8 rounded-2xl shadow-md transition transform active:scale-95 duration-100">
+                🚀 Enter Math Classroom
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="mt-8 text-xs opacity-50 tracking-wide font-medium">
+        Public Domain Resource • Hosted on Cloudflare Edge Networks
     </footer>
-  </main>
-
-  <script>
-    let num1, num2, correctAnswer;
-    let score = 0;
-
-    function generateProblem() {
-        num1 = Math.floor(Math.random() * 10) + 1;
-        num2 = Math.floor(Math.random() * 10) + 1;
-        correctAnswer = num1 + num2;
-        document.getElementById('question').innerText = `${num1} + ${num2}`;
-        document.getElementById('answerInput').value = '';
-        document.getElementById('answerInput').focus();
-    }
-
-    function checkMathAnswer() {
-        const inputField = document.getElementById('answerInput');
-        const feedback = document.getElementById('mathFeedback');
-        const userAnswer = parseInt(inputField.value);
-
-        if (isNaN(userAnswer)) return;
-
-        if (userAnswer === correctAnswer) {
-            score++;
-            document.getElementById('scoreValue').innerText = score;
-            feedback.innerText = "🌟 Great job! Correct!";
-            feedback.style.color = "#16a34a";
-            setTimeout(generateProblem, 1200);
-        } else {
-            feedback.innerText = "❌ Try again! You can do it!";
-            feedback.style.color = "#dc3545";
-            inputField.select();
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', generateProblem);
-    document.getElementById('answerInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') checkMathAnswer();
-    });
-  </script>
 
 </body>
 </html>
+
