@@ -3,148 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathEasy30 - Calm & Steady Math Practice</title>
+    <title>Math Classroom - Practice Page</title>
     <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-fixes.css">
     <style>
-        .math-box {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #2d2a26;
-            margin: 20px 0;
-            min-height: 90px;
-        }
-        .bubbles-avatar-pulse.speaking {
-            animation: bounceTalk 0.5s infinite alternate ease-in-out;
-        }
-        @keyframes bounceTalk {
-            from { transform: translateY(0); }
-            to { transform: translateY(-6px); }
-        }
+        .num-pad-btn { min-height: 72px; font-size: 1.75rem; font-weight: 900; border-radius: 1.25rem; transition: all 0.15s ease-in-out; }
+        .num-pad-btn:active { transform: scale(0.95); }
+        .card-glow { box-shadow: 0 10px 30px -5px rgba(99, 102, 241, 0.08); }
     </style>
 </head>
-<body class="bg-[#fdfbf7] text-[#2d2a26] font-sans min-h-screen pb-12 flex flex-col items-center justify-center p-4">
+<body class="bg-gradient-to-b from-indigo-50 via-white to-purple-50 text-slate-900 min-h-screen flex flex-col font-sans antialiased selection:bg-indigo-100">
 
-    <main class="max-w-2xl w-full mx-auto my-6 px-4">
-        <header class="text-center mb-6">
-            <h1 class="text-4xl font-bold text-[#357abd] mb-1">MathEasy30 🧮</h1>
-            <p class="text-md opacity-80">Your daily path to mental numbers mastery!</p>
-        </header>
+    <!-- Simple Classroom Top Navigation Header -->
+    <header class="bg-white/90 backdrop-blur-md border-b border-indigo-100 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+        <a href="index.html" class="text-xl font-black text-indigo-600 hover:opacity-80 transition-opacity">&larr; Exit Classroom</a>
+        <div class="flex space-x-4 font-mono text-xs text-slate-600">
+            <div class="bg-slate-100 px-3 py-1.5 rounded-lg">Questions: <span id="streak-counter" class="font-bold text-indigo-600">0</span></div>
+            <div class="bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-200 text-amber-700">Stars: <span id="badge-counter" class="font-bold">⭐</span></div>
+        </div>
+    </header>
 
-        <!-- Live Scoreboard -->
-        <section class="bg-white border-2 border-[#f1edd9] rounded-2xl p-4 mb-6 shadow-sm grid grid-cols-2 gap-4 text-center text-sm font-bold">
-            <div id="mathScore" class="bg-[#fdfbf7] p-3 rounded-xl border border-[#f1edd9] text-slate-700">Solved: 0</div>
-            <div id="mathStreak" class="bg-[#fdfbf7] p-3 rounded-xl border border-[#f1edd9] text-amber-700">Streak: 0 🔥</div>
-        </section>
-
-        <!-- Main Work Interface -->
-        <article class="bg-white border-4 border-[#f1edd9] rounded-3xl p-6 shadow-sm text-center">
-            <div class="w-16 h-16 bg-[#ffcb77] rounded-full flex items-center justify-center text-3xl shadow-sm mb-4 mx-auto bubbles-avatar-pulse" id="mathAvatar">
-                🧮
+    <!-- Main Active Learning Stage -->
+    <main class="flex-1 max-w-2xl w-full mx-auto p-4 flex flex-col justify-center space-y-6 my-4">
+        
+        <!-- Friendly Assistant Bubbles Box Spotlight -->
+        <div id="bubbles-coach-container" class="w-full">
+            <div class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 p-5 bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-100 rounded-2xl animate-pulse">
+                <div class="text-4xl select-none">🫧</div>
+                <div class="text-center sm:text-left">
+                    <p class="text-base font-bold text-slate-700">Loading your math sandbox workspace...</p>
+                </div>
             </div>
+        </div>
+
+        <!-- The Big Math Question Display Box Panel -->
+        <div class="bg-white border-2 border-indigo-100 rounded-3xl p-8 card-glow text-center space-y-6">
+            <div class="flex justify-center items-center space-x-4">
+                <!-- Large clear question font for kids and special-ed clarity -->
+                <div id="math-problem-display" class="text-6xl sm:text-7xl font-black tracking-tight text-slate-900 select-none">
+                    3 + 2 = ?
+                </div>
+                <button id="audio-readout-btn" class="p-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-full text-2xl transition-colors" title="Listen to question">
+                    🔊
+                </button>
+            </div>
+
+            <!-- Current input text placeholder display line -->
+            <div class="max-w-[200px] mx-auto bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl py-3 text-3xl font-black text-indigo-600 font-mono" id="current-answer-input">
+                ?
+            </div>
+        </div>
+
+        <!-- Large High-Accessibility Number Pad Input Matrix Grid -->
+        <div class="bg-white border border-indigo-100 rounded-3xl p-4 card-glow grid grid-cols-3 gap-3">
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(1)">1</button>
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(2)">2</button>
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(3)">3</button>
             
-            <div id="mathSpeech" class="text-md font-medium text-slate-700 italic mb-4 bg-[#fdfbf7] p-4 rounded-xl border border-[#f1edd9]">
-                "Let's solve some equations together! Look at the problem below."
-            </div>
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(4)">4</button>
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(5)">5</button>
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(6)">6</button>
+            
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(7)">7</button>
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(8)">8</button>
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(9)">9</button>
+            
+            <button class="num-pad-btn bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-600 text-xl font-bold" onclick="clearInput()">Clear</button>
+            <button class="num-pad-btn bg-slate-50 hover:bg-indigo-50 border border-slate-200/60 text-slate-800" onclick="appendNum(0)">0</button>
+            <button class="num-pad-btn bg-emerald-500 hover:bg-emerald-600 text-white text-xl font-bold shadow-md shadow-emerald-500/20" onclick="checkMathAnswer()">Check</button>
+        </div>
 
-            <div class="math-box" id="mathProblem">5 + 3 = ?</div>
-
-            <!-- Answer Buttons Grid -->
-            <div class="grid grid-cols-2 gap-3 max-w-sm mx-auto mb-6" id="mathAnswers"></div>
-
-            <button type="button" onclick="mathEngine.readProblem()" class="bg-[#4a90e2] hover:bg-[#357abd] text-white font-bold py-3.5 px-6 rounded-xl shadow transition transform active:scale-95 w-full max-w-sm">
-                🔊 Read Problem to Me
-            </button>
-        </article>
     </main>
 
+    <!-- Embedded Sandbox Connector Controls -->
+    <script src="app.js"></script>
     <script>
-        const MATH_CURRICULUM = [
-            { question: "1 + 1 = ?", voice: "What is 1 plus 1?", options: ["2", "3", "4"], correct: "2" },
-            { question: "2 + 3 = ?", voice: "What is 2 plus 3?", options: ["4", "5", "6"], correct: "5" },
-            { question: "5 + 4 = ?", voice: "What is 5 plus 4?", options: ["8", "9", "10"], correct: "9" },
-            { question: "10 - 2 = ?", voice: "What is 10 minus 2?", options: ["7", "8", "9"], correct: "8" },
-            { question: "6 - 3 = ?", voice: "What is 6 minus 3?", options: ["2", "3", "4"], correct: "3" }
-        ];
+        let currentString = "";
+        const inputDisplay = document.getElementById('current-answer-input');
 
-        class MathEasyEngine {
-            constructor() {
-                this.problems = MATH_CURRICULUM;
-                this.idx = 0;
-                this.score = parseInt(localStorage.getItem('me30_score')) || 0;
-                this.streak = parseInt(localStorage.getItem('me30_streak')) || 0;
-
-                this.avatar = document.getElementById('mathAvatar');
-                this.speechBox = document.getElementById('mathSpeech');
-                this.problemBox = document.getElementById('mathProblem');
-                this.answersBox = document.getElementById('mathAnswers');
-
-                this.loadProblem();
-                this.updateUI();
-            }
-
-            loadProblem() {
-                const current = this.problems[this.idx];
-                this.problemBox.textContent = current.question;
-                this.answersBox.innerHTML = '';
-
-                current.options.forEach(opt => {
-                    const btn = document.createElement('button');
-                    btn.className = "p-4 border-2 border-[#f1edd9] bg-[#fdfbf7] font-bold rounded-xl transition hover:border-[#4a90e2] active:scale-95";
-                    btn.textContent = opt;
-                    btn.onclick = () => this.checkChoice(opt, current.correct, btn);
-                    this.answersBox.appendChild(btn);
-                });
-            }
-
-            checkChoice(choice, correct, buttonElement) {
-                if (choice === correct) {
-                    buttonElement.className = "p-4 border-2 border-green-500 bg-green-50 text-green-800 font-bold rounded-xl";
-                    this.speechBox.textContent = '"Correct! Excellent calculations."';
-                    this.speak("Correct! Excellent calculations.");
-
-                    this.score += 1;
-                    if (this.streak === 0) this.streak = 1;
-                    localStorage.setItem('me30_score', this.score);
-                    localStorage.setItem('me30_streak', this.streak);
-                    this.updateUI();
-
-                    setTimeout(() => {
-                        this.idx = (this.idx + 1) % this.problems.length;
-                        this.loadProblem();
-                        this.speechBox.textContent = '"Here is your next challenge!"';
-                    }, 1500);
-                } else {
-                    buttonElement.className = "p-4 border-2 border-red-500 bg-red-50 text-red-800 font-bold rounded-xl";
-                    this.speechBox.textContent = '"Not quite, let\'s recount and try again!"';
-                    this.speak("Let's try that one again.");
-                }
-            }
-
-            speak(text) {
-                if (!window.speechSynthesis) return;
-                window.speechSynthesis.cancel();
-                const u = new SpeechSynthesisUtterance(text);
-                u.rate = 0.85;
-                u.onstart = () => this.avatar.classList.add('speaking');
-                u.onend = () => this.avatar.classList.remove('speaking');
-                window.speechSynthesis.speak(u);
-            }
-
-            readProblem() {
-                this.speak(this.problems[this.idx].voice);
-            }
-
-            updateUI() {
-                document.getElementById('mathScore').textContent = `Solved: ${this.score}`;
-                document.getElementById('mathStreak').textContent = `Streak: ${this.streak} 🔥`;
+        function appendNum(num) {
+            if (currentString.length < 3) {
+                currentString += num.toString();
+                inputDisplay.textContent = currentString;
+                inputDisplay.classList.remove('text-indigo-600');
+                inputDisplay.classList.add('text-slate-800');
             }
         }
 
-        let mathEngine;
-        window.addEventListener('DOMContentLoaded', () => {
-            mathEngine = new MathEasyEngine();
-        });
+        function clearInput() {
+            currentString = "";
+            inputDisplay.textContent = "?";
+            inputDisplay.classList.remove('text-slate-800');
+            inputDisplay.classList.add('text-indigo-600');
+        }
+
+        function checkMathAnswer() {
+            if(window.bubblesCoreInstance && currentString !== "") {
+                // Call our friendly character script framework directly
+                window.bubblesCoreInstance.processAnswerSuccess();
+                clearInput();
+            }
+        }
     </script>
 </body>
 </html>
 
+   Deploy pure distraction-free app.html classroom template layout                 
