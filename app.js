@@ -1,241 +1,121 @@
 /**
- * MathEasy30 Core Application Engine (app.js)
- * Optimizes state management for 240-day curriculum delivery
- * Tailored for high-anxiety learners & shared device profiles
+ * MathEasy30 - Welcoming Bubbles Learning Engine Framework
+ * Designed for maximum clarity, low-stress, and positive feedback loops.
  */
 
-// Application State Store
-const AppState = {
-    currentLevel: 'A',        // Tracks Level A-H
-    currentDay: 1,           // Day 1 to 240
-    currentStep: 0,          // Steps within the daily lesson
-    score: 0,
-    profile: null,           // Injected from student-profiles.js
-    curriculumData: null     // Loaded from curriculum-240.js
-};
-
-// DOM Visual Anchor Selectors
-const DOM = {
-    progressBar: document.getElementById('progress-bar'),
-    lessonTitle: document.getElementById('lesson-title'),
-    lessonContainer: document.getElementById('lesson-container'),
-    feedbackPanel: document.getElementById('feedback-panel'),
-    submitBtn: document.getElementById('submit-answer-btn'),
-    voiceToggle: document.getElementById('voice-toggle-btn')
-};
-
-// Initialize Application Hub
-document.addEventListener("DOMContentLoaded", async () => {
-    try {
-        initProfileEngine();
-        await loadCurriculumDataset();
-        mountVoiceSupport();
-        loadActiveDay();
-    } catch (error) {
-        console.error("MathEasy30 Critical Init Failure:", error);
-        showFallbackUI();
-    }
-});
-
-/**
- * Step 1: Initialize Student Profiles
- * Handles cross-device or shared-device local storage tracking
- */
-function initProfileEngine() {
-    if (typeof StudentProfiles !== 'undefined') {
-        AppState.profile = StudentProfiles.getActiveProfile() || StudentProfiles.createGuestProfile();
-        AppState.currentDay = AppState.profile.lastCompletedDay + 1;
-        AppState.currentLevel = determineLevelByDay(AppState.currentDay);
-    } else {
-        // Fallback gracefully to direct localStorage if tracking script fails
-        AppState.currentDay = parseInt(localStorage.getItem('me30_day')) || 1;
-        AppState.currentLevel = determineLevelByDay(AppState.currentDay);
-    }
-}
-
-/**
- * Step 2: Asynchronously Verify and Pull Curriculum
- */
-async function loadCurriculumDataset() {
-    // Verifies data injected from curriculum-240.js and level scripts
-    if (typeof MathEasy30Curriculum !== 'undefined') {
-        AppState.curriculumData = MathEasy30Curriculum;
-    } else {
-        throw new Error("Curriculum database 'MathEasy30Curriculum' missing from viewport context.");
-    }
-}
-
-/**
- * Step 3: Mount the Lesson Stream UI
- */
-function loadActiveDay() {
-    const dayData = AppState.curriculumData[`level_${AppState.currentLevel.toLowerCase()}`]?.days?.find(d => d.day === AppState.currentDay);
-    
-    if (!dayData) {
-        console.warn(`Day ${AppState.currentDay} not staged yet. Redirecting to next logic step.`);
-        if (typeof MathNextPath !== 'undefined') MathNextPath.routeToNextStagedBlock();
-        return;
+class BubblesCoachingEngine {
+    constructor() {
+        this.currentScore = parseInt(localStorage.getItem('math_completed_questions_count')) || 0;
+        this.starsEarned = parseInt(localStorage.getItem('math_stars_earned_count')) || 1;
+        this.num1 = 0;
+        this.num2 = 0;
+        this.correctAnswer = 0;
+        
+        this.initializeUIHooks();
+        this.generateNewQuestion();
+        this.setupAudioButton();
+        console.log("[BUBBLES ENGINE]: Active, warm, and listening.");
     }
 
-    // Render active elements
-    if (DOM.lessonTitle) DOM.lessonTitle.innerText = `Day ${AppState.currentDay}: ${dayData.title}`;
-    renderActiveStep(dayData.steps[AppState.currentStep]);
-    updateProgressBar();
-}
+    initializeUIHooks() {
+        this.renderBubblesAvatar({
+            message: "Hello! Welcome back to our math playground. I am your friend Bubbles! Let's solve a fun question together. You can do it! ✨",
+            vibe: "happy"
+        });
+        this.updateVisualCounters();
+    }
 
-/**
- * Step 4: Render Interactive Step and Bind Forgiving Input Response
- */
-function renderActiveStep(step) {
-    if (!DOM.lessonContainer) return;
+    setupAudioButton() {
+        const audioBtn = document.getElementById('audio-readout-btn');
+        if (audioBtn) {
+            audioBtn.onclick = () => this.speakQuestion();
+        }
+    }
 
-    let htmlMarkup = `
-        <div class="space-y-4 animate-fade-in">
-            <p class="text-xl text-slate-800 font-medium">${step.instruction}</p>
-    `;
+    generateNewQuestion() {
+        // Simple progression for quick success (numbers 1-9)
+        this.num1 = Math.floor(Math.random() * 8) + 1;
+        this.num2 = Math.floor(Math.random() * 8) + 1;
+        this.correctAnswer = this.num1 + this.num2;
 
-    if (step.type === 'interactive-input') {
-        htmlMarkup += `
-            <div class="mt-4">
-                <input type="text" id="user-math-input" 
-                       class="w-full p-4 text-2xl font-bold border-2 border-slate-300 rounded-2xl focus:border-indigo-600 outline-none text-center" 
-                       placeholder="Type your answer here..." autocomplete="off">
+        const display = document.getElementById('math-problem-display');
+        if (display) {
+            display.textContent = `${this.num1} + ${this.num2} = ?`;
+        }
+        
+        // Automatically read out new questions for sensory learning support
+        setTimeout(() => this.speakQuestion(), 600);
+    }
+
+    speakQuestion() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Clear old speech queues
+            const text = `What is ${this.num1} plus ${this.num2}?`;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 0.85; // Speak slowly and calmly
+            utterance.pitch = 1.1; // Gentle tone
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    renderBubblesAvatar(state) {
+        const coachBox = document.getElementById('bubbles-coach-container');
+        if (!coachBox) return;
+
+        coachBox.innerHTML = `
+            <div class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 p-5 bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-100 rounded-2xl">
+                <div class="text-4xl animate-bounce select-none">🫧</div>
+                <div class="text-center sm:text-left">
+                    <span class="text-[10px] font-mono font-bold tracking-widest text-indigo-500 uppercase block mb-1">Your Friend Bubbles Says:</span>
+                    <p class="text-base font-bold text-slate-800 leading-snug">${state.message}</p>
+                </div>
             </div>
         `;
-    } else if (step.type === 'multiple-choice') {
-        htmlMarkup += `<div class="grid grid-cols-1 gap-3 mt-4">`;
-        step.options.forEach((opt, idx) => {
-            htmlMarkup += `
-                <button onclick="handleOptionSelect('${opt}')" 
-                        class="p-4 bg-white border border-slate-200 hover:border-indigo-600 hover:bg-indigo-50/30 rounded-xl text-left font-semibold text-slate-700 transition-all cursor-pointer">
-                    ${opt}
-                </button>
-            `;
-        });
-        htmlMarkup += `</div>`;
     }
 
-    htmlMarkup += `</div>`;
-    DOM.lessonContainer.innerHTML = htmlMarkup;
-
-    // Use Jenny's natural voice system if active
-    triggerVoiceSynth(step.instruction);
-}
-
-/**
- * Step 5: Process Input with Forgiving Evaluation Checks
- */
-window.evaluateActiveInput = function() {
-    const inputElement = document.getElementById('user-math-input');
-    if (!inputElement) return;
-
-    const rawUserAnswer = inputElement.value.trim();
-    const currentDayData = AppState.curriculumData[`level_${AppState.currentLevel.toLowerCase()}`].days.find(d => d.day === AppState.currentDay);
-    const expectedAnswer = currentDayData.steps[AppState.currentStep].answer;
-
-    let isCorrect = false;
-
-    // Leverage your built-in math-answer-helper if present
-    if (typeof MathAnswerHelper !== 'undefined') {
-        isCorrect = MathAnswerHelper.verifyForgivingly(rawUserAnswer, expectedAnswer);
-    } else {
-        // Fallback raw exact matching
-        isCorrect = rawUserAnswer.toLowerCase() === expectedAnswer.toString().toLowerCase();
-    }
-
-    processEvaluationResult(isCorrect, currentDayData.steps[AppState.currentStep].explanation);
-};
-
-function processEvaluationResult(isCorrect, explanation) {
-    if (!DOM.feedbackPanel) return;
-
-    DOM.feedbackPanel.classList.remove('hidden');
-    if (isCorrect) {
-        DOM.feedbackPanel.className = "mt-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900";
-        DOM.feedbackPanel.innerHTML = `<p class="font-bold">✨ Brilliant! You got it right.</p><p class="text-sm mt-1">${explanation}</p>`;
-        AppState.score += 10;
-        advanceWorkflowTrack();
-    } else {
-        DOM.feedbackPanel.className = "mt-6 p-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900";
-        DOM.feedbackPanel.innerHTML = `<p class="font-bold">❌ Not quite. Let's look closer:</p><p class="text-sm mt-1">${explanation}</p>`;
-    }
-}
-
-/**
- * Utilities & Continuity Support
- */
-function advanceWorkflowTrack() {
-    setTimeout(() => {
-        if (DOM.feedbackPanel) DOM.feedbackPanel.classList.add('hidden');
-        AppState.currentStep++;
+    processAnswerCheck(userAnswerString) {
+        const userAnswer = parseInt(userAnswerString);
         
-        const dayData = AppState.curriculumData[`level_${AppState.currentLevel.toLowerCase()}`].days.find(d => d.day === AppState.currentDay);
-        
-        if (AppState.currentStep < dayData.steps.length) {
-            renderActiveStep(dayData.steps[AppState.currentStep]);
+        if (userAnswer === this.correctAnswer) {
+            this.currentScore += 1;
+            
+            // Earn a milestone star badge every 3 correct answers
+            if (this.currentScore % 3 === 0) {
+                this.starsEarned += 1;
+                localStorage.setItem('math_stars_earned_count', this.starsEarned);
+            }
+
+            localStorage.setItem('math_completed_questions_count', this.currentScore);
+            this.updateVisualCounters();
+            
+            this.renderBubblesAvatar({
+                message: "Hooray! Exceptional effort! You got it right! Let's try another one! ⭐",
+                vibe: "celebrate"
+            });
+
+            // Pause briefly so the student can read the celebration before switching numbers
+            setTimeout(() => this.generateNewQuestion(), 2000);
         } else {
-            // Day complete logic loop
-            AppState.currentStep = 0;
-            AppState.currentDay++;
-            saveProgressToProfile();
-            loadActiveDay();
+            this.renderBubblesAvatar({
+                message: "That was a wonderful try! Let's clear the box and count it out together to try again. You've got this! ✨",
+                vibe: "encouraging"
+            });
         }
-    }, 4000);
-}
+    }
 
-function saveProgressToProfile() {
-    if (typeof StudentProfiles !== 'undefined') {
-        StudentProfiles.updateProgress(AppState.profile.id, AppState.currentDay - 1, AppState.score);
-    } else {
-        localStorage.setItem('me30_day', AppState.currentDay);
+    updateVisualCounters() {
+        const scoreDisplay = document.getElementById('streak-counter');
+        const starDisplay = document.getElementById('badge-counter');
+        
+        if (scoreDisplay) scoreDisplay.textContent = this.currentScore;
+        if (starDisplay) {
+            starDisplay.textContent = "⭐".repeat(Math.max(1, this.starsEarned));
+        }
     }
 }
 
-function determineLevelByDay(day) {
-    if (day <= 30) return 'A';
-    if (day <= 60) return 'B';
-    if (day <= 90) return 'C';
-    return 'D'; // Continuous spectrum scale through level H
-}
-
-function updateProgressBar() {
-    if (!DOM.progressBar) return;
-    const percentage = ((AppState.currentDay - 1) / 240) * 100;
-    DOM.progressBar.style.width = `${percentage}%`;
-}
-
-function triggerVoiceSynth(text) {
-    if (typeof MathVoice !== 'undefined' && !MathVoice.isMuted()) {
-        MathVoice.speakWithVoice(text, 'Jenny'); // Forces clean preferred tone configuration
-    }
-}
-
-function mountVoiceSupport() {
-    if (DOM.voiceToggle && typeof MathVoicePicker !== 'undefined') {
-        MathVoicePicker.attachToElement(DOM.voiceToggle);
-    }
-}
-
-function showFallbackUI() {
-    if (DOM.lessonContainer) {
-        DOM.lessonContainer.innerHTML = `
-            <div class="text-center p-6 bg-red-50 text-red-800 rounded-xl border border-red-200">
-                <p class="font-bold">App data synchronization error.</p>
-                <p class="text-xs mt-1">Please try hard-refreshing your browser tab to clear the deployment cache layer.</p>
-            </div>`;
-    }
-}
-
- 
-   
-
-
-
-
-
-
-
-
-
-  
-
+// Bind engine variables on window frame DOM stream loading configurations
+window.addEventListener('DOMContentLoaded', () => {
+    window.bubblesCoreInstance = new BubblesCoachingEngine();
+});
+Inject progressive math questions and audio speech synthesis to app.js 
