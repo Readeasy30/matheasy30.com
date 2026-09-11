@@ -1,136 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathEasy30 - Free Calm Math Practice</title>
-    <script src="https://tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css?v=c578387e">
-    <link rel="stylesheet" href="css/mobile-fixes.css?v=510326f0">
-    <style>
-        .big-button { min-height: 64px; font-size: 1.25rem; border-radius: 1.25rem; transition: all 0.2s ease-in-out; }
-        .big-button:active { transform: scale(0.98); }
-        .happy-glow { box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.12); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathEasy30 - Earn Your Stars Math Academy</title>
+  <script src="https://tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-b from-indigo-50 via-white to-purple-50 text-slate-900 min-h-screen flex flex-col font-sans antialiased">
-    <!-- Header with Explicit Left Margin Shift -->
-    <header class="bg-white/80 backdrop-blur-md border-b border-indigo-100 sticky top-0 z-50 w-full py-4">
-        <div class="w-full flex items-center justify-between pl-12 sm:pl-20 pr-6">
-            <span class="text-2xl font-black tracking-tight text-indigo-600">MathEasy<span class="text-purple-500">30</span></span>
-            <span class="text-xs font-mono text-emerald-700 bg-emerald-100 border border-emerald-300 px-3 py-1.5 rounded-full font-bold">✨ 100% FREE</span>
-        </div>
-    </header>
+<body class="min-h-screen bg-amber-50/30 p-4 sm:p-8 font-sans antialiased text-stone-800">
 
- 100% FREE</span>
-        </div>
-    </header>
+  <!-- Premium Educational Header -->
+  <div class="max-w-5xl mx-auto bg-white rounded-3xl p-6 shadow-sm border border-amber-100/70 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+        🧮
+      </div>
+      <div>
+        <h1 class="text-2xl font-black text-stone-950 tracking-tight">MathEasy30</h1>
+        <p class="text-xs font-semibold uppercase tracking-wider text-amber-600">Numbers the Assistant</p>
+      </div>
+    </div>
+    
+    <!-- Dynamic Star Tracker Component -->
+    <div class="bg-amber-100/80 text-amber-900 border border-amber-200 px-5 py-2.5 rounded-2xl font-bold text-sm tracking-wide shadow-sm flex items-center gap-2">
+      <span class="text-lg animate-pulse">⭐</span>
+      <span>STARS EARNED:</span>
+      <span id="stars_earned" class="text-base font-black bg-white px-2.5 py-0.5 rounded-md text-amber-800 shadow-inner">0</span>
+    </div>
+  </div>
 
-    </header>
-
-    <!-- Clear Learning Space -->
-    <main class="flex-1 max-w-3xl w-full mx-auto p-6 flex flex-col justify-center items-center text-center space-y-8 my-6">
+  <!-- Interactive Mathematics Workspace -->
+  <div class="max-w-5xl mx-auto mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    
+    <!-- Dynamic Question Canvas (Left/Center Column) -->
+    <div class="lg:col-span-2 bg-white rounded-3xl p-8 border border-stone-100 shadow-md flex flex-col justify-between min-h-[400px]">
+      <div class="space-y-6">
+        <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full uppercase tracking-widest">Active Counting Game</span>
         
-               <!-- Visual Classroom Welcome Box for Numbers -->
-        <div class="w-full bg-white border-2 border-indigo-100 rounded-3xl p-6 happy-glow flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-5">
-            <!-- Animated high-visibility avatar face for Numbers -->
-            <div class="relative flex items-center justify-center w-20 h-20 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-2xl shadow-md text-4xl animate-bounce select-none">
-                🤖
-                <span class="absolute -bottom-1 -right-1 text-lg">🔢</span>
-            </div>
-            <div class="text-center sm:text-left space-y-1">
-                <span class="text-xs font-mono font-bold tracking-widest text-indigo-600 uppercase block">Meet Your Teacher Assistant:</span>
-                <h2 class="text-xl font-black text-slate-900">Hi, I'm Numbers! 👋</h2>
-                <p class="text-base text-slate-600 leading-snug">
-                    I am so happy you are here in our math classroom! Let's count some fun shapes, practice together, and earn shiny stars today!
-                </p>
-            </div>
+        <!-- Friendly Math Equation Box -->
+        <div class="py-10 text-center bg-stone-50 rounded-2xl border border-stone-100 shadow-inner flex flex-col items-center justify-center space-y-4">
+          <div class="flex items-center gap-6 justify-center text-4xl mb-2 select-none">
+            🍎 🍎 &nbsp;+&nbsp; 🍎
+          </div>
+          <h2 class="text-5xl font-black text-stone-900 tracking-tight">2 + 1 = ?</h2>
         </div>
+        
+        <p class="text-stone-600 text-lg font-medium text-center max-w-md mx-auto">
+          Count the juicy red apples above! Can you tell me how many there are altogether?
+        </p>
+      </div>
 
-                <p class="text-lg sm:text-xl font-bold text-slate-800 leading-snug">
-                    Hello! Welcome to our math practice space. Let's count, solve friendly questions, and earn shiny stars together today! 🌟
-                </p>
-            </div>
+      <!-- Multiple Choice Tap Targets -->
+      <div class="grid grid-cols-3 gap-4 mt-8">
+        <button class="py-4 bg-stone-50 hover:bg-amber-100/50 border border-stone-200 text-stone-800 font-bold rounded-xl transition-all active:scale-95 text-xl shadow-sm">
+          2
+        </button>
+        <button class="py-4 bg-amber-500 hover:bg-amber-600 border border-amber-600 text-white font-black rounded-xl transition-all shadow-md active:scale-95 text-xl">
+          3 ✨
+        </button>
+        <button class="py-4 bg-stone-50 hover:bg-amber-100/50 border border-stone-200 text-stone-800 font-bold rounded-xl transition-all active:scale-95 text-xl shadow-sm">
+          4
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Sidebar Navigation Blocks -->
+    <div class="flex flex-col gap-6">
+      
+      <!-- Assistant Speech Synthesis Bubble -->
+      <div class="bg-gradient-to-br from-amber-100/50 to-orange-50 rounded-3xl p-6 border border-amber-200/40 shadow-sm space-y-3">
+        <div class="flex items-center gap-2 font-bold text-stone-900 text-lg">
+          <span>🤖</span>
+          <h3>Numbers Says:</h3>
         </div>
+        <p class="text-stone-700 text-sm leading-relaxed font-medium">
+          "Look at those delicious apples! Let's count them step-by-step together. Tap the lucky number on the left when you think you've got it!"
+        </p>
+        <button class="text-xs uppercase tracking-wider font-bold text-amber-700 hover:text-amber-800 flex items-center gap-1.5 pt-1">
+          <span>🔊</span> Read Aloud
+        </button>
+      </div>
 
-        <!-- Clean Star Scoreboard -->
-        <div class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white text-left happy-glow flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
-            <div>
-                <span class="text-xs font-mono text-indigo-200 uppercase tracking-widest block mb-1">My Progress</span>
-                <h3 class="text-xl font-bold">You Are Doing Great Work!</h3>
-            </div>
-            <div class="flex space-x-6 font-mono">
-                <div class="bg-white/10 px-4 py-2 rounded-xl text-center">
-                    <div class="text-[10px] text-indigo-200 uppercase">Questions</div>
-                    <div id="streak-counter" class="text-2xl font-black text-white">0</div>
-                </div>
-                <div class="bg-white/10 px-4 py-2 rounded-xl text-center">
-                    <div class="text-[10px] text-indigo-200 uppercase">Stars</div>
-                    <div id="badge-counter" class="text-2xl font-black text-amber-300">⭐</div>
-                </div>
-            </div>
+      <!-- Gamified Reward Progress Map -->
+      <div class="bg-white rounded-3xl p-6 border border-stone-100 shadow-sm space-y-4">
+        <h4 class="font-bold text-xs uppercase tracking-wider text-stone-400">Milestone Rewards</h4>
+        <div class="w-full bg-stone-100 h-3 rounded-full overflow-hidden shadow-inner relative">
+          <div class="bg-gradient-to-r from-amber-400 to-amber-500 h-full w-[40%] rounded-full"></div>
         </div>
+        <p class="text-xs text-stone-500 font-medium">
+          Just <strong>3 more correct answers</strong> until your next star badge!
+        </p>
+      </div>
 
-        <!-- Clean Learning Entrance Buttons (No tech jargon) -->
-        <div class="w-full grid grid-cols-1 gap-4 text-left font-sans">
-            
-            <!-- 1. Start Math Practice -->
-            <a href="app.html" class="big-button group flex items-center justify-between p-5 bg-white border-2 border-indigo-100 hover:border-indigo-400 happy-glow">
-                <div class="flex items-center space-x-4">
-                    <span class="text-3xl select-none">🚀</span>
-                    <div>
-                        <span class="text-base font-black text-slate-900 group-hover:text-indigo-600">Enter Math Classroom</span>
-                        <span class="text-xs text-slate-400 block font-normal">Fun addition and subtraction questions with helpful voice readout!</span>
-                    </div>
-                </div>
-                <span class="text-2xl text-slate-300 group-hover:translate-x-1 group-hover:text-indigo-500 transition-all">&rarr;</span>
-            </a>
-
-            <!-- 2. Print Worksheets -->
-            <a href="printable-math-worksheets.html" class="big-button group flex items-center justify-between p-5 bg-white border-2 border-indigo-100 hover:border-purple-400 happy-glow">
-                <div class="flex items-center space-x-4">
-                    <span class="text-3xl select-none">🖨️</span>
-                    <div>
-                        <span class="text-base font-black text-slate-900 group-hover:text-purple-600">Print Math Worksheets</span>
-                        <span class="text-xs text-slate-400 block font-normal">Simple practice sheets you can print out to practice by hand.</span>
-                    </div>
-                </div>
-                <span class="text-2xl text-slate-300 group-hover:translate-x-1 group-hover:text-purple-500 transition-all">&rarr;</span>
-            </a>
-
-            <!-- 3. Word Problems -->
-            <a href="word-problem-practice.html" class="big-button group flex items-center justify-between p-5 bg-white border-2 border-indigo-100 hover:border-purple-400 happy-glow">
-                <div class="flex items-center space-x-4">
-                    <span class="text-3xl select-none">🧩</span>
-                    <div>
-                        <span class="text-base font-black text-slate-900 group-hover:text-purple-600">Word Problems Practice</span>
-                        <span class="text-xs text-slate-400 block font-normal">Short, calm storytelling questions built to build confidence.</span>
-                    </div>
-                </div>
-                <span class="text-2xl text-slate-300 group-hover:translate-x-1 group-hover:text-purple-500 transition-all">&rarr;</span>
-            </a>
-
-        </div>
-
-    </main>
-
-    <!-- Plain Simple Footer -->
-    <footer class="border-t border-indigo-100 bg-white px-6 py-4 text-center text-xs text-slate-400">
-        &copy; 2026 MathEasy30. All materials are completely free for students, families, and tutors.
-    </footer>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const count = localStorage.getItem('math_completed_questions_count') || 0;
-            const stars = localStorage.getItem('math_stars_earned_count') || 1;
-            document.getElementById('streak-counter').textContent = count;
-            document.getElementById('badge-counter').textContent = "⭐".repeat(Math.max(1, parseInt(stars)));
-        });
-    </script>
+    </div>
+  </div>
 
 </body>
 </html>
-﻿
- Remove hosting and framework details from homepage layout
-
-        
